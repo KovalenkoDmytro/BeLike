@@ -61,10 +61,10 @@ npm run watch
 
 ## Production
 #### Create the production version:
-The code will be optimized for production use, saved in `dist` folder. **However, see bellow the preferred method: which is "Deploy".**
+The code will be optimized for production use, saved in `app` folder. **However, see bellow the preferred method: which is "Deploy".**
 ```
 npm run prod
 ```
 
 #### Deploy
-On pushing to main branch the plugins and theme files (from /dist/) will automatically load to production server.
+On pushing to main branch the plugins and theme files (from /app/) will automatically load to production server.

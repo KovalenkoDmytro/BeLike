@@ -26,24 +26,24 @@
 #      - name: Build App
  #       run: npm run prod
         
-      # Move theme folder files from /dist/theme/ to server/wp-contet/themes/starter/
+      # Move theme folder files from /app/theme/ to server/wp-contet/themes/starter/
 #      - name: Copy theme files using ssh by key
  #       uses: easingthemes/ssh-deploy@main
  #       env:
  #           SSH_PRIVATE_KEY: ${{ secrets.KEY }}
   #          ARGS: "-rltgoDzvO --delete"
-  #          SOURCE: "dist/theme/"
+  #          SOURCE: "app/theme/"
   #          REMOTE_HOST: ${{ secrets.HOST }}
    #         REMOTE_USER: ${{ secrets.USERNAME }}
   #          TARGET: "/serverpath/public_html/wp-content/themes/starter/"
 #
-#     # Move plugin folder files from /dist/plugin/ to server/wp-content/plugins/starter-core/
+#     # Move plugin folder files from /app/plugin/ to server/wp-content/plugins/starter-core/
 #      - name: Copy plugin files using ssh by key
 #        uses: easingthemes/ssh-deploy@main
 #        env:
 #            SSH_PRIVATE_KEY: ${{ secrets.KEY }}
 #            ARGS: "-rltgoDzvO --delete"
-#            SOURCE: "dist/plugin/"
+#            SOURCE: "app/plugin/"
 #            REMOTE_HOST: ${{ secrets.HOST }}
 #            REMOTE_USER: ${{ secrets.USERNAME }}
 #            TARGET: "/serverpath/public_html/wp-content/plugins/starter-core/"

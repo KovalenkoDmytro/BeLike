@@ -31,11 +31,6 @@ services:
             WORDPRESS_CONFIG_EXTRA: |
                 define('FS_METHOD', 'direct');
         volumes:
-            # - ./dist/theme/:/var/www/html/wp-content/themes/ale
-            # - ./dist/plugin:/var/www/html/wp-content/plugins/ale-core
-            # - ./.srv/wordpress/:/var/www/html
-            # - ./.srv/log/:/var/log
-            # - './.srv/custom.ini:/usr/local/etc/php/conf.d/custom.ini'
             - ./.srv/wordpress/:/var/www/html
             - ./app/theme/:/var/www/html/wp-content/themes/dk
             - ./app/plugin/:/var/www/html/wp-content/plugins/dk-core
