@@ -1,47 +1,27 @@
 {
-  "name": "starter",
-  "version": "1.0.0",
-  "description": "Starter Theme",
-  "main": "index.js",
-  "dependencies": {
-    "browser-sync": "^2.26.7",
-    "browser-sync-webpack-plugin": "^2.2.2",
-    "copy-webpack-plugin": "^5.1.1",
-    "cross-env": "^7.0.2",
-    "del": "^5.1.0",
-    "glob": "latest",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-fix-style-only-entries": "^0.4.0",
-    "webpack-notifier": "latest",
-    "css-loader": "^3.4.2",
-    "style-loader": "^1.1.3",
-    "sass": "1.71.1",
-    "sass-loader": "14.1.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
-  },
+  "name": "webpack-dk",
+  "private": true,
   "scripts": {
-    "dev": "npm run development",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "nodemon --watch webpack.mix.js --exec 'npm run development -- --watch'",
-    "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "last 1 ie version"
-    ]
-  },
-  "author": "asochirca",
-  "license": "ISC"
+  "dependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "autoprefixer": "^10.4.17",
+    "babel-core": "^6.26.3",
+    "browser-sync": "2",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "css-loader": "^6.10.0",
+    "css-minimizer-webpack-plugin": "^6.0.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.8.1",
+    "postcss": "8.4.35",
+    "postcss-loader": "8.1.1",
+    "sass-loader": "^14.1.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
 }

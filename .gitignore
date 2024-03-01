@@ -1,3 +1,4 @@
+/.github
 /dist/*
 !/dist/.gitkeep
 /node_modules
@@ -8,4 +9,4 @@
 /.srv/*
 *.env
 /.idea/*
-!/.srv/custom.ini
+!/custom.ini
