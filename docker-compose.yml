@@ -1,63 +1,57 @@
 version: '1'
 services:
-    # mysql:
-    #     image: mysql:5.7
-    #     restart: always
-    #     ports:
-    #         - 3306:3306
-    #     volumes:
-    #         - "./.srv/database:/var/lib/mysql"
-    #     environment:
-    #         MYSQL_ROOT_PASSWORD:  wordpress
-    #         MYSQL_DATABASE: ale-app
-    #         MYSQL_USER: wordpress
-    #         MYSQL_PASSWORD: wordpress
+  mysql:
+    image: mysql:8.1
+    restart: always
+    ports:
+      - 3308:3308
+    volumes:
+      - "./.srv/database:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_USER}'
+      MYSQL_DATABASE: '${DB_NAME}'
+      MYSQL_USER: '${DB_USER}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
 
-    wordpress:
-        image: wordpress:latest
-        # depends_on:
-        #     - mysql
-        # links:
-        #     - mysql
-        ports:
-            - 8080:80
-        restart: always
-        environment:
-            WORDPRESS_DB_HOST: '${DB_HOST}'
-            WORDPRESS_DB_USER:  '${DB_USER}'
-            WORDPRESS_DB_PASSWORD: '${DB_PASSWORD}'
-            WORDPRESS_DB_NAME: '${DB_NAME}'
-            WORDPRESS_DEBUG: 1
-            WORDPRESS_CONFIG_EXTRA: |
-                define('FS_METHOD', 'direct');
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - mysql
+    links:
+      - mysql
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: '${DB_HOST}'
+      WORDPRESS_DB_USER: '${DB_USER}'
+      WORDPRESS_DB_PASSWORD: '${DB_PASSWORD}'
+      WORDPRESS_DB_NAME: '${DB_NAME}'
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_CONFIG_EXTRA: |
+        define('FS_METHOD', 'direct');
+  
+  
+  
 
-        volumes:
-            - ./.srv/wordpress/:/var/www/html
-            - ./app/theme/:/var/www/html/wp-content/themes/dk
-            -  .htaccess:/var/www/html/.htaccess
-            - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
-            - ./wp-config.php:/var/www/html/wp-config.php
-            - ./app/plugins/:/var/www/html/wp-content/plugins
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+    ports:
+      - 8181:80
+    restart: always
+    environment:
+      MYSQL_USERNAME: wordpress
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      PMA_HOST: '${DB_HOST}'
+    volumes:
+      - './custom.ini:/usr/local/etc/php/conf.d/custom.ini'
 
-
-#    phpmyadmin:
-#        image: phpmyadmin/phpmyadmin
-#        # depends_on:
-#        #     - mysql
-#        # links:
-#        #     - mysql:mysql
-#        ports:
-#            - 8181:80
-#        restart: always
-#        environment:
-#            MYSQL_USERNAME: wordpress
-#            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-#            PMA_HOST: '${DB_HOST}'
-#        volumes:
-#            - './custom.ini:/usr/local/etc/php/conf.d/custom.ini'
-#
-#    mailhog:
-#        image: mailhog/mailhog
-#        ports:
-#            - 1025:1025 # smtp server
-#            - 8025:8025 # web ui
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
