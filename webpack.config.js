@@ -6,7 +6,7 @@ const path = require("path");
 
 // change these variables to fit your project
 const baseUrl = "./app/theme/assets/";
-const outputPath = "./app/themes/public/";
+const outputPath = "./app/theme/public/";
 const localDomain = "http://localhost:8080/";
 const entryPoints = {
     app: baseUrl + "js/main.js",
