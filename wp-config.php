@@ -50,7 +50,7 @@ if ($configExtra = getenv_docker('WORDPRESS_CONFIG_EXTRA', '')) {
     eval($configExtra);
 }
 
-if (getenv_docker('APP_CONTEXT', '') == 'dev') {
+if (getenv_docker('APP_CONTEXT', '') === 'dev') {
     define('WP_DEBUG', true);
 	define( 'WP_DEBUG_DISPLAY', true );
 	define( 'WP_DEBUG_LOG', true );
