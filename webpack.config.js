@@ -13,7 +13,7 @@ const entryPoints = {
 };
 
 module.exports = {
-    entry: entryPoints,
+    entry: [baseUrl + "js/main.js", baseUrl + "scss/main.scss"],
     output: {
         path: path.resolve(__dirname, outputPath),
         filename: "app.js",
