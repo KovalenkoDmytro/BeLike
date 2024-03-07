@@ -23,7 +23,7 @@ global $redux_demo
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+<ul id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'dk' ); ?></a>
 
 	<header id="masthead" class="header">
@@ -46,6 +46,26 @@ global $redux_demo
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
+        <ul>
+            <?php if($redux_demo['socialMedia-facebook']){ ?>
+                <a href="<?= esc_url($redux_demo['socialMedia-facebook']) ?>"
+                   title="Facebook"
+                    target="_blank"
+                > Facebook</a>
+            <?php }?>
+	        <?php if($redux_demo['socialMedia-instagram']){ ?>
+                <a href="<?= esc_url($redux_demo['socialMedia-instagram']) ?>"
+                   title="Instagram"
+                   target="_blank"
+                > Instagram</a>
+	        <?php }?>
+	        <?php if($redux_demo['socialMedia-youTube']){ ?>
+                <a href="<?= esc_url($redux_demo['socialMedia-youTube']) ?>"
+                   title="youTube"
+                   target="_blank"
+                >You Tube</a>
+	        <?php }?>
+        </ul>
 		<nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'dk' ); ?></button>
 			<?php

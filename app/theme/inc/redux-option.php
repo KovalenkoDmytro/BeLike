@@ -306,7 +306,7 @@ Redux::set_section(
 	array(
 		'title'            => esc_html__( 'Logo section', 'dk-starter' ),
 		'desc'             => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-fields/text.html" target="_blank">https://devs.redux.io/core-fields/text.html</a>',
-		'id'               => 'basic-text',
+		'id'               => 'logo-section',
 		'subsection'       => true,
 		'customizer_width' => '700px',
 		'fields'           => array(
@@ -334,12 +334,48 @@ Redux::set_section(
 				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
 				'default'  => 'Placeholder is here',
 			),
-
-
 		),
 	)
 );
 
+
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'Social media links', 'dk-starter' ),
+		'desc'             => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-fields/text.html" target="_blank">https://devs.redux.io/core-fields/text.html</a>',
+		'id'               => 'SocialMedia-section',
+		'subsection'       => true,
+		'customizer_width' => '700px',
+		'fields'           => array(
+			array(
+				'id'       => 'socialMedia-facebook',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Facebook', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Type here your link', 'dk-starter' ),
+				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'default'  => '',
+			),
+			array(
+				'id'       => 'socialMedia-instagram',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Instagram', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Type here your link', 'dk-starter' ),
+				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'default'  => '',
+			),
+			array(
+				'id'       => 'socialMedia-youTube',
+				'type'     => 'text',
+				'title'    => esc_html__( 'YouTube', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Type here your link', 'dk-starter' ),
+				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'default'  => '',
+			),
+
+		),
+	)
+);
 
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/checkbox.php';
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/radio.php';
