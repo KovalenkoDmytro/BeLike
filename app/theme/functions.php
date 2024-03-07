@@ -19,7 +19,7 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function dk_setup() {
+function   dk_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
@@ -139,7 +139,8 @@ add_action( 'widgets_init', 'dk_widgets_init' );
  */
 function dk_scripts() {
 
-	wp_enqueue_script( 'style', get_template_directory_uri() . '/public/app.css', array(), _S_VERSION, true );
+	wp_enqueue_style( 'style', get_template_directory_uri() . '/public/app.css', array(), _S_VERSION, );
+//	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'mainJs', get_template_directory_uri() . '/public/app.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -149,29 +150,12 @@ function dk_scripts() {
 add_action( 'wp_enqueue_scripts', 'dk_scripts' );
 
 /**
- * Implement the Custom Header feature.
+ * Init tgm framework Options.
  */
-require get_template_directory() . '/inc/custom-header.php';
+require get_template_directory() . '/inc/tgm-list.php';
 
 /**
- * Custom template tags for this theme.
+ * Init Redux Theme Options.
  */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
+require get_template_directory() . '/inc/redux-option.php';
 
