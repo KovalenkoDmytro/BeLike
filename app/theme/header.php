@@ -9,6 +9,7 @@
  * @package dk
  */
 
+global $redux_demo
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -16,7 +17,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
+    <link rel="icon" href="<?=$redux_demo['favicon']['url'] ?>">
 	<?php wp_head(); ?>
 </head>
 
@@ -27,8 +28,8 @@
 
 	<header id="masthead" class="header">
 		<div class="site-branding">
+            <img src="<?= $redux_demo['logo']['url'] ?>" alt="<?= $redux_demo['logo-placeholder'] ?>">
 			<?php
-			the_custom_logo();
 			if ( is_front_page() && is_home() ) :
 				?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>

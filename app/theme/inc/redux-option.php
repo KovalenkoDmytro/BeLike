@@ -86,10 +86,10 @@ $args = array(
 	'allow_sub_menu'            => true,
 
 	// The text to appear in the admin menu.
-	'menu_title'                => esc_html__( 'Sample Options', 'your-textdomain-here' ),
+	'menu_title'                => esc_html__( 'Advanced Options', 'dk-starter' ),
 
 	// The text to appear on the page title.
-	'page_title'                => esc_html__( 'Sample Options', 'your-textdomain-here' ),
+	'page_title'                => esc_html__( 'Advanced Options', 'dk-starter' ),
 
 	// Disable to create your own Google fonts loader.
 	'disable_google_fonts_link' => false,
@@ -222,38 +222,19 @@ $args = array(
 $args['admin_bar_links'][] = array(
 	'id'    => 'redux-docs',
 	'href'  => '//devs.redux.io/',
-	'title' => __( 'Documentation', 'your-textdomain-here' ),
+	'title' => __( 'Documentation', 'dk-starter' ),
 );
 
 $args['admin_bar_links'][] = array(
 	'id'    => 'redux-support',
 	'href'  => '//github.com/ReduxFramework/redux-framework/issues',
-	'title' => __( 'Support', 'your-textdomain-here' ),
+	'title' => __( 'Support', 'dk-starter' ),
 );
 
 // SOCIAL ICONS -> Setup custom links in the footer for quick links in your panel footer icons.
 // PLEASE CHANGE THESE SETTINGS IN YOUR THEME BEFORE RELEASING YOUR PRODUCT!!
 // If these are left unchanged, they will not display in your panel!
-$args['share_icons'][] = array(
-	'url'   => '//github.com/ReduxFramework/ReduxFramework',
-	'title' => 'Visit us on GitHub',
-	'icon'  => 'el el-github',
-);
-$args['share_icons'][] = array(
-	'url'   => '//www.facebook.com/pages/Redux-Framework/243141545850368',
-	'title' => 'Like us on Facebook',
-	'icon'  => 'el el-facebook',
-);
-$args['share_icons'][] = array(
-	'url'   => '//twitter.com/reduxframework',
-	'title' => 'Follow us on Twitter',
-	'icon'  => 'el el-twitter',
-);
-$args['share_icons'][] = array(
-	'url'   => '//www.linkedin.com/company/redux-framework',
-	'title' => 'Find us on LinkedIn',
-	'icon'  => 'el el-linkedin',
-);
+
 
 // Panel Intro text -> before the form.
 if ( ! isset( $args['global_variable'] ) || false !== $args['global_variable'] ) {
@@ -264,13 +245,13 @@ if ( ! isset( $args['global_variable'] ) || false !== $args['global_variable'] )
 	}
 
 	// translators:  Panel opt_name.
-	$args['intro_text'] = '<p>' . sprintf( esc_html__( 'Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: $%1$s', 'your-textdomain-here' ), '<strong>' . $v . '</strong>' ) . '<p>';
+	$args['intro_text'] = '<p>' . sprintf( esc_html__( 'Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: $%1$s', 'dk-starter' ), '<strong>' . $v . '</strong>' ) . '<p>';
 } else {
-	$args['intro_text'] = '<p>' . esc_html__( 'This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.', 'your-textdomain-here' ) . '</p>';
+	$args['intro_text'] = '<p>' . esc_html__( 'This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.', 'dk-starter' ) . '</p>';
 }
 
 // Add content after the form.
-$args['footer_text'] = '<p>' . esc_html__( 'This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.', 'your-textdomain-here' ) . '</p>';
+$args['footer_text'] = '<p>' . esc_html__( 'This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.', 'dk-starter' ) . '</p>';
 
 Redux::set_args( $opt_name, $args );
 
@@ -284,19 +265,19 @@ Redux::set_args( $opt_name, $args );
 $help_tabs = array(
 	array(
 		'id'      => 'redux-help-tab-1',
-		'title'   => esc_html__( 'Theme Information 1', 'your-textdomain-here' ),
-		'content' => '<p>' . esc_html__( 'This is the tab content, HTML is allowed.', 'your-textdomain-here' ) . '</p>',
+		'title'   => esc_html__( 'Theme Information 1', 'dk-starter' ),
+		'content' => '<p>' . esc_html__( 'This is the tab content, HTML is allowed.', 'dk-starter' ) . '</p>',
 	),
 	array(
 		'id'      => 'redux-help-tab-2',
-		'title'   => esc_html__( 'Theme Information 2', 'your-textdomain-here' ),
-		'content' => '<p>' . esc_html__( 'This is the tab content, HTML is allowed.', 'your-textdomain-here' ) . '</p>',
+		'title'   => esc_html__( 'Theme Information 2', 'dk-starter' ),
+		'content' => '<p>' . esc_html__( 'This is the tab content, HTML is allowed.', 'dk-starter' ) . '</p>',
 	),
 );
 Redux::set_help_tab( $opt_name, $help_tabs );
 
 // Set the help sidebar.
-$content = '<p>' . esc_html__( 'This is the sidebar content, HTML is allowed.', 'your-textdomain-here' ) . '</p>';
+$content = '<p>' . esc_html__( 'This is the sidebar content, HTML is allowed.', 'dk-starter' ) . '</p>';
 
 Redux::set_help_sidebar( $opt_name, $content );
 
@@ -312,13 +293,53 @@ Redux::set_help_sidebar( $opt_name, $content );
 Redux::set_section(
 	$opt_name,
 	array(
-		'title'            => esc_html__( 'Basic Fields', 'your-textdomain-here' ),
+		'title'            => esc_html__( 'Basic Fields', 'dk-starter' ),
 		'id'               => 'basic',
-		'desc'             => esc_html__( 'These are really basic fields!', 'your-textdomain-here' ),
+		'desc'             => esc_html__( 'These are really basic fields!', 'dk-starter' ),
 		'customizer_width' => '400px',
 		'icon'             => 'el el-home',
 	)
 );
+
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'Logo section', 'dk-starter' ),
+		'desc'             => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-fields/text.html" target="_blank">https://devs.redux.io/core-fields/text.html</a>',
+		'id'               => 'basic-text',
+		'subsection'       => true,
+		'customizer_width' => '700px',
+		'fields'           => array(
+			array(
+				'id'       => 'favicon',
+				'type'     => 'media',
+				'title'    => esc_html__( 'Favicon', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Upload here your favicon', 'dk-starter' ),
+				'desc'     => esc_html__( 'Recommended ico format', 'dk-starter' ),
+				'default'  => '',
+			),
+			array(
+				'id'       => 'logo',
+				'type'     => 'media',
+				'title'    => esc_html__( 'Logo', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Upload here your logo', 'dk-starter' ),
+				'desc'     => esc_html__( 'Recommended sizes 320px - 110px and SVG format', 'dk-starter' ),
+				'default'  => '',
+			),
+			array(
+				'id'       => 'logo-placeholder',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Placeholder', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Placeholder for logo', 'dk-starter' ),
+				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'default'  => 'Placeholder is here',
+			),
+
+
+		),
+	)
+);
+
 
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/checkbox.php';
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/radio.php';
@@ -332,7 +353,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title'            => esc_html__( 'Editors', 'your-textdomain-here' ),
+//		'title'            => esc_html__( 'Editors', 'dk-starter' ),
 //		'id'               => 'editor',
 //		'customizer_width' => '500px',
 //		'icon'             => 'el el-edit',
@@ -346,7 +367,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Color Selection', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Color Selection', 'dk-starter' ),
 //		'id'    => 'color',
 //		'icon'  => 'el el-brush',
 //	)
@@ -363,7 +384,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Design Fields', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Design Fields', 'dk-starter' ),
 //		'id'    => 'design',
 //		'icon'  => 'el el-wrench',
 //	)
@@ -379,7 +400,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Media Uploads', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Media Uploads', 'dk-starter' ),
 //		'id'    => 'media',
 //		'icon'  => 'el el-picture',
 //	)
@@ -394,7 +415,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Presentation Fields', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Presentation Fields', 'dk-starter' ),
 //		'id'    => 'presentation',
 //		'icon'  => 'el el-screen',
 //	)
@@ -416,7 +437,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Switch / Button Set', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Switch / Button Set', 'dk-starter' ),
 //		'id'    => 'switch_buttonset',
 //		'icon'  => 'el el-cogs',
 //	)
@@ -429,7 +450,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Select Fields', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Select Fields', 'dk-starter' ),
 //		'id'    => 'select',
 //		'icon'  => 'el el-list-alt',
 //	)
@@ -443,7 +464,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Slider / Spinner', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Slider / Spinner', 'dk-starter' ),
 //		'id'    => 'slider_spinner',
 //		'icon'  => 'el el-adjust-alt',
 //	)
@@ -459,7 +480,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Additional Types', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Additional Types', 'dk-starter' ),
 //		'id'    => 'additional',
 //		'icon'  => 'el el-magic',
 //	)
@@ -473,7 +494,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Advanced Features', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Advanced Features', 'dk-starter' ),
 //		'icon'  => 'el el-thumbs-up',
 //	)
 //);
@@ -495,7 +516,7 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Disabling', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Disabling', 'dk-starter' ),
 //		'icon'  => 'el el-lock',
 //	)
 //);
@@ -507,11 +528,11 @@ Redux::set_section(
 //Redux::set_section(
 //	$opt_name,
 //	array(
-//		'title' => esc_html__( 'Redux Extensions', 'your-textdomain-here' ),
+//		'title' => esc_html__( 'Redux Extensions', 'dk-starter' ),
 //		'id'    => 'redux-extensions',
 //		'icon'  => 'el el-redux',
 //		'class' => 'pro_highlight',
-//		'desc'  => esc_html__( 'For full documentation on this field, visit: ', 'your-textdomain-here' ) . '<a href="https://devs.redux.io/core-extensions/" target="_blank">https://devs.redux.io/core-extensions/</a>',
+//		'desc'  => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-extensions/" target="_blank">https://devs.redux.io/core-extensions/</a>',
 //	)
 //);
 //
@@ -541,7 +562,7 @@ Redux::set_section(
 //if ( file_exists( $dir . '/../README.md' ) ) {
 //	$section = array(
 //		'icon'   => 'el el-list-alt',
-//		'title'  => esc_html__( 'Documentation', 'your-textdomain-here' ),
+//		'title'  => esc_html__( 'Documentation', 'dk-starter' ),
 //		'fields' => array(
 //			array(
 //				'id'           => 'opt-raw-documentation',
@@ -559,21 +580,21 @@ Redux::set_section(
 //	$opt_name,
 //	array(
 //		'icon'            => 'el el-list-alt',
-//		'title'           => esc_html__( 'Customizer Only', 'your-textdomain-here' ),
-//		'desc'            => '<p class="description">' . esc_html__( 'This Section should be visible only in Customizer', 'your-textdomain-here' ) . '</p>',
+//		'title'           => esc_html__( 'Customizer Only', 'dk-starter' ),
+//		'desc'            => '<p class="description">' . esc_html__( 'This Section should be visible only in Customizer', 'dk-starter' ) . '</p>',
 //		'customizer_only' => true,
 //		'fields'          => array(
 //			array(
 //				'id'              => 'opt-customizer-only',
 //				'type'            => 'select',
-//				'title'           => esc_html__( 'Customizer Only Option', 'your-textdomain-here' ),
-//				'subtitle'        => esc_html__( 'The subtitle is NOT visible in customizer', 'your-textdomain-here' ),
-//				'desc'            => esc_html__( 'The field desc is NOT visible in customizer.', 'your-textdomain-here' ),
+//				'title'           => esc_html__( 'Customizer Only Option', 'dk-starter' ),
+//				'subtitle'        => esc_html__( 'The subtitle is NOT visible in customizer', 'dk-starter' ),
+//				'desc'            => esc_html__( 'The field desc is NOT visible in customizer.', 'dk-starter' ),
 //				'customizer_only' => true,
 //				'options'         => array(
-//					'1' => esc_html__( 'Opt 1', 'your-textdomain-here' ),
-//					'2' => esc_html__( 'Opt 2', 'your-textdomain-here' ),
-//					'3' => esc_html__( 'Opt 3', 'your-textdomain-here' ),
+//					'1' => esc_html__( 'Opt 1', 'dk-starter' ),
+//					'2' => esc_html__( 'Opt 2', 'dk-starter' ),
+//					'3' => esc_html__( 'Opt 3', 'dk-starter' ),
 //				),
 //				'default'         => '2',
 //			),
@@ -683,8 +704,8 @@ if ( ! function_exists( 'dynamic_section' ) ) {
 	 */
 	function dynamic_section( array $sections ): array {
 		$sections[] = array(
-			'title'  => esc_html__( 'Section via hook', 'your-textdomain-here' ),
-			'desc'   => '<p class="description">' . esc_html__( 'This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.', 'your-textdomain-here' ) . '</p>',
+			'title'  => esc_html__( 'Section via hook', 'dk-starter' ),
+			'desc'   => '<p class="description">' . esc_html__( 'This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.', 'dk-starter' ) . '</p>',
 			'icon'   => 'el el-paper-clip',
 
 			// Leave this as a blank section, no options just some intro text set above.
@@ -721,7 +742,7 @@ if ( ! function_exists( 'change_defaults' ) ) {
 	 * @return array
 	 */
 	function change_defaults( array $defaults ): array {
-		$defaults['str_replace'] = esc_html__( 'Testing filter hook!', 'your-textdomain-here' );
+		$defaults['str_replace'] = esc_html__( 'Testing filter hook!', 'dk-starter' );
 
 		return $defaults;
 	}
