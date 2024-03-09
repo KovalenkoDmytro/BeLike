@@ -377,6 +377,34 @@ Redux::set_section(
 	)
 );
 
+Redux::set_section(
+	$opt_name,
+	array(
+		'title'            => esc_html__( 'MainSlider', 'dk-starter' ),
+		'desc'             => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-fields/text.html" target="_blank">https://devs.redux.io/core-fields/text.html</a>',
+		'id'               => 'main-slider',
+		'subsection'       => true,
+		'customizer_width' => '700px',
+		'fields'           => array(
+			array(
+				'id'          => 'opt-slides',
+				'type'        => 'slides',
+				'title'       => esc_html__( 'Slides Options', 'dk-starter' ),
+				'subtitle'    => esc_html__( 'Unlimited slides with drag and drop sorting.', 'dk-starter' ),
+				'desc'        => esc_html__( 'This field will store all slides values into a multidimensional array to use into a foreach loop.', 'dk-starter' ),
+				'placeholder' => array(
+					'title'       => esc_html__( 'This is a title', 'dk-starter' ),
+					'description' => esc_html__( 'Description Here', 'dk-starter' ),
+					'url'         => esc_html__( 'Give us a link!', 'dk-starter' ),
+				),
+			),
+
+
+		),
+	)
+);
+
+
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/checkbox.php';
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/radio.php';
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/sortable.php';

@@ -140,7 +140,6 @@ add_action( 'widgets_init', 'dk_widgets_init' );
 function dk_scripts() {
 
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/public/app.css', array(), _S_VERSION, );
-//	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'mainJs', get_template_directory_uri() . '/public/app.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -149,13 +148,93 @@ function dk_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'dk_scripts' );
 
+function dk_add_scripts($hook) {
+	if('post-new.php' == $hook || 'post.php' == $hook){
+		wp_enqueue_script( 'metaboxes', get_template_directory_uri()  . '/assets/js/admin/metaboxes.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox') );
+		wp_enqueue_script( 'metabox-gallery', get_template_directory_uri()  . '/assets/js/admin/metabox-gallery.js', array( 'jquery') );
+	}
+	wp_enqueue_style( 'dk-admin', get_template_directory_uri() . '/assets/css/admin.css', array(), '1.0', false );
+}
+add_action( 'admin_enqueue_scripts', 'dk_add_scripts', 10 );
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+
 /**
  * Init tgm framework Options.
  */
 require get_template_directory() . '/inc/tgm-list.php';
 
 /**
+ * Init Metaboxes Options.
+ */
+require get_template_directory() . '/inc/metaboxes.php';
+require get_template_directory() . '/inc/gallery-meta.php';
+
+
+/**
  * Init Redux Theme Options.
  */
 require get_template_directory() . '/inc/redux-option.php';
+
+
+
+function aletheme_metaboxes($meta_boxes) {
+
+	$meta_boxes = array();
+
+
+
+	wp_reset_postdata();
+
+	$meta_boxes[] = array(
+		'id'         => 'homepage_metabox',
+		'title'      => 'Homepage Options',
+		'pages'      => array( 'page', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
+		'fields' => array(
+			array(
+				'name' => __('Description','dk-starter'),
+				'desc' => __('Description','dk-starter'),
+				'id'   => 'homePage_description',
+				'std'  => '',
+				'type' => 'wysiwyg',
+			),
+		)
+	);
+
+	$meta_boxes[] = array(
+		'id'         => 'singPost_metabox',
+		'title'      => 'SinglePost Options',
+		'pages'      => array( 'post', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+		'fields' => array(
+			array(
+				'name' => __('Description','dk-starter'),
+				'desc' => __('Description','dk-starter'),
+				'id'   => 'singPost_description',
+				'std'  => '',
+				'type' => 'wysiwyg',
+			),
+			array(
+				'name' => __('Image','dk-starter'),
+				'desc' => __('Image','dk-starter'),
+				'id'   => 'singPost_Image',
+				'std'  => '',
+				'type' => 'file',
+			),
+		)
+	);
+	
+	return $meta_boxes;
+}
 

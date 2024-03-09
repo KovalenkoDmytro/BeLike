@@ -101,6 +101,11 @@ function dk_starter_register_required_plugins() {
 			'slug'      => 'enable-svg-webp-ico-upload',
 			'required'  => true,
 		),
+		array(
+			'name'      => 'Contact Form 7',
+			'slug'      => 'contact-form-7',
+			'required'  => true,
+		),
 
 		// This is an example of the use of 'is_callable' functionality. A user could - for instance -
 		// have WPSEO installed *or* WPSEO Premium. The slug would in that last case be different, i.e.
