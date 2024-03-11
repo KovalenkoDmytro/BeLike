@@ -180,6 +180,10 @@ require get_template_directory() . '/inc/gallery-meta.php';
  */
 require get_template_directory() . '/inc/redux-option.php';
 
+/**
+ * Init Breadcrumbs.
+ */
+require get_template_directory() . '/inc/breadcrumbs.php';
 
 
 function aletheme_metaboxes($meta_boxes) {
