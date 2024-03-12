@@ -15,7 +15,7 @@
   \*************************************/
 /***/ (() => {
 
-eval("console.log('WELCOME3')\r\n\n\n//# sourceURL=webpack://webpack-dk/./app/theme/assets/js/main.js?");
+eval("//here is a general function to check selector exists and to invoke on choose viewport(mobile: - mobile and tablet devices/ laptop - PC / all - to invoke on all devices)\r\nconst toInvoke  = function (callback, view = 'all', selector) {\r\n    if(document.querySelector(selector) !== null || document.querySelector(selector) !== undefined){\r\n        if(view === 'mobile' && window.innerWidth <= 1280){\r\n            return callback()\r\n        }\r\n        if(view === 'laptop' && (window.innerWidth > 1280)){\r\n            return callback()\r\n        }\r\n        if(view === 'all'){\r\n            return callback()\r\n        }\r\n    }\r\n}\r\n\r\n\r\n\r\ntoInvoke(()=>{\r\n    console.log('wwwww')\r\n    // new Swiper('.swiper', {\r\n    //     // Navigation arrows\r\n    //     navigation: {\r\n    //         nextEl: '.swiper-button-next',\r\n    //         prevEl: '.swiper-button-prev',\r\n    //     },\r\n    // });\r\n\r\n},'all', '.swiper')\r\n\r\nconsole.log('welcome')\n\n//# sourceURL=webpack://webpack-dk/./app/theme/assets/js/main.js?");
 
 /***/ }),
 

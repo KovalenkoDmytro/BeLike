@@ -1,0 +1,114 @@
+.projectSinglePost__page{
+  position: relative;
+
+  .section{
+    &.__main{
+      left: 50%;
+      margin-left: -50vw;
+      position: relative;
+      width: 100vw;
+      @include desktop{
+        left: initial;
+        margin-left: initial;
+        width: initial;
+      }
+      .section__image{
+        width: 100%;
+      }
+    }
+    &.__text{
+      @include laptop{
+        margin: 80px 0 ;
+        display: grid;
+        grid-template-columns: minmax(200px ,410px) 1fr;
+        column-gap: 40px;
+
+      }
+      .section__title{
+        font-family: $headlines_font;
+        letter-spacing: 0;
+        text-align: left;
+        font-weight: 400;
+        color: $lime_violet_color;
+        @include laptop{
+          font-size: 28px;
+          line-height: 39px;
+        }
+      }
+      .context__description{
+        font-weight: 300;
+        letter-spacing: 0;
+        text-align: left;
+        @include laptop{
+          font-size: 17px;
+          line-height: 24px;
+        }
+        h3{
+          font-family: $headlines_font;
+          font-weight: 400;
+          letter-spacing: 0;
+          text-align: left;
+          color: $title_violet_color;
+          @include laptop{
+            font-size: 22px;
+            line-height: 31px;
+            margin-bottom: 20px;
+          }
+        }
+        h3 + h3{
+          margin-top: 20px;
+          @include laptop{
+            margin-top: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .section__context{
+    position: absolute;
+    max-width: 666px;
+    @include laptop{
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .context__title{
+      text-align: left;
+      font-weight: 700;
+      font-family: $headlines_font;
+      text-transform: uppercase;
+      color: $text_second_color;
+      @include laptop{
+        font-size: 34px;
+        line-height: 41px;
+        letter-spacing: -0.02em;
+        margin-bottom: 80px;
+      }
+    }
+    .context__subTitle{
+      font-family: $headlines_font;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      font-weight: 400;
+      color: $title_violet_color;
+      @include laptop{
+
+        font-size: 28px;
+        line-height: 39px;
+        text-align: left;
+        margin-bottom: 20px;
+      }
+    }
+    .context__description{
+      font-weight: 300;
+      letter-spacing: 0;
+      text-align: left;
+      color: $text_second_color;
+      @include laptop{
+        font-size: 17px;
+        line-height: 24px;
+      }
+    }
+  }
+}

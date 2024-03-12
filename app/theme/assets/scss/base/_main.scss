@@ -1,0 +1,73 @@
+
+html{
+  overflow-x: hidden;
+  position: relative;
+  @include scrollbar;
+  min-height: 100vh;
+}
+
+body{
+  background-color: $background_color;
+  color: $text_color;
+}
+
+.content_wrapper{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  @include tablet {
+    max-width: 700px;
+    padding: 0 15px;
+  }
+  @include laptop {
+    max-width: 1200px;
+  }
+  @include desktop {
+    max-width: 1600px;
+  }
+}
+
+
+.btn{
+  display: block;
+  color: $button_text_color;
+  background-color: $button_color;
+  border-radius: $border_radius;
+  border: none;
+  margin: 10px 0 ;
+  padding: 8px 15px;
+  cursor: pointer;
+  width: max-content;
+  font-weight: 700;
+  font-size: 16px;
+  @include transition;
+  &:hover{
+    background-color: $button_color_hover;
+    color: $button_text_color_hover;
+    a{
+      color: $button_text_color_hover;
+    }
+  }
+  a{
+    color: $button_text_color;
+  }
+  &.disabled{
+    cursor: not-allowed;
+    background-color: $border_color;
+    pointer-events: none;
+  }
+  .icon{
+    margin-right: 5px;
+  }
+}
+
+
+.b-lazy {
+  opacity:0;
+  transform: scale(3);
+  transition: all 500ms;
+}
+.b-loaded {
+  opacity:1;
+  transform: scale(1);
+}

@@ -1,3 +1,28 @@
-body{
-  background-color: green;
+html{
+  margin-top: 0!important;
 }
+
+#wpadminbar{
+  display: none!important;
+}
+
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+@import "base/reset";
+@import "base/typography";
+@import "base/main";
+
+//@import "components/dragAndDropFiles";
+
+@import "layout/header";
+@import "layout/footer";
+
+
+
+@import "pages/projectSinglePost";
+
+@import "vendor/swiperSlider.css";
+
+
+

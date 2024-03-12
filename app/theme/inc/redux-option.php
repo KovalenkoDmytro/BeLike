@@ -310,22 +310,22 @@ Redux::set_section(
 		'subsection'       => true,
 		'customizer_width' => '700px',
 		'fields'           => array(
-			array(
-				'id'       => 'favicon',
-				'type'     => 'media',
-				'title'    => esc_html__( 'Favicon', 'dk-starter' ),
-				'subtitle' => esc_html__( 'Upload here your favicon', 'dk-starter' ),
-				'desc'     => esc_html__( 'Recommended ico format', 'dk-starter' ),
-				'default'  => '',
-			),
-			array(
-				'id'       => 'logo',
-				'type'     => 'media',
-				'title'    => esc_html__( 'Logo', 'dk-starter' ),
-				'subtitle' => esc_html__( 'Upload here your logo', 'dk-starter' ),
-				'desc'     => esc_html__( 'Recommended sizes 320px - 110px and SVG format', 'dk-starter' ),
-				'default'  => '',
-			),
+            array(
+                'id'       => 'main-logo',
+                'type'     => 'media',
+                'title'    => esc_html__( 'Main logo', 'dk-starter' ),
+                'subtitle' => esc_html__( 'Logo for dark background', 'dk-starter' ),
+                'desc'     => esc_html__( 'Recommended sizes 137px - 52px and SVG format', 'dk-starter' ),
+                'default'  => '',
+            ),
+            array(
+                'id'       => 'secondary-logo',
+                'type'     => 'media',
+                'title'    => esc_html__( 'Secondary logo', 'dk-starter' ),
+                'subtitle' => esc_html__( 'Logo for white background', 'dk-starter' ),
+                'desc'     => esc_html__( 'Recommended sizes 137px - 52px and SVG format', 'dk-starter' ),
+                'default'  => '',
+            ),
 			array(
 				'id'       => 'logo-placeholder',
 				'type'     => 'text',
@@ -334,6 +334,14 @@ Redux::set_section(
 				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
 				'default'  => 'Placeholder is here',
 			),
+            array(
+                'id'       => 'favicon',
+                'type'     => 'media',
+                'title'    => esc_html__( 'Favicon', 'dk-starter' ),
+                'subtitle' => esc_html__( 'Upload here your favicon', 'dk-starter' ),
+                'desc'     => esc_html__( 'Recommended ico format', 'dk-starter' ),
+                'default'  => '',
+            ),
 		),
 	)
 );

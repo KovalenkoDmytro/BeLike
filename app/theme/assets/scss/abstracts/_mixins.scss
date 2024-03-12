@@ -1,0 +1,50 @@
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) {
+    @content
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 1280px) {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1680px) {
+    @content
+  }
+}
+
+@mixin transition{
+  transition: all .5s;
+}
+
+@mixin border{
+  border: 1px solid $border_color;
+}
+
+@mixin scrollbar($color : #c6c6c6){
+  // For Chrome & Safari
+  &::-webkit-scrollbar {
+    width:  5px;
+    height:  5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color;
+  }
+  &::-webkit-scrollbar-track {
+    background: #c6c6c6;
+  }
+  // Standard version (Firefox only for now)
+  -ms-overflow-style: auto;
+  scrollbar-color: $color  transparent;
+  scrollbar-width: thin;
+}
+

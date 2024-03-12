@@ -49,7 +49,7 @@ function   dk_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'dk' ),
+			'header' => esc_html__( 'Primary', 'dk' ),
 		)
 	);
 
@@ -139,8 +139,12 @@ add_action( 'widgets_init', 'dk_widgets_init' );
  */
 function dk_scripts() {
 
+
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/public/app.css', array(), _S_VERSION, );
-	wp_enqueue_script( 'mainJs', get_template_directory_uri() . '/public/app.js', array(), _S_VERSION, true );
+
+
+    wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/vendor/Swiper.js', array(), _S_VERSION, true);
+    wp_enqueue_script( 'mainJs', get_template_directory_uri() . '/public/app.js', array(), _S_VERSION, true);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -214,31 +218,168 @@ function aletheme_metaboxes($meta_boxes) {
 	);
 
 	$meta_boxes[] = array(
-		'id'         => 'singPost_metabox',
-		'title'      => 'SinglePost Options',
+		'id'         => 'thumbnail_options',
+		'title'      => 'Thumbnail Options',
 		'pages'      => array( 'post', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
 		'fields' => array(
-			array(
-				'name' => __('Description','dk-starter'),
-				'desc' => __('Description','dk-starter'),
-				'id'   => 'singPost_description',
-				'std'  => '',
-				'type' => 'wysiwyg',
-			),
-			array(
-				'name' => __('Image','dk-starter'),
-				'desc' => __('Image','dk-starter'),
-				'id'   => 'singPost_Image',
-				'std'  => '',
-				'type' => 'file',
-			),
+            array(
+                'name' => __('Title','dk-starter'),
+                'desc' => __('Title','dk-starter'),
+                'id'   => 'singPost_thumbnail_title',
+                'std'  => '',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Picture','dk-starter'),
+                'desc' => __('Picture','dk-starter'),
+                'id'   => 'singPost_thumbnail_picture',
+                'std'  => '',
+                'type' => 'file',
+            ),
+
 		)
 	);
-	
+    $meta_boxes[] = array(
+        'id'         => 'post_mainSection',
+        'title'      => 'MainSection Options',
+        'pages'      => array( 'post', ), // Post type
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'show_names' => true, // Show field names on the left
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+        'fields' => array(
+            array(
+                'name' => __('Main Picture','dk-starter'),
+                'desc' => __('Main Picture','dk-starter'),
+                'id'   => 'singPost_thumbnail_mainPicture',
+                'std'  => '',
+                'type' => 'file',
+            ),
+            array(
+                'name' => __('Subtitle','dk-starter'),
+                'desc' => __('Subtitle','dk-starter'),
+                'id'   => 'singPost_mainSection_subTitle',
+                'std'  => '',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Description','dk-starter'),
+                'desc' => __('Description','dk-starter'),
+                'id'   => 'singPost_mainSection_description',
+                'std'  => '',
+                'type' => 'wysiwyg',
+            ),
+
+        )
+    );
+    $meta_boxes[] = array(
+        'id'         => 'post_secondSection',
+        'title'      => 'Second section Options',
+        'pages'      => array( 'post', ), // Post type
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'show_names' => true, // Show field names on the left
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+        'fields' => array(
+            array(
+                'name' => __('Title','dk-starter'),
+                'desc' => __('Title','dk-starter'),
+                'id'   => 'singPost_secondSection_title',
+                'std'  => '',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Description','dk-starter'),
+                'desc' => __('Description','dk-starter'),
+                'id'   => 'singPost_secondSection_description',
+                'std'  => '',
+                'type' => 'wysiwyg',
+            ),
+
+        )
+    );
+    $meta_boxes[] = array(
+        'id'         => 'post_thirdSection',
+        'title'      => 'Third section Options',
+        'pages'      => array( 'post', ), // Post type
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'show_names' => true, // Show field names on the left
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+        'fields' => array(
+            array(
+                'name' => __('Title','dk-starter'),
+                'desc' => __('Title','dk-starter'),
+                'id'   => 'singPost_thirdSection_title',
+                'std'  => '',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Description','dk-starter'),
+                'desc' => __('Description','dk-starter'),
+                'id'   => 'singPost_thirdSection_description',
+                'std'  => '',
+                'type' => 'wysiwyg',
+            ),
+
+        )
+    );
+    $meta_boxes[] = array(
+        'id'         => 'post_fourthSection',
+        'title'      => 'Fourth section Options',
+        'pages'      => array( 'post', ), // Post type
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'show_names' => true, // Show field names on the left
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+        'fields' => array(
+            array(
+                'name' => __('Title','dk-starter'),
+                'desc' => __('Title','dk-starter'),
+                'id'   => 'singPost_fourthSection_title',
+                'std'  => '',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Description','dk-starter'),
+                'desc' => __('Description','dk-starter'),
+                'id'   => 'singPost_fourthSection_description',
+                'std'  => '',
+                'type' => 'wysiwyg',
+            ),
+
+        )
+    );
+    $meta_boxes[] = array(
+        'id'         => 'post_fifthSection',
+        'title'      => 'Fifth section Options',
+        'pages'      => array( 'post', ), // Post type
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'show_names' => true, // Show field names on the left
+        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+        'fields' => array(
+            array(
+                'name' => __('Title','dk-starter'),
+                'desc' => __('Title','dk-starter'),
+                'id'   => 'singPost_fifthSection_title',
+                'std'  => '',
+                'type' => 'text',
+            ),
+            array(
+                'name' => __('Description','dk-starter'),
+                'desc' => __('Description','dk-starter'),
+                'id'   => 'singPost_fifthSection_description',
+                'std'  => '',
+                'type' => 'wysiwyg',
+            ),
+
+        )
+    );
 	return $meta_boxes;
 }
 
