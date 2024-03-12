@@ -8,9 +8,6 @@ const path = require("path");
 const baseUrl = "./app/theme/assets/";
 const outputPath = "./app/theme/public/";
 const localDomain = "http://localhost:8080/";
-const entryPoints = {
-    app: baseUrl + "js/main.js",
-};
 
 module.exports = {
     entry: [baseUrl + "js/main.js", baseUrl + "scss/main.scss"],
