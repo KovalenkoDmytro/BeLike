@@ -1,11 +1,11 @@
 <?php
 
 function add_gallery_metabox($post_type) {
-	$types = array('page','post');
+	$types = array('page','post','projects');
 	if (in_array($post_type, $types)) {
 		add_meta_box(
 			'gallery-metabox',
-			esc_html__('Gallery Images','bebe'),
+			esc_html__('Slider','dk-starter'),
 			'gallery_meta_callback',
 			$post_type,
 			'normal',

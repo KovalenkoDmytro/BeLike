@@ -220,11 +220,11 @@ function aletheme_metaboxes($meta_boxes) {
 	$meta_boxes[] = array(
 		'id'         => 'thumbnail_options',
 		'title'      => 'Thumbnail Options',
-		'pages'      => array( 'post', ), // Post type
+		'pages'      => array( 'projects', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
-		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+
 		'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -233,6 +233,13 @@ function aletheme_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type' => 'text',
             ),
+			array(
+				'name' => __('Tags','dk-starter'),
+				'desc' => __('Use / to separate each other','dk-starter'),
+				'id'   => 'singPost_thumbnail_tags',
+				'std'  => '',
+				'type' => 'text',
+			),
             array(
                 'name' => __('Picture','dk-starter'),
                 'desc' => __('Picture','dk-starter'),
@@ -246,19 +253,27 @@ function aletheme_metaboxes($meta_boxes) {
     $meta_boxes[] = array(
         'id'         => 'post_mainSection',
         'title'      => 'MainSection Options',
-        'pages'      => array( 'post', ), // Post type
+        'pages'      => array( 'projects', ), // Post type
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
-            array(
-                'name' => __('Main Picture','dk-starter'),
-                'desc' => __('Main Picture','dk-starter'),
-                'id'   => 'singPost_thumbnail_mainPicture',
-                'std'  => '',
-                'type' => 'file',
-            ),
+	        array(
+		        'name' => __('Main Title','dk-starter'),
+		        'desc' => __('Main Title','dk-starter'),
+		        'id'   => 'singPost_thumbnail_mainTitle',
+		        'std'  => '',
+		        'type' => 'text',
+	        ),
+	        array(
+		        'name' => __('Main Picture','dk-starter'),
+		        'desc' => __('Main Picture','dk-starter'),
+		        'id'   => 'singPost_thumbnail_mainPicture',
+		        'std'  => '',
+		        'type' => 'file',
+	        ),
+
             array(
                 'name' => __('Subtitle','dk-starter'),
                 'desc' => __('Subtitle','dk-starter'),
@@ -266,6 +281,7 @@ function aletheme_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type' => 'text',
             ),
+
             array(
                 'name' => __('Description','dk-starter'),
                 'desc' => __('Description','dk-starter'),
@@ -273,17 +289,32 @@ function aletheme_metaboxes($meta_boxes) {
                 'std'  => '',
                 'type' => 'wysiwyg',
             ),
+	        array(
+		        'name' => __('Second subtitle','dk-starter'),
+		        'desc' => __('Second subtitle','dk-starter'),
+		        'id'   => 'singPost_mainSection_second_subTitle',
+		        'std'  => '',
+		        'type' => 'text',
+	        ),
+
+	        array(
+		        'name' => __('Second description','dk-starter'),
+		        'desc' => __('Second description','dk-starter'),
+		        'id'   => 'singPost_mainSection_second_description',
+		        'std'  => '',
+		        'type' => 'wysiwyg',
+	        ),
 
         )
     );
     $meta_boxes[] = array(
         'id'         => 'post_secondSection',
         'title'      => 'Second section Options',
-        'pages'      => array( 'post', ), // Post type
+        'pages'      => array( 'projects', ), // Post type
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -305,11 +336,11 @@ function aletheme_metaboxes($meta_boxes) {
     $meta_boxes[] = array(
         'id'         => 'post_thirdSection',
         'title'      => 'Third section Options',
-        'pages'      => array( 'post', ), // Post type
+        'pages'      => array( 'projects', ), // Post type
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -331,11 +362,11 @@ function aletheme_metaboxes($meta_boxes) {
     $meta_boxes[] = array(
         'id'         => 'post_fourthSection',
         'title'      => 'Fourth section Options',
-        'pages'      => array( 'post', ), // Post type
+        'pages'      => array( 'projects', ), // Post type
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -357,11 +388,11 @@ function aletheme_metaboxes($meta_boxes) {
     $meta_boxes[] = array(
         'id'         => 'post_fifthSection',
         'title'      => 'Fifth section Options',
-        'pages'      => array( 'post', ), // Post type
+        'pages'      => array( 'projects', ), // Post type
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
+//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -383,3 +414,21 @@ function aletheme_metaboxes($meta_boxes) {
 	return $meta_boxes;
 }
 
+// init projects page
+
+function projects_custom_page() {
+	register_post_type(
+		'projects',
+		array(
+			'labels'                => array(
+				'name' => __('Projects'),
+				'singular_name' => __('Project'),
+			),
+			'public'                => true,
+			'has_archive'              => true,
+			'menu_icon'             => 'dashicons-buddicons-buddypress-logo',
+		)
+	);
+}
+
+add_action('init','projects_custom_page' );

@@ -6,28 +6,20 @@
  */
 
 get_header();
-
-?>
-
-    <main> HOME Page</main>
-
-<?= get_post_meta( get_the_ID(), 'homePage_description', true ) ?>
-
-<?php
-$args                = array(
-	'post_type' => 'post',
-	'category_name'       => 'project'
+$args = array(
+	'post_type'     => 'projects',
 );
 $projects_home_posts = new WP_Query( $args );
-
-
-
-while ( $projects_home_posts->have_posts() ) : $projects_home_posts->the_post();
-get_template_part( 'template-parts/post-item', get_post_type() );
-endwhile;
-
 ?>
+    <main class="projectSinglePost__page">
+        <section class="content_wrapper">
+            <div class="projects">
+	            <?= get_post_meta( get_the_ID(), 'homePage_description', true ) ?>
 
-
-<?php
-get_footer(); ?>
+	            <?php while ( $projects_home_posts->have_posts() ) : $projects_home_posts->the_post();
+		            get_template_part( 'template-parts/post-item', get_post_type() );
+	            endwhile; ?>
+            </div>
+        </section>
+    </main>
+<?php get_footer(); ?>

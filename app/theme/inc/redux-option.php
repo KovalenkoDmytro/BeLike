@@ -357,27 +357,35 @@ Redux::set_section(
 		'customizer_width' => '700px',
 		'fields'           => array(
 			array(
+				'id'       => 'company_email',
+				'type'     => 'text',
+				'title'    => esc_html__( 'Company email', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Type here your email', 'dk-starter' ),
+				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'default'  => '',
+			),
+			array(
 				'id'       => 'socialMedia-facebook',
 				'type'     => 'text',
 				'title'    => esc_html__( 'Facebook', 'dk-starter' ),
-				'subtitle' => esc_html__( 'Type here your link', 'dk-starter' ),
-				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'subtitle' =>  esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'desc'     => esc_html__( 'Type here your link', 'dk-starter' ),
 				'default'  => '',
 			),
 			array(
 				'id'       => 'socialMedia-instagram',
 				'type'     => 'text',
 				'title'    => esc_html__( 'Instagram', 'dk-starter' ),
-				'subtitle' => esc_html__( 'Type here your link', 'dk-starter' ),
-				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'subtitle' =>  esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'desc'     =>esc_html__( 'Type here your link', 'dk-starter' ),
 				'default'  => '',
 			),
 			array(
-				'id'       => 'socialMedia-youTube',
+				'id'       => 'socialMedia-linkedin',
 				'type'     => 'text',
-				'title'    => esc_html__( 'YouTube', 'dk-starter' ),
-				'subtitle' => esc_html__( 'Type here your link', 'dk-starter' ),
-				'desc'     => esc_html__( 'Avoid special characters', 'dk-starter' ),
+				'title'    => esc_html__( 'LinkedIn', 'dk-starter' ),
+				'subtitle' => esc_html__( 'Avoid special characters', 'dk-starter' ) ,
+				'desc'     => esc_html__( 'Type here your link', 'dk-starter' ),
 				'default'  => '',
 			),
 
@@ -385,32 +393,32 @@ Redux::set_section(
 	)
 );
 
-Redux::set_section(
-	$opt_name,
-	array(
-		'title'            => esc_html__( 'MainSlider', 'dk-starter' ),
-		'desc'             => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-fields/text.html" target="_blank">https://devs.redux.io/core-fields/text.html</a>',
-		'id'               => 'main-slider',
-		'subsection'       => true,
-		'customizer_width' => '700px',
-		'fields'           => array(
-			array(
-				'id'          => 'opt-slides',
-				'type'        => 'slides',
-				'title'       => esc_html__( 'Slides Options', 'dk-starter' ),
-				'subtitle'    => esc_html__( 'Unlimited slides with drag and drop sorting.', 'dk-starter' ),
-				'desc'        => esc_html__( 'This field will store all slides values into a multidimensional array to use into a foreach loop.', 'dk-starter' ),
-				'placeholder' => array(
-					'title'       => esc_html__( 'This is a title', 'dk-starter' ),
-					'description' => esc_html__( 'Description Here', 'dk-starter' ),
-					'url'         => esc_html__( 'Give us a link!', 'dk-starter' ),
-				),
-			),
-
-
-		),
-	)
-);
+//Redux::set_section(
+//	$opt_name,
+//	array(
+//		'title'            => esc_html__( 'MainSlider', 'dk-starter' ),
+//		'desc'             => esc_html__( 'For full documentation on this field, visit: ', 'dk-starter' ) . '<a href="https://devs.redux.io/core-fields/text.html" target="_blank">https://devs.redux.io/core-fields/text.html</a>',
+//		'id'               => 'main-slider',
+//		'subsection'       => true,
+//		'customizer_width' => '700px',
+//		'fields'           => array(
+//			array(
+//				'id'          => 'opt-slides',
+//				'type'        => 'slides',
+//				'title'       => esc_html__( 'Slides Options', 'dk-starter' ),
+//				'subtitle'    => esc_html__( 'Unlimited slides with drag and drop sorting.', 'dk-starter' ),
+//				'desc'        => esc_html__( 'This field will store all slides values into a multidimensional array to use into a foreach loop.', 'dk-starter' ),
+//				'placeholder' => array(
+//					'title'       => esc_html__( 'This is a title', 'dk-starter' ),
+//					'description' => esc_html__( 'Description Here', 'dk-starter' ),
+//					'url'         => esc_html__( 'Give us a link!', 'dk-starter' ),
+//				),
+//			),
+//
+//
+//		),
+//	)
+//);
 
 
 //require_once Redux_Core::$dir . '../sample/sections/basic-fields/checkbox.php';

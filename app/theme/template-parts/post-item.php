@@ -1,19 +1,24 @@
-<article id="post-<?php the_ID(); ?>">
-    <h2><a href="<?= esc_url( get_permalink() ) ?>"><?= get_the_title() ?></a></h2>
-	<?php $post_tags = wp_get_post_tags( get_the_ID() ); ?>
-    <ul class="post__tags">
-		<?php foreach ( $post_tags as $tag ): ?>
-            <li><a href="<?= get_site_url() ?>/?tag=<?= $tag->slug ?>" rel="tag"><?= $tag->name ?></a></li>
-		<?php endforeach; ?>
-    </ul>
-    <img src="<?= get_post_meta( get_the_ID(), 'singPost_Image', true ) ?>" alt="<?= get_the_title() ?>">
-    <div class="description">
+<?php
+    $tags__string = get_post_meta( get_the_ID(), 'singPost_thumbnail_tags', true ) ?? '';
+    $tags         = explode( '/', $tags__string );
+?>
 
-        <?php the_excerpt()?>
-		<?= get_post_meta( get_the_ID(), 'singPost_description', true ) ?>
-    </div>
-    <div class="date">
-        <?= get_the_date()?>
-        <?php comments_number()?>
-    </div>
+<article class="project" id="post-<?php the_ID(); ?>">
+	<?php if ( ! empty( $tags ) ) { ?>
+        <ul class="project__tags">
+			<?php foreach ( $tags as $tag ): ?>
+                <li><?= $tag ?></li>
+			<?php endforeach; ?>
+        </ul>
+	<?php } ?>
+	<?php if ( ! empty( get_post_meta( get_the_ID(), 'singPost_thumbnail_title', true ) ) ) { ?>
+        <h2 class="project__title"><?= get_post_meta( get_the_ID(), 'singPost_thumbnail_title', true ) ?></h2>
+	<?php } ?>
+	<?php if ( ! empty( get_post_meta( get_the_ID(), 'singPost_thumbnail_picture', true ) ) ) { ?>
+        <a class="project__link" href="<?= esc_url( get_permalink() ) ?>">
+            <img class="project__thumbnail"
+                 src="<?= get_post_meta( get_the_ID(), 'singPost_thumbnail_picture', true ) ?>"
+                 alt="picture"/>
+        </a>
+	<?php } ?>
 </article>

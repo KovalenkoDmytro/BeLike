@@ -29,11 +29,13 @@ global $redux_demo
     <header class="header content_wrapper">
         <div class="logo">
             <?php if (isset($redux_demo['secondary-logo']['url'])) { ?>
-                <img class="logo_img" src="<?= $redux_demo['secondary-logo']['url'] ?>" alt="<?= $redux_demo['logo-placeholder'] ?>">
+                <a href="<?= get_home_url()?>">
+                    <img class="logo_img" src="<?= $redux_demo['secondary-logo']['url'] ?>" alt="<?= $redux_demo['logo-placeholder'] ?>">
+                </a>
             <?php } ?>
         </div>
 
-        <nav id="site-navigation" class="main-navigation">
+        <nav id="navigation">
             <?php
             wp_nav_menu(
                 array(

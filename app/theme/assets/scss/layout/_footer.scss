@@ -1,3 +1,60 @@
 .footer{
-  display: none;
+  @include laptop{
+    padding: 60px 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .footer__section{
+    .navigation{
+      .menu{
+        display: flex;
+        column-gap: 10px;
+        .menu-item{
+          padding: 10px;
+          a{
+            color: $white_color;
+          }
+        }
+      }
+    }
+    .contacts{
+      margin-top: 20px;
+      @include laptop{
+        margin-top: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+      }
+      .social__media{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        column-gap: 18px;
+        @include laptop{
+          margin-bottom: 30px;
+        }
+      }
+      .email{
+        a{
+          display: flex;
+          align-content: center;
+          align-items: center;
+          column-gap: 15px;
+          color: $white_color;
+        }
+
+      }
+    }
+    &.__last{
+      @include laptop{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: flex-end;
+        align-items: flex-end;
+      }
+    }
+  }
 }
