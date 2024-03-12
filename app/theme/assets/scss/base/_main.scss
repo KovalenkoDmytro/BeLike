@@ -11,6 +11,21 @@ body{
   color: $text_color;
 }
 
+.headline{
+  font-family: $headlines_font;
+  color: $lime_violet_color;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include laptop{
+    margin-bottom: 80px;
+    font-size: 34px;
+    line-height: 41px;
+  }
+}
+
 .content_wrapper{
   margin: auto;
   display: flex;
