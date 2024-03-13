@@ -20,6 +20,7 @@ const toInvoke = function (callback, view = 'all', selector) {
 }
 
 
+// slider on PROJECT post pages
 toInvoke(() => {
     new Swiper('#swiper', {
         loop: true,
@@ -32,3 +33,18 @@ toInvoke(() => {
         },
     });
 }, 'all', '#swiper')
+
+
+
+// text slider on Main page
+toInvoke(() => {
+    new Swiper('#text_slider', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        navigation: {
+            nextEl: '.slider__arrows__next',
+            prevEl: '.slider__arrows__prev',
+        },
+    });
+}, 'all', '#text_slider')

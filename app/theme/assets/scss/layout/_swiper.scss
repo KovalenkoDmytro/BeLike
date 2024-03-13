@@ -1,0 +1,13 @@
+.slider__arrows{
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 20px;
+
+  .slider__arrows__next, .slider__arrows__prev{
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}

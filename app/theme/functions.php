@@ -200,7 +200,7 @@ function aletheme_metaboxes($meta_boxes) {
 
 	$meta_boxes[] = array(
 		'id'         => 'homepage_metabox',
-		'title'      => 'Homepage Options',
+		'title'      => 'Homepage main section',
 		'pages'      => array( 'page', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
@@ -208,9 +208,77 @@ function aletheme_metaboxes($meta_boxes) {
 		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
 		'fields' => array(
 			array(
+				'name' => __('Main picture','dk-starter'),
+				'desc' => __('Main picture','dk-starter'),
+				'id'   => 'homePage_image',
+				'std'  => '',
+				'type' => 'file',
+			),
+			array(
+				'name' => __('Main title','dk-starter'),
+				'desc' => __('Main title','dk-starter'),
+				'id'   => 'homePage_main_title',
+				'std'  => '',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Subtitle','dk-starter'),
+				'desc' => __('Subtitle','dk-starter'),
+				'id'   => 'homePage_subtitle',
+				'std'  => '',
+				'type' => 'text',
+			),
+			array(
 				'name' => __('Description','dk-starter'),
 				'desc' => __('Description','dk-starter'),
 				'id'   => 'homePage_description',
+				'std'  => '',
+				'type' => 'wysiwyg',
+			),
+			array(
+				'name' => __('Free consultation button title','dk-starter'),
+				'desc' => __('Type title here','dk-starter'),
+				'id'   => 'homePage_consultation_button_title',
+				'std'  => '',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Free consultation button link','dk-starter'),
+				'desc' => __('Type link here','dk-starter'),
+				'id'   => 'homePage_consultation_button_link',
+				'std'  => '',
+				'type' => 'text',
+			),
+
+		)
+	);
+	$meta_boxes[] = array(
+		'id'         => 'homepage_second_section',
+		'title'      => 'Homepage second section',
+		'pages'      => array( 'page', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'high',
+		'show_names' => true, // Show field names on the left
+		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
+		'fields' => array(
+			array(
+				'name' => __('Main picture','dk-starter'),
+				'desc' => __('Main picture','dk-starter'),
+				'id'   => 'homePage_second_section_image',
+				'std'  => '',
+				'type' => 'file',
+			),
+			array(
+				'name' => __('Title','dk-starter'),
+				'desc' => __('Title','dk-starter'),
+				'id'   => 'homePage_second_section_title',
+				'std'  => '',
+				'type' => 'text',
+			),
+			array(
+				'name' => __('Description','dk-starter'),
+				'desc' => __('Description','dk-starter'),
+				'id'   => 'homePage_second_section_description',
 				'std'  => '',
 				'type' => 'wysiwyg',
 			),
@@ -257,7 +325,6 @@ function aletheme_metaboxes($meta_boxes) {
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
 	        array(
 		        'name' => __('Main Title','dk-starter'),
@@ -366,7 +433,6 @@ function aletheme_metaboxes($meta_boxes) {
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -392,7 +458,6 @@ function aletheme_metaboxes($meta_boxes) {
         'context'    => 'normal',
         'priority'   => 'high',
         'show_names' => true, // Show field names on the left
-//        'show_on'    => array( 'key' => 'page-template', 'value' => array('template-singlePost.php'), ), // Specific post templates to display this metabox
         'fields' => array(
             array(
                 'name' => __('Title','dk-starter'),
@@ -411,6 +476,10 @@ function aletheme_metaboxes($meta_boxes) {
 
         )
     );
+
+
+
+
 	return $meta_boxes;
 }
 

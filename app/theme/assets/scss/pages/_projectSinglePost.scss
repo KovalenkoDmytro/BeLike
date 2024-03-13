@@ -40,7 +40,7 @@
         letter-spacing: 0;
         text-align: left;
         font-weight: 400;
-        color: $lime_violet_color;
+        color: $title_lime_color;
         @include laptop{
           font-size: 28px;
           line-height: 39px;
@@ -75,29 +75,12 @@
       }
     }
     &.__slider{
-      .slider__arrows{
-        position: relative;
-        display: flex;
-        justify-content: flex-end;
-        column-gap: 20px;
-        @include laptop{
-          margin-bottom: 80px;
-        }
-        .slider__arrows__next, .slider__arrows__prev{
-          position: relative;
-          background: none;
-          border: none;
-          cursor: pointer;
-        }
-      }
+
       .swiper-wrapper{
         .swiper-slide{
           width: 220px;
           height: 320px;
           object-fit: cover;
-          //&.swiper-slide-active{
-          //  transform: scale(1.2);
-          //}
         }
       }
     }

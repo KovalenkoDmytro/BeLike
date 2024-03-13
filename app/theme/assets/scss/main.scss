@@ -13,11 +13,12 @@ html{
 @import "base/typography";
 @import "base/main";
 
-//@import "components/dragAndDropFiles";
+@import "components/textSlider";
 
 @import "layout/header";
 @import "layout/footer";
 @import "layout/projects";
+@import "layout/swiper";
 
 
 @import "pages/projectSinglePost";

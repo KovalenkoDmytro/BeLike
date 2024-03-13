@@ -167,7 +167,14 @@ class Ale_Meta_Box {
 			}		
 						
 			switch ( $field['type'] ) {
+                case 'text_slide':
+	                wp_editor( $meta ? $meta : $field['std'], $field['id'], isset( $field['options'] ) ? $field['options'] : array() );
+	                echo '<div> 
+                            <input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" />
+                            <p class="ale_metabox_description">', $field['desc'], '</p>
+                        </div>';
 
+	                break;
 				case 'text':
 					echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', '' !== $meta ? $meta : $field['std'], '" />','<p class="ale_metabox_description">', $field['desc'], '</p>';
 					break;
