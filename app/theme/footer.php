@@ -31,7 +31,7 @@ global $redux_demo
 	        ?>
         </div>
         <div class="footer__section __last">
-            <button>_('Get in touch')</button>
+            <div class="keepInTouch"><?=__('Keep in touch')?></div>
             <div class="contacts">
 
                 <ul class="social__media">

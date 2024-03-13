@@ -16,11 +16,14 @@ html{
 @import "components/textSlider";
 
 @import "layout/header";
+@import "layout/navigation";
 @import "layout/footer";
 @import "layout/projects";
 @import "layout/swiper";
+@import "layout/buttons";
 
 
+@import "pages/home";
 @import "pages/projectSinglePost";
 
 @import "vendor/swiperSlider.css";

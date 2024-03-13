@@ -28,9 +28,9 @@ global $redux_demo
 <div id="page">
     <header class="header content_wrapper">
         <div class="logo">
-            <?php if (isset($redux_demo['secondary-logo']['url'])) { ?>
+            <?php if (isset($redux_demo['main-logo']['url'])) { ?>
                 <a href="<?= get_home_url()?>">
-                    <img class="logo_img" src="<?= $redux_demo['secondary-logo']['url'] ?>" alt="<?= $redux_demo['logo-placeholder'] ?>">
+                    <img class="logo_img" src="<?= $redux_demo['main-logo']['url'] ?>" alt="<?= $redux_demo['logo-placeholder'] ?>">
                 </a>
             <?php } ?>
         </div>
@@ -46,5 +46,5 @@ global $redux_demo
             );
             ?>
         </nav>
-        <button>_('Get in touch')</button>
+        <button class="btn _lime"><?= __('Get in touch')?></button>
     </header>

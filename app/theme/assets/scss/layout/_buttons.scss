@@ -1,0 +1,62 @@
+
+.btn{
+  display: block;
+
+  color: $button_violet_text_color;
+  background-color: $button_violet_color;
+  border-radius: 4px;
+  border: none;
+  padding: 10px 25px;
+  cursor: pointer;
+  width: max-content;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.6px;
+  @include transition();
+
+  &._main{
+    color: $button_violet_text_color;
+    background-color: transparent;
+    border: 1px solid $button_violet_color;
+    text-shadow: 1px 1px 10px $button_violet_color;
+    padding: 18px 28px;
+    font-family: $headlines_font;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
+
+    &:hover{
+      border-color: $button_violet_text_color;
+    }
+  }
+
+  &._lime{
+    color: $button_lime_text_color;
+    background-color: $button_lime_color;
+    &:hover{
+      box-shadow: 5px 10px 20px 0 rgba(32, 30, 34, 0.2);
+    }
+  }
+
+  &._violet{
+    color: $button_violet_text_color;
+    background-color: $button_violet_color;
+    &:hover{
+      box-shadow: 5px 10px 20px 0 rgba(32, 30, 34, 0.2);
+    }
+  }
+
+  &._violetOutline{
+    background-color: transparent;
+    border: 1px solid $button_violet_color;
+    color: $button_violet_color;
+    &:hover{
+      border-color: $button_violet_text_color;
+      color : $button_violet_text_color;
+    }
+  }
+
+
+}

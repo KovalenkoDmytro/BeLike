@@ -1,0 +1,65 @@
+.home__page{
+  section{
+    &.main{
+      @include laptop{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+      }
+      .section__context{
+        max-width: 740px;
+        .mainLine{
+          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+          font-family: $headlines_font;
+          color: $title_lime_color;
+          text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 0;
+          text-align: left;
+          @include laptop{
+            font-size: 54px;
+            line-height: 65px;
+          }
+        }
+        .sub_mainLine{
+          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+          font-family: $headlines_font;
+          font-weight: 700;
+          letter-spacing: 0;
+          text-align: left;
+
+          @include laptop{
+            font-size: 48px;
+            line-height: 58px;
+          }
+        }
+        .description{
+          margin: 20px 0;
+          font-size: 17px;
+          font-weight: 300;
+          line-height: 24px;
+          letter-spacing: 0;
+          text-align: left;
+          max-width: 360px;
+
+          @include laptop{
+            margin: 40px 0;
+          }
+        }
+      }
+      .section__image{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        .social__media{
+          display: flex;
+          flex-direction: column;
+          row-gap: 16px;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+}

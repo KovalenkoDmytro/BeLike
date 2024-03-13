@@ -1,0 +1,24 @@
+.navigation{
+  .menu{
+    display: flex;
+    column-gap: 10px;
+    list-style: none;
+    align-items: center;
+    align-content: center;
+    .menu-item{
+      text-align: left;
+      padding: 10px;
+      a{
+        color: $white_color;
+      }
+      @include laptop{
+        font-size: 17px;
+        font-weight: 300;
+        line-height: 24px;
+        letter-spacing: 0;
+      }
+    }
+  }
+
+}
+
