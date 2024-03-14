@@ -67,47 +67,55 @@ $services_slider = get_field( 'services_slider' );
             </section>
             <?php if ( ! empty( $services_slider ) ) {?>
             <section class="services_slider" id="services_slider">
-                <div class="swiper-wrapper" >
+                <div class="swiper-wrapper mainSlider" >
 		            <?php foreach ($services_slider['slider'] as $slide): ?>
                         <div class="swiper-slide">
                             <img class="image" src="<?= $slide['slide']['main_image']['url']?>" alt="picture">
-                            <p class="slide__title"><?=$slide['slide']['main_title'] ?></p>
-                            <div class="slide__title"><?=$slide['slide']['description'] ?></div>
+                            <div class="slide__content">
+                                <div class="content__text">
+                                    <p class="slide__title"><?=$slide['slide']['main_title'] ?></p>
+                                    <div class="slide__description"><?=$slide['slide']['description'] ?></div>
+                                </div>
+	                            <?php if (!empty($services_slider['slides_button'])) { ?>
+                                    <a class="btn _whiteOutline" target="_blank" href="<?= $services_slider['slides_button']['url'] ?>"><?= get_post_meta(get_the_ID(), 'homePage_consultation_button_title', true) ?? '' ?> </a>
+	                            <?php } ?>
+
+                            </div>
+
                         </div>
 		            <?php endforeach; ?>
 
                 </div>
-
-                <div class="navigation__wrapper">
-                    <div id="swiper-pagination" class="swiper-pagination"></div>
-                    <div class="slider__arrows">
-                        <button class="slider__arrows__prev">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2" stroke-width="2"/>
-                                <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <button class="slider__arrows__next">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
-                                <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
+                <div class="slider__navigation">
+                    <div id="slider-thumbnail" class="thumbnails">
+                        <div class="swiper-wrapper">
+			                <?php foreach ($services_slider['slider'] as $slide): ?>
+                                <div class="swiper-slide">
+                                    <img class="image" src="<?= $slide['slide']['image_thumbnail']['url']?>" alt="picture">
+                                     <p class="slide__title"><?=$slide['slide']['text_thumbnail_'] ?></p>
+                                </div>
+			                <?php endforeach; ?>
+                        </div>
                     </div>
-                    <div id="numberSlides">0</div>
-                </div>
-
-                <div id="slider-thumbnail" class="thumbnails">
-                    <div class="swiper-wrapper">
-	                    <?php foreach ($services_slider['slider'] as $slide): ?>
-                            <div class="swiper-slide">
-                                <img class="image" src="<?= $slide['slide']['image_thumbnail']['url']?>" alt="picture">
-                                <p class="slide__title"><?=$slide['slide']['text_thumbnail_'] ?></p>
-                            </div>
-	                    <?php endforeach; ?>
+                    <div class="navigation__wrapper">
+                        <div class="slider__arrows">
+                            <button class="slider__arrows__prev">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="#000" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff" stroke-width="2"/>
+                                    <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="slider__arrows__next">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" stroke="#fff" stroke-width="2"/>
+                                    <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div id="swiper-pagination" class="swiper-pagination"></div>
+                        <div id="numberSlides" class="slider__index">0</div>
                     </div>
                 </div>
-
             </section>
             <?php } ?>
 	        <?php if ( ! empty( $text_slider ) ) { ?>

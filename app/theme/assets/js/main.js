@@ -54,11 +54,11 @@ toInvoke(() => {
 toInvoke(() => {
     let reachedLoop = false
     const sliderThumbnail = new Swiper('#slider-thumbnail', {
-        slidesPerView: 3.5,
-        spaceBetween: 24,
+        slidesPerView: 3,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
+        spaceBetween: 24,
 
     });
 
@@ -74,20 +74,18 @@ toInvoke(() => {
             el: '#swiper-pagination',
             type: 'progressbar',
         },
-        // thumbs: {
-        //     swiper: sliderThumbnail
-        // },
+        thumbs: {
+            swiper: sliderThumbnail
+        },
         on: {
             slideChange: function (slider) {
-                slideCountNumber.innerHTML = (slider.realIndex + 1);
+                if((slider.realIndex + 1) < 10){
+                    slideCountNumber.innerHTML = `0${(slider.realIndex + 1)}`;
+                }
+                else {
+                    slideCountNumber.innerHTML = (slider.realIndex + 1);
+                }
             },
-
-
-
-            // reachEnd:function () {
-            //     reachedLoop=true
-            //     slideCountNumber.innerHTML = '0'
-            // }
         },
     });
 

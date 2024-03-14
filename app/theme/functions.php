@@ -144,7 +144,7 @@ function dk_scripts() {
 
 
     wp_enqueue_script( 'swiper', get_template_directory_uri() . '/assets/js/vendor/Swiper.js', array(), _S_VERSION);
-    wp_enqueue_script( 'mainJs', get_template_directory_uri() . '/public/app.js', array(), _S_VERSION,);
+    wp_enqueue_script( 'mainJs', get_template_directory_uri() . '/assets/js/main.js', array(), _S_VERSION,);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

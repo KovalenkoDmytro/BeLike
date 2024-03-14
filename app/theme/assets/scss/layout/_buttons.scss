@@ -47,7 +47,22 @@
       box-shadow: 5px 10px 20px 0 rgba(32, 30, 34, 0.2);
     }
   }
+  &._whiteOutline{
+    background-color: transparent;
+    border: 1px solid $button_violet_text_color;
+    color: $button_violet_text_color;
+    font-family: $headlines_font;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-align: center;
 
+    &:hover{
+      border-color: $button_violet_color;
+      color : $button_violet_color;
+    }
+  }
   &._violetOutline{
     background-color: transparent;
     border: 1px solid $button_violet_color;

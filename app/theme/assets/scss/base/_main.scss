@@ -11,6 +11,15 @@ body{
   color: $text_color;
 }
 
+section{
+  overflow: hidden;
+}
+section + section{
+  @include laptop{
+    margin: 80px 0;
+  }
+}
+
 .headline{
   font-family: $headlines_font;
   color: $title_lime_color;
