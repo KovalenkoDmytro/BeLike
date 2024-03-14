@@ -11,8 +11,11 @@ $args = array(
 );
 $projects_home_posts = new WP_Query( $args );
 
+$second_section = get_field('second_section');
 $text_slider = get_field( 'text_slider' );
 $services_slider = get_field( 'services_slider' );
+
+
 //echo ('<pre>');
 //
 //print_r($services_slider['slider'][0]);
@@ -37,8 +40,8 @@ $services_slider = get_field( 'services_slider' );
 	                <?php } ?>
                 </div>
                 <div class="section__image">
-	                <?php if (!empty(get_post_meta(get_the_ID(), 'homePage_main_title', true))) { ?>
-                        <img class="image" src="<?= wp_get_attachment_image_url('homePage_image', 'full')?>" alt="picture">
+	                <?php if (!empty(get_post_meta(get_the_ID(), 'homePage_background', true))) { ?>
+                        <img class="phone" src="<?= get_post_meta(get_the_ID(), 'homePage_background', true) ?>" alt="phone background"/>
 	                <?php } ?>
                     <ul class="social__media">
 		                <?php if (isset($redux_demo['socialMedia-linkedin'])) { ?>
@@ -63,8 +66,25 @@ $services_slider = get_field( 'services_slider' );
 		                <?php } ?>
                     </ul>
                 </div>
-
             </section>
+            <?php if ( ! empty( $second_section ) ) {?>
+                <section class="secondSection">
+                    <div class="section__item">
+                        <div class="headline"><?= $second_section['title']?></div>
+	                    <?php if (!empty($second_section['image'])) { ?>
+                            <img class="image" src="<?= $second_section['image']['url']?>" alt="picture">
+	                    <?php } ?>
+                    </div>
+                    <div class="section__item">
+	                    <?php if (!empty($second_section['description'])) { ?>
+                            <div class="item__description">
+                                <?= $second_section['description']?>
+                            </div>
+	                    <?php } ?>
+                    </div>
+                </section>
+            <?php } ?>
+
             <?php if ( ! empty( $services_slider ) ) {?>
             <section class="services_slider" id="services_slider">
                 <div class="swiper-wrapper mainSlider" >
@@ -79,12 +99,9 @@ $services_slider = get_field( 'services_slider' );
 	                            <?php if (!empty($services_slider['slides_button'])) { ?>
                                     <a class="btn _whiteOutline" target="_blank" href="<?= $services_slider['slides_button']['url'] ?>"><?= get_post_meta(get_the_ID(), 'homePage_consultation_button_title', true) ?? '' ?> </a>
 	                            <?php } ?>
-
                             </div>
-
                         </div>
 		            <?php endforeach; ?>
-
                 </div>
                 <div class="slider__navigation">
                     <div id="slider-thumbnail" class="thumbnails">
@@ -100,9 +117,9 @@ $services_slider = get_field( 'services_slider' );
                     <div class="navigation__wrapper">
                         <div class="slider__arrows">
                             <button class="slider__arrows__prev">
-                                <svg width="60" height="60" viewBox="0 0 60 60" fill="#000" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff" stroke-width="2"/>
-                                    <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff" stroke-width="2"></circle>
+                                    <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                             </button>
                             <button class="slider__arrows__next">

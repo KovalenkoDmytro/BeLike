@@ -1,4 +1,13 @@
+.home__page {
+  .projects{
+    .headline{
+      text-align: center;
+    }
+  }
+}
+
 .projects{
+
   .projects__items{
     @include laptop{
       display: grid;

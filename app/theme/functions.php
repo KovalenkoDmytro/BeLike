@@ -208,9 +208,16 @@ function aletheme_metaboxes($meta_boxes) {
 		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
 		'fields' => array(
 			array(
-				'name' => __('Main picture','dk-starter'),
-				'desc' => __('Main picture','dk-starter'),
-				'id'   => 'homePage_image',
+				'name' => __('Background for video','dk-starter'),
+				'desc' => __('Background for video','dk-starter'),
+				'id'   => 'homePage_background',
+				'std'  => '',
+				'type' => 'file',
+			),
+			array(
+				'name' => __('Video','dk-starter'),
+				'desc' => __('Video','dk-starter'),
+				'id'   => 'homePage_video',
 				'std'  => '',
 				'type' => 'file',
 			),
@@ -252,39 +259,6 @@ function aletheme_metaboxes($meta_boxes) {
 
 		)
 	);
-	$meta_boxes[] = array(
-		'id'         => 'homepage_second_section',
-		'title'      => 'Homepage second section',
-		'pages'      => array( 'page', ), // Post type
-		'context'    => 'normal',
-		'priority'   => 'high',
-		'show_names' => true, // Show field names on the left
-		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
-		'fields' => array(
-			array(
-				'name' => __('Main picture','dk-starter'),
-				'desc' => __('Main picture','dk-starter'),
-				'id'   => 'homePage_second_section_image',
-				'std'  => '',
-				'type' => 'file',
-			),
-			array(
-				'name' => __('Title','dk-starter'),
-				'desc' => __('Title','dk-starter'),
-				'id'   => 'homePage_second_section_title',
-				'std'  => '',
-				'type' => 'text',
-			),
-			array(
-				'name' => __('Description','dk-starter'),
-				'desc' => __('Description','dk-starter'),
-				'id'   => 'homePage_second_section_description',
-				'std'  => '',
-				'type' => 'wysiwyg',
-			),
-		)
-	);
-
 	$meta_boxes[] = array(
 		'id'         => 'thumbnail_options',
 		'title'      => 'Thumbnail Options',

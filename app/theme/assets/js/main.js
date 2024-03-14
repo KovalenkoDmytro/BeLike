@@ -52,7 +52,7 @@ toInvoke(() => {
 
 // services slider on Main page
 toInvoke(() => {
-    let reachedLoop = false
+    // let reachedLoop = false
     const sliderThumbnail = new Swiper('#slider-thumbnail', {
         slidesPerView: 3,
         freeMode: true,
