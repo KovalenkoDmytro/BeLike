@@ -39,14 +39,11 @@ section{
   display: flex;
   flex-direction: column;
   @include tablet {
-    max-width: 700px;
+    max-width: 1150px;
     padding: 0 15px;
   }
   @include laptop {
-    max-width: 1200px;
-  }
-  @include desktop {
-    max-width: 1600px;
+    max-width: 1310px;
   }
 }
 
