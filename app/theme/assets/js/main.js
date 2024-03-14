@@ -48,3 +48,48 @@ toInvoke(() => {
         },
     });
 }, 'all', '#text_slider')
+
+
+// services slider on Main page
+toInvoke(() => {
+    let reachedLoop = false
+    const sliderThumbnail = new Swiper('#slider-thumbnail', {
+        slidesPerView: 3.5,
+        spaceBetween: 24,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+
+    });
+
+    const slideCountNumber = document.querySelector('#numberSlides');
+    new Swiper('#services_slider', {
+        loop: true,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.slider__arrows__next',
+            prevEl: '.slider__arrows__prev',
+        },
+        pagination: {
+            el: '#swiper-pagination',
+            type: 'progressbar',
+        },
+        // thumbs: {
+        //     swiper: sliderThumbnail
+        // },
+        on: {
+            slideChange: function (slider) {
+                slideCountNumber.innerHTML = (slider.realIndex + 1);
+            },
+
+
+
+            // reachEnd:function () {
+            //     reachedLoop=true
+            //     slideCountNumber.innerHTML = '0'
+            // }
+        },
+    });
+
+
+}, 'all', '#services_slider')

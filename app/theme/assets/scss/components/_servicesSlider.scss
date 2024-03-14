@@ -1,0 +1,26 @@
+.services_slider{
+  //width: 100vw;
+  //left: 50%;
+  //margin-left: -50vw;
+  //position: relative;
+  .swiper-slide{
+    .image{
+      @include laptop{
+        height: 750px;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .thumbnails{
+    .image{
+      @include laptop{
+        height: 340px;
+        width: 240px;
+      }
+    }
+  }
+  .navigation__wrapper{
+    position: relative;
+  }
+}
