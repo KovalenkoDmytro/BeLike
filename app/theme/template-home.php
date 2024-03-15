@@ -14,7 +14,9 @@ $projects_home_posts = new WP_Query( $args );
 $second_section = get_field('second_section');
 $text_slider = get_field( 'text_slider' );
 $services_slider = get_field( 'services_slider' );
-
+$prices_section = get_field( 'prices_section' );
+$contact_form_section = get_field( 'contact_form' );
+$customer_opinions_section = get_field( 'customer_testimonials');
 
 //echo ('<pre>');
 //
@@ -40,9 +42,16 @@ $services_slider = get_field( 'services_slider' );
 	                <?php } ?>
                 </div>
                 <div class="section__image">
-	                <?php if (!empty(get_post_meta(get_the_ID(), 'homePage_background', true))) { ?>
-                        <img class="phone" src="<?= get_post_meta(get_the_ID(), 'homePage_background', true) ?>" alt="phone background"/>
-	                <?php } ?>
+
+                    <div class="video__wrapper">
+	                    <?php if (!empty(get_post_meta(get_the_ID(), 'homePage_background', true))) { ?>
+                            <img class="phone" src="<?= get_post_meta(get_the_ID(), 'homePage_background', true) ?>" alt="phone background"/>
+	                    <?php } ?>
+	                    <?php if (!empty(get_post_meta(get_the_ID(), 'homePage_video', true))) { ?>
+                            <video autoplay loop class="video" src="<?= get_post_meta(get_the_ID(), 'homePage_video', true) ?>" ></video>
+	                    <?php } ?>
+                    </div>
+
                     <ul class="social__media">
 		                <?php if (isset($redux_demo['socialMedia-linkedin'])) { ?>
                             <li class="social__media__item"> <a href="mailto:<?= $redux_demo['socialMedia-linkedin'] ?>"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +93,6 @@ $services_slider = get_field( 'services_slider' );
                     </div>
                 </section>
             <?php } ?>
-
             <?php if ( ! empty( $services_slider ) ) {?>
             <section class="services_slider" id="services_slider">
                 <div class="swiper-wrapper mainSlider" >
@@ -172,7 +180,76 @@ $services_slider = get_field( 'services_slider' );
 		            endwhile; ?>
                 </div>
             </section>
-
+	        <?php if ( ! empty( $prices_section ) ) {?>
+                <section class="prices_section">
+                    <div class="section__item">
+                        <div class="headline"><?= $prices_section['title']?></div>
+                    </div>
+                    <div class="prices__items">
+				        <?php if (!empty($prices_section['text_items'])) { ?>
+					        <?php foreach ($prices_section['text_items'] as $slide): ?>
+                                <div class="prices__item">
+                                    <h5 class="title"><?=$slide['text_item']['title']?></h5>
+                                    <div class="description"><?=$slide['text_item']['description']?></div>
+                                </div>
+					        <?php endforeach; ?>
+				        <?php } ?>
+                    </div>
+                </section>
+	        <?php } ?>
+	        <?php if ( ! empty( $contact_form_section ) ) { ?>
+                <section class="contact_form_section">
+                    <?php if ( ! empty( $contact_form_section['text'] ) ) { ?>
+                        <div class="form__section">
+                            <p class="title"><?=$contact_form_section['text']['title'] ?></p>
+                            <div class="description"><?=$contact_form_section['text']['description'] ?></div>
+                        </div>
+                    <?php } ?>
+                    <?php if ( ! empty( $contact_form_section['code_of_contact_form'] ) ) { ?>
+                        <div class="form__section"><?=do_shortcode($contact_form_section['code_of_contact_form'])  ?></div>
+                    <?php } ?>
+                    <div class="form__section __image">
+                        <?php if ( ! empty( $contact_form_section['image'] ) ) { ?>
+                            <img src="<?=$contact_form_section['image']['url']?>" alt="picture">
+                        <?php } ?>
+                    </div>
+                </section>
+	        <?php } ?>
+            <?php if ( ! empty( $customer_opinions_section ) ) { ?>
+                <section class="customer_opinions_section">
+                    <div class="headline">
+                        <?php if ( ! empty( $customer_opinions_section['title'] ) ) { ?>
+                            <p><?= $customer_opinions_section['title']?></p>
+                        <?php } ?>
+	                    <?php if ( ! empty( $customer_opinions_section['opinion_items'] ) ) { ?>
+                            <div class="slider__arrows">
+                                <button class="slider__arrows__prev" tabindex="0" aria-label="Previous slide" aria-controls="swiper-wrapper-252d380d1a00fa7d">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2" stroke-width="2"></circle>
+                                        <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+                                <button class="slider__arrows__next" tabindex="0" aria-label="Next slide" aria-controls="swiper-wrapper-252d380d1a00fa7d">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"></circle>
+                                        <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <?php if ( ! empty( $customer_opinions_section['opinion_items'] ) ) { ?>
+                        <div class="opinions">
+	                        <?php foreach ($customer_opinions_section['opinion_items'] as $slide): ?>
+                                <div class="swiper-slide">
+                                    <p class="opinion__author"><?=$slide['opinion_item']['author'] ?></p>
+                                    <div class="opinion__text"><?=$slide['opinion_item']['text']?></div>
+                                </div>
+	                        <?php endforeach; ?>
+                        </div>
+                    <?php } ?>
+                </section>
+            <?php } ?>
         </div>
     </main>
 <?php get_footer(); ?>

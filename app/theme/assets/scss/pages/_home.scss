@@ -1,18 +1,21 @@
-.home__page{
-  section{
-    .headline{
+.home__page {
+  section {
+    .headline {
       text-align: left;
     }
-    &.main{
-      @include laptop{
+
+    &.main {
+      @include laptop {
         display: flex;
         justify-content: space-between;
         align-items: center;
         align-content: center;
       }
-      .section__context{
+
+      .section__context {
         max-width: 740px;
-        .mainLine{
+
+        .mainLine {
           box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
           font-family: $headlines_font;
           color: $title_lime_color;
@@ -20,24 +23,26 @@
           font-weight: 700;
           letter-spacing: 0;
           text-align: left;
-          @include laptop{
+          @include laptop {
             font-size: 54px;
             line-height: 65px;
           }
         }
-        .sub_mainLine{
+
+        .sub_mainLine {
           box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
           font-family: $headlines_font;
           font-weight: 700;
           letter-spacing: 0;
           text-align: left;
 
-          @include laptop{
+          @include laptop {
             font-size: 48px;
             line-height: 58px;
           }
         }
-        .description{
+
+        .description {
           margin: 20px 0;
           font-size: 17px;
           font-weight: 300;
@@ -46,43 +51,170 @@
           text-align: left;
           max-width: 360px;
 
-          @include laptop{
+          @include laptop {
             margin: 40px 0;
           }
         }
       }
-      .section__image{
+
+      .section__image {
         display: flex;
         align-items: center;
         align-content: center;
         justify-content: space-between;
-        .social__media{
+        .video__wrapper{
+          position: relative;
+          .video{
+            position: absolute;
+            top: 52px;
+            width: 100%;
+            height: 82%;
+          }
+        }
+        .social__media {
           display: flex;
           flex-direction: column;
           row-gap: 16px;
           margin-left: 30px;
-          @include laptop{
+          @include laptop {
             margin-left: 130px;
           }
         }
       }
     }
-    &.secondSection{
-      @include laptop{
+
+    &.secondSection {
+      @include laptop {
         display: grid;
         grid-template-columns: 1fr 1.6fr;
         column-gap: 75px;
       }
 
-      .item__description{
+      .item__description {
         font-weight: 400;
         letter-spacing: 0;
         text-align: left;
-        @include laptop{
+        @include laptop {
           line-height: 34px;
           font-size: 24px;
         }
 
+      }
+    }
+
+    &.prices_section {
+      @include laptop {
+        display: grid;
+        grid-template-columns: 20% 80%;
+      }
+
+      .prices__items {
+        @include laptop {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          column-gap: 40px;
+          row-gap: 40px;
+        }
+
+        .prices__item {
+          background-color: violet;
+          padding: 20px;
+          border: 1px solid rgba(0, 0, 0, 1);
+          max-width: 560px;
+          border-radius: 20px;
+          @include laptop {
+            padding: 30px 30px 40px 30px;
+          }
+
+          &:nth-child(2n+2) {
+            max-width: 410px;
+          }
+
+          &:nth-child(3n+3) {
+            @include laptop {
+              margin-left: auto;
+              margin-right: 150px;
+            }
+          }
+
+
+          .title {
+            margin-bottom: 10px;
+            font-family: $headlines_font;
+            font-weight: 400;
+            letter-spacing: 0;
+            text-align: left;
+
+            @include laptop {
+              line-height: 31px;
+              font-size: 22px;
+              margin-bottom: 20px;
+            }
+          }
+
+          .description {
+            font-weight: 300;
+            letter-spacing: 0;
+            text-align: left;
+            @include laptop {
+              line-height: 24px;
+              font-size: 17px;
+            }
+          }
+        }
+      }
+    }
+
+    &.contact_form_section {
+      background-color: #ec81ec;
+      box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+      border-radius: 20px;
+      padding: 10px 20px;
+      @include laptop {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 80px;
+        padding: 80px 60px;
+      }
+
+      .form__section {
+        &.__image {
+          img{
+            @include laptop {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+            }
+          }
+
+        }
+
+        .title {
+          font-family: $headlines_font;
+          color: $title_lime_color;
+          font-weight: 400;
+          letter-spacing: 0;
+          text-align: left;
+          margin-bottom: 10px;
+          @include laptop {
+            font-size: 22px;
+            line-height: 31px;
+            margin-bottom: 20px;
+
+          }
+        }
+
+        .description {
+          font-weight: 300;
+          letter-spacing: 0;
+          text-align: left;
+
+          @include laptop {
+            font-size: 17px;
+            line-height: 24px;
+          }
+        }
       }
     }
   }

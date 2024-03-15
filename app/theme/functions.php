@@ -215,11 +215,11 @@ function aletheme_metaboxes($meta_boxes) {
 				'type' => 'file',
 			),
 			array(
-				'name' => __('Video','dk-starter'),
-				'desc' => __('Video','dk-starter'),
+				'name' => __('Video link','dk-starter'),
+				'desc' => __('Video link','dk-starter'),
 				'id'   => 'homePage_video',
 				'std'  => '',
-				'type' => 'file',
+				'type' => 'text',
 			),
 			array(
 				'name' => __('Main title','dk-starter'),

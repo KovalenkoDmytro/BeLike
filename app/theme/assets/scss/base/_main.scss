@@ -12,7 +12,7 @@ body{
 }
 
 section{
-  overflow: hidden;
+  position: relative;
   @include laptop{
     margin: 80px 0;
   }
