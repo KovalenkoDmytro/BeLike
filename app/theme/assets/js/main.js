@@ -75,6 +75,37 @@ toInvoke(() => {
 }, 'all', '#opinions__slider')
 
 
+// video slider
+toInvoke(() => {
+    new Swiper('#video_slider', {
+        loop: true,
+        slidesPerView: 5,
+        spaceBetween: 40,
+        centeredSlides: true,
+        navigation: {
+            nextEl: '.slider__arrows__next',
+            prevEl: '.slider__arrows__prev',
+        },
+        on: {
+            transitionStart: function(){
+                const videos = document.querySelectorAll('#video_slider video');
+
+                Array.prototype.forEach.call(videos, function(video){
+                    video.pause();
+                });
+            },
+
+            transitionEnd: function(){
+                const activeSlide = this.slides.find(slide=> slide.classList.contains('swiper-slide-active'))
+                const video = activeSlide.querySelector('video')
+                video.play();
+
+            },
+        },
+    });
+}, 'all', '#video_slider')
+
+
 // services slider on Main page
 toInvoke(() => {
     // let reachedLoop = false
@@ -83,8 +114,12 @@ toInvoke(() => {
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
-        spaceBetween: 24,
-
+        spaceBetween: 12,
+        breakpoints: {
+            1250: {
+                spaceBetween: 24,
+            },
+        }
     });
 
     const slideCountNumber = document.querySelector('#numberSlides');

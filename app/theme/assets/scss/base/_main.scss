@@ -9,10 +9,17 @@ html{
 body{
   background-color: $background_color;
   color: $text_color;
+  font-size: 14px;
+  @include laptop{
+    font-size: 16px;
+  }
 }
 
 section{
   position: relative;
+  @include tablet{
+    margin: 40px 0;
+  }
   @include laptop{
     margin: 80px 0;
   }
@@ -24,8 +31,13 @@ section{
   color: $title_lime_color;
   font-weight: 700;
   letter-spacing: -0.02em;
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
+
+  @include tablet{
+    font-size: 25px;
+    margin-bottom: 40px;
+  }
 
   @include laptop{
     margin-bottom: 80px;
@@ -38,11 +50,15 @@ section{
   margin: auto;
   display: flex;
   flex-direction: column;
+
   @include tablet {
-    max-width: 1150px;
+    max-width: 760px;
     padding: 0 15px;
   }
   @include laptop {
+    max-width: 1200px;
+  }
+  @include desktop {
     max-width: 1310px;
   }
 }

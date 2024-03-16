@@ -18,9 +18,10 @@ $prices_section            = get_field( 'prices_section' );
 $contact_form_section      = get_field( 'contact_form' );
 $customer_opinions_section = get_field( 'customer_testimonials' );
 $quiz_section              = get_field( 'quiz' );
+$video_slider              = get_field( 'video_slider');
 //echo( '<pre>' );
 //
-//print_r( $quiz_section );
+//print_r( $video_slider );
 //echo( '</pre>' );
 
 ?>
@@ -121,7 +122,7 @@ $quiz_section              = get_field( 'quiz' );
                                     </div>
 									<?php if ( ! empty( $services_slider['slides_button'] ) ) { ?>
                                         <a class="btn _whiteOutline" target="_blank"
-                                           href="<?= $services_slider['slides_button']['url'] ?>"><?= get_post_meta( get_the_ID(), 'homePage_consultation_button_title', true ) ?? '' ?> </a>
+                                           href="<?= $services_slider['slides_button']['url'] ?>"><?= $services_slider['slides_button']['title'] ?? '' ?> </a>
 									<?php } ?>
                                 </div>
                             </div>
@@ -337,6 +338,36 @@ $quiz_section              = get_field( 'quiz' );
 	                <?php } ?>
                 </section>
 			<?php } ?>
+	        <?php if ( ! empty( $video_slider ) ) { ?>
+                <section class="video_slider" id="video_slider">
+                    <div class="slider__arrows">
+                        <button class="slider__arrows__prev">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff"
+                                        stroke-width="2"></circle>
+                                <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff"
+                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <button class="slider__arrows__next">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="30" cy="30" r="29" stroke="#fff" stroke-width="2"/>
+                                <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#fff"
+                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="swiper-wrapper">
+				        <?php foreach ( $video_slider as $slide ): ?>
+                            <div class="swiper-slide">
+                                <video width="220px" height="380px" src="<?=$slide['video_slide']['url'] ?>" muted></video>
+                            </div>
+				        <?php endforeach; ?>
+                    </div>
+                </section>
+	        <?php } ?>
         </div>
     </main>
 <?php get_footer(); ?>

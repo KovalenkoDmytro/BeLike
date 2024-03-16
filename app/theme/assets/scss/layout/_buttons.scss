@@ -19,13 +19,16 @@
     background-color: transparent;
     border: 1px solid $button_violet_color;
     text-shadow: 1px 1px 10px $button_violet_color;
-    padding: 18px 28px;
+    padding: 8px 18px;
     font-family: $headlines_font;
-    font-size: 17px;
+    font-size: clamp(14px, 2.5vw, 17px);
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0;
     text-align: center;
+    @include laptop{
+      padding: 18px 28px;
+    }
 
     &:hover{
       border-color: $button_violet_text_color;
