@@ -1,0 +1,24 @@
+.wpcf7-form{
+  .form__item{
+    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    input, textarea{
+      width: 100%;
+      resize: none;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      outline: none;
+      border: none;
+      &::placeholder{
+        color:  rgba(173, 173, 173, 1);
+      ;
+      }
+    }
+  }
+  .btn{
+    width: 100%;
+  }
+}
+

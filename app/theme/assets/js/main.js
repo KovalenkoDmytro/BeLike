@@ -38,16 +38,41 @@ toInvoke(() => {
 
 // text slider on Main page
 toInvoke(() => {
-    new Swiper('#text_slider', {
-        loop: true,
+    new Swiper('#quiz__slider', {
         slidesPerView: 1,
+        navigation: {
+            nextEl: '.slider__arrows__next',
+            prevEl: '.slider__arrows__prev',
+        },
+    });
+}, 'all', '#quiz__slider')
+
+
+// opinions slider on Main page
+toInvoke(() => {
+    new Swiper('#opinions__slider', {
+        loop: true,
+        slidesPerView: 3,
         spaceBetween: 40,
         navigation: {
             nextEl: '.slider__arrows__next',
             prevEl: '.slider__arrows__prev',
         },
     });
-}, 'all', '#text_slider')
+}, 'all', '#opinions__slider')
+
+// quiz slider on Main page
+toInvoke(() => {
+    new Swiper('#opinions__slider', {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 40,
+        navigation: {
+            nextEl: '.slider__arrows__next',
+            prevEl: '.slider__arrows__prev',
+        },
+    });
+}, 'all', '#opinions__slider')
 
 
 // services slider on Main page
