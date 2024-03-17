@@ -10,11 +10,11 @@ const outputPath = "./app/theme/public/";
 const localDomain = "http://localhost:8080/";
 
 module.exports = {
-    entry: [baseUrl + "js/main.js", baseUrl + "scss/main.scss"],
-    output: {
-        path: path.resolve(__dirname, outputPath),
-        filename: "app.js",
-    },
+    entry: [baseUrl + "scss/main.scss"],
+    // output: {
+    //     path: path.resolve(__dirname, outputPath),
+    //     filename: "app.js",
+    // },
     plugins: [
         new MiniCssExtractPlugin({
             filename: "app.css",
@@ -22,7 +22,7 @@ module.exports = {
         new BrowserSyncPlugin(
             {
                 proxy: localDomain,
-                files: [outputPath + "/*.css", outputPath + "/*.js","*.php"],
+                files: [outputPath + "/*.css","*.php"],
                 injectCss: true,
             },
             { reload: false }

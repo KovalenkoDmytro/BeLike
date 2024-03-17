@@ -68,6 +68,8 @@ global $redux_demo
 	</footer>
 </div>
 
+<?php wp_footer(); ?>
+
 
 </body>
 </html>
