@@ -17,6 +17,7 @@ body{
 
 section{
   position: relative;
+  overflow: hidden;
   @include tablet{
     margin: 40px 0;
   }

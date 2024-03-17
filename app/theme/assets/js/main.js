@@ -89,13 +89,34 @@ toInvoke(() => {
 
 //Quiz slide on home page
 toInvoke(() => {
-new Swiper('.home__page #quiz__slider', {
-    slidesPerView: 1,
-    navigation: {
-        nextEl: '.home__page #quiz__slider .slider__arrows__next',
-        prevEl: '.home__page #quiz__slider .slider__arrows__prev',
-    },
-});
+
+    const toInitSlider = function () {
+        new Swiper('.home__page #quiz__slider', {
+            slidesPerView: 1,
+            navigation: {
+                nextEl: '.home__page #quiz__slider .slider__arrows__next',
+                prevEl: '.home__page #quiz__slider .slider__arrows__prev',
+            },
+        });
+    }
+    toInitSlider()
+
+
+    //slider
+    const startQuizBtn = document.querySelector('#startQuiz')
+    const main_slideElement = document.querySelector('#main_slide')
+    const thanks__informationElement = document.querySelector('#thanks__information')
+    const sendQuizFormBtn = document.querySelector('#sendQuizForm')
+
+    startQuizBtn.addEventListener('click',()=>{
+        main_slideElement.classList.add('__hide')
+    })
+
+    sendQuizFormBtn.addEventListener('click',()=>{
+        thanks__informationElement.classList.add('__show')
+    })
+
+
 }, 'all', '.home__page #quiz__slider')
 
 
@@ -105,7 +126,6 @@ toInvoke(() => {
     new Swiper('#video_slider', {
         loop: true,
         slidesPerView: 5,
-        spaceBetween: 40,
         centeredSlides: true,
         navigation: {
             nextEl: '#video_slider .slider__arrows__next',
@@ -129,6 +149,8 @@ toInvoke(() => {
         },
     });
 }, 'all', '#video_slider')
+
+
 
 
 

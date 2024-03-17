@@ -218,6 +218,7 @@
     }
 
     &.contact_form_section {
+      overflow: initial;
       background-color: #ec81ec;
       box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
       border-radius: 20px;
@@ -283,6 +284,7 @@
 
     &.customer_opinions_section {
       .opinions {
+
         .swiper-slide {
           display: flex;
           align-content: center;
@@ -329,17 +331,30 @@
         background: #ec81ec;
         box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
         border-radius: 20px;
+        position: absolute;
+        z-index: 3;
+        left: 0;
+        right: 0;
         @include tablet{
           padding: 80px 0 70px;
-          height: 640px;
+          height: 520px;
         }
         @include laptop {
           padding: 160px 0 140px;
           height: 740px;
         }
+        &.__hide{
+          display: none;
+        }
 
         .text__container {
-          max-width: 840px;
+          @include tablet{
+            max-width: 540px;
+          }
+          @include laptop{
+            max-width: 840px;
+          }
+
 
           .title {
             font-family: $headlines_font;
@@ -348,6 +363,11 @@
             text-align: left;
             color: $title_lime_color;
             margin-bottom: 20px;
+            @include tablet{
+              font-size: 34px;
+              line-height: 45px;
+              margin-bottom: 30px;
+            }
             @include laptop {
               font-size: 54px;
               line-height: 65px;
@@ -362,6 +382,11 @@
             text-align: left;
             margin-bottom: 100px;
 
+            @include tablet{
+              font-size: 18px;
+              line-height: 26px;
+            }
+
             @include laptop {
               margin-bottom: 140px;
               font-size: 22px;
@@ -372,135 +397,201 @@
 
       }
 
-      .quiz__slider {
-        .swiper-slide {
-          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
-          border-radius: 20px;
-          padding: 50px;
-          background: #644f64;
-          @include laptop {
-            padding: 120px 110px;
-            height: 740px;
-          }
+      .slider__wrapper{
+        position: relative;
+        overflow: hidden;
+        .slider__arrows__prev, .slider__arrows__next{
+          background-color: transparent;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          position: absolute;
+          top: 50%;
+          z-index: 2;
+          transform: translateY(-50%);
 
-          .question__wrapper {
-            max-width: 1090px;
-
-            .question {
-              font-family: $headlines_font;
-              letter-spacing: 0;
-              text-align: left;
-              font-weight: 400;
-              color: $title_violet_color;
-              margin-bottom: 10px;
-              text-transform: uppercase;
-              @include laptop {
-                margin-bottom: 35px;
-                font-size: 28px;
-                line-height: 39px;
-              }
-
-              .count {
-                margin-right: 5px;
-              }
+        }
+        .slider__arrows__next{
+          right: 0;
+        }
+        .quiz__slider {
+          .swiper-slide {
+            box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+            border-radius: 20px;
+            padding: 50px;
+            background: #644f64;
+            @include tablet{
+              padding: 60px 55px;
+              height: 520px;
             }
-
-            .answers {
-              display: flex;
-              column-gap: 15px;
-              row-gap: 15px;
-              flex-wrap: wrap;
-              cursor: pointer;
-              counter-reset: listStyle;
-
-              .answer {
-                padding: 10px 20px;
-                border: 1px solid rgba(255, 255, 255, 1);
-                border-radius: 40px;
-                white-space: nowrap;
-                counter-increment: listStyle;
-                position: relative;
-
-                &::before {
-                  content: counter(listStyle, upper-alpha) '.';
-                  margin-right: 7px;
-                }
-              }
-            }
-          }
-
-          .question__wrapper + .question__wrapper {
-            margin-top: 40px;
             @include laptop {
-              margin-top: 80px;
-            }
-          }
-
-          &.__lastStep {
-            display: grid;
-            @include tablet {
-              grid-template-columns: 60% 40%;
-              column-gap: 50px;
+              padding: 120px 110px;
+              height: 740px;
             }
 
-            .slide__text {
-              .title {
+            .question__wrapper {
+              max-width: 1090px;
+
+              .question {
                 font-family: $headlines_font;
-                color: $title_lime_color;
-                font-weight: 700;
                 letter-spacing: 0;
                 text-align: left;
+                font-weight: 400;
+                color: $title_violet_color;
                 margin-bottom: 10px;
+                text-transform: uppercase;
+                @include tablet{
+                  font-size: 20px;
+                  line-height: 30px;
+                  margin-bottom: 15px;
+                }
                 @include laptop {
-                  font-size: 48px;
-                  line-height: 58px;
-                  margin-bottom: 20px;
+                  margin-bottom: 35px;
+                  font-size: 28px;
+                  line-height: 39px;
                 }
 
-              }
-
-              .shortDescription {
-                font-weight: 300;
-                letter-spacing: 0;
-                text-align: left;
-                margin-bottom: 50px;
-                @include laptop {
-                  margin-bottom: 90px;
-                  font-size: 17px;
-                  line-height: 24px;
+                .count {
+                  margin-right: 5px;
                 }
-
               }
 
-              .longDescription {
-                font-size: 24px;
-                line-height: 34px;
-                @include laptop {
-                  font-weight: 400;
+              .answers {
+                display: flex;
+                column-gap: 15px;
+                row-gap: 15px;
+                flex-wrap: wrap;
+                cursor: pointer;
+                counter-reset: listStyle;
+
+                .answer {
+
+                  padding: 5px 15px;
+                  border: 1px solid rgba(255, 255, 255, 1);
+                  border-radius: 40px;
+                  white-space: nowrap;
+                  counter-increment: listStyle;
+                  position: relative;
+                  @include laptop{
+                    padding: 10px 20px;
+                  }
+                  &::before {
+                    content: counter(listStyle, upper-alpha) '.';
+                    margin-right: 7px;
+                  }
+                }
+              }
+            }
+
+            .question__wrapper + .question__wrapper {
+              margin-top: 40px;
+              @include laptop {
+                margin-top: 80px;
+              }
+            }
+
+            &.__lastStep {
+              display: grid;
+              @include tablet{
+                grid-template-columns: auto auto;
+                column-gap: 25px;
+              }
+              @include laptop {
+                grid-template-columns: 60% 40%;
+                column-gap: 50px;
+              }
+
+              .slide__text {
+                .title {
+                  font-family: $headlines_font;
+                  color: $title_lime_color;
+                  font-weight: 700;
                   letter-spacing: 0;
                   text-align: left;
+                  margin-bottom: 10px;
+                  @include tablet{
+                    font-size: 34px;
+                    line-height: 45px;
+                    margin-bottom: 30px;
+
+                  }
+                  @include laptop {
+                    font-size: 48px;
+                    line-height: 58px;
+                    margin-bottom: 20px;
+                  }
+
+                }
+
+                .shortDescription {
+                  font-weight: 300;
+                  letter-spacing: 0;
+                  text-align: left;
+                  margin-bottom: 50px;
+                  font-size: 16px;
+                  line-height: 1.4;
+                  @include laptop {
+                    margin-bottom: 90px;
+                    font-size: 17px;
+                    line-height: 24px;
+                  }
+
+                }
+
+                .longDescription {
+                    font-size: 16px;
+
+                  @include laptop {
+                    font-size: 24px;
+                    line-height: 34px;
+                    font-weight: 400;
+                    letter-spacing: 0;
+                    text-align: left;
+                  }
                 }
               }
+
+
             }
-
-
           }
         }
       }
+
 
       .thanks__information {
         box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
         border-radius: 20px;
         background: #644f64;
         padding: 50px;
+        position: absolute;
+        top: 0;
+        z-index: -1;
+        left: 0;
+        right: 0;
+        &.__show{
+          z-index: 9;
+        }
+        @include tablet{
+          padding: 60px 0 55px;
+          height: 520px;
+          display: flex;
+          justify-content: center;
+
+        }
         @include laptop {
           padding: 120px 110px;
           height: 740px;
+          justify-content: flex-start;
         }
 
         .context {
           max-width: 535px;
-
+          @include tablet{
+            max-width: 540px;
+          }
+          @include laptop{
+            max-width: 840px;
+          }
           .title {
             font-family: $headlines_font;
             color: $title_lime_color;
@@ -508,6 +599,11 @@
             letter-spacing: 0;
             text-align: left;
             margin-bottom: 10px;
+            @include tablet{
+              font-size: 34px;
+              line-height: 45px;
+              margin-bottom: 30px;
+            }
             @include laptop {
               font-size: 48px;
               line-height: 58px;
@@ -521,6 +617,10 @@
             letter-spacing: 0;
             text-align: left;
             margin-bottom: 50px;
+            @include tablet{
+              font-size: 18px;
+              line-height: 26px;
+            }
             @include laptop {
               margin-bottom: 90px;
               font-size: 17px;

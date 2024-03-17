@@ -51,7 +51,7 @@ $video_slider              = get_field( 'video_slider');
                                  alt="phone background"/>
 						<?php } ?>
 						<?php if ( ! empty( get_post_meta( get_the_ID(), 'homePage_video', true ) ) ) { ?>
-                            <video autoplay loop class="video"
+                            <video autoplay muted loop class="video"
                                    src="<?= get_post_meta( get_the_ID(), 'homePage_video', true ) ?>"></video>
 						<?php } ?>
                     </div>
@@ -97,7 +97,7 @@ $video_slider              = get_field( 'video_slider');
                     <div class="section__item">
                         <div class="headline"><?= $second_section['title'] ?></div>
 						<?php if ( ! empty( $second_section['video_link'] ) ) { ?>
-                            <video autoplay loop class="video" src="<?= $second_section['video_link'] ?>"></video>
+                            <video  muted autoplay loop class="video" src="<?= $second_section['video_link'] ?>"></video>
 						<?php } ?>
                     </div>
                     <div class="section__item">
@@ -286,49 +286,65 @@ $video_slider              = get_field( 'video_slider');
                 </section>
 			<?php } ?>
 			<?php if ( ! empty( $quiz_section ) ) { ?>
-                <section class="quiz_section" id="quiz__slider">
+                <section class="quiz_section" id="quiz__section" >
 					<?php if ( ! empty( $quiz_section['main_page'] ) ) { ?>
-                        <div class="main_slide">
+                        <div class="main_slide" id="main_slide">
                             <div class="text__container">
                                 <p class="title"><?= $quiz_section['main_page']['title'] ?></p>
                                 <div class="description"><?= $quiz_section['main_page']['description'] ?></div>
-                                <button class="btn _violetOutline"><?= $quiz_section['main_page']['text_for_start_button'] ?></button>
+                                <button id="startQuiz" class="btn _violetOutline"><?= $quiz_section['main_page']['text_for_start_button'] ?></button>
                             </div>
 
                         </div>
 					<?php } ?>
-                    <div class="swiper-wrapper quiz__slider">
-						<?php foreach ( array_chunk( $quiz_section['questions'], 2, true ) as $index => $pair ): ?>
-                            <div class="swiper-slide">
-								<?php foreach ( $pair as $number => $item ): ?>
-                                <div class="question__wrapper">
-                                    <p class="question">
-                                        <span class="count"><?= $number + 1 ?>/<?= count( $quiz_section['questions'] ) ?>:</span><span><?= $item['question']['title'] ?></span>
-                                    </p>
-                                    <ul class="answers">
-		                                <?php foreach ( $item['question']['answers'] as $answer ): ?>
-                                            <li class="answer"><?= $answer['title'] ?></li>
-		                                <?php endforeach; ?>
-                                    </ul>
+                    <div class="slider__wrapper" id="quiz__slider">
+                        <button class="slider__arrows__prev">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
+                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <button class="slider__arrows__next">
+                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
+                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="swiper-wrapper quiz__slider">
+		                    <?php foreach ( array_chunk( $quiz_section['questions'], 2, true ) as $index => $pair ): ?>
+                                <div class="swiper-slide">
+				                    <?php foreach ( $pair as $number => $item ): ?>
+                                        <div class="question__wrapper">
+                                            <p class="question">
+                                                <span class="count"><?= $number + 1 ?>/<?= count( $quiz_section['questions'] ) ?>:</span><span><?= $item['question']['title'] ?></span>
+                                            </p>
+                                            <ul class="answers">
+							                    <?php foreach ( $item['question']['answers'] as $answer ): ?>
+                                                    <li class="answer"><?= $answer['title'] ?></li>
+							                    <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+				                    <?php endforeach; ?>
                                 </div>
-								<?php endforeach; ?>
-                            </div>
-						<?php endforeach; ?>
-	                    <?php if ( ! empty( $quiz_section['step_with_contact_form'] ) ) { ?>
-                            <div class="swiper-slide __lastStep">
-                                <div class="slide__text">
-                                    <p class="title"><?= $quiz_section['step_with_contact_form']['title'] ?></p>
-                                    <div class="shortDescription"><?= $quiz_section['step_with_contact_form']['short_description'] ?></div>
-                                    <div class="longDescription"><?= $quiz_section['step_with_contact_form']['long_description'] ?></div>
+		                    <?php endforeach; ?>
+		                    <?php if ( ! empty( $quiz_section['step_with_contact_form'] ) ) { ?>
+                                <div class="swiper-slide __lastStep">
+                                    <div class="slide__text">
+                                        <p class="title"><?= $quiz_section['step_with_contact_form']['title'] ?></p>
+                                        <div class="shortDescription"><?= $quiz_section['step_with_contact_form']['short_description'] ?></div>
+                                        <div class="longDescription"><?= $quiz_section['step_with_contact_form']['long_description'] ?></div>
+                                    </div>
+                                    <div class="slide__form">
+					                    <?= do_shortcode($quiz_section['step_with_contact_form']['shortcode_to_contact_form']) ?>
+                                    </div>
                                 </div>
-                                <div class="slide__form">
-	                                <?= do_shortcode($quiz_section['step_with_contact_form']['shortcode_to_contact_form']) ?>
-                                </div>
-                            </div>
-	                    <?php } ?>
+		                    <?php } ?>
+                        </div>
                     </div>
-	                <?php if ( ! empty( $quiz_section['last_step_with_information'] ) ) { ?>
-                        <div class="thanks__information">
+                    <?php if ( ! empty( $quiz_section['last_step_with_information'] ) ) { ?>
+                        <div id="thanks__information" class="thanks__information">
                             <div class="context">
                                 <p class="title"><?=$quiz_section['last_step_with_information']['title']?></p>
                                 <div class="description"><?=$quiz_section['last_step_with_information']['description']?></div>
@@ -339,33 +355,36 @@ $video_slider              = get_field( 'video_slider');
                 </section>
 			<?php } ?>
 	        <?php if ( ! empty( $video_slider ) ) { ?>
-                <section class="video_slider" id="video_slider">
-                    <div class="slider__arrows">
-                        <button class="slider__arrows__prev">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff"
-                                        stroke-width="2"></circle>
-                                <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff"
-                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </button>
-                        <button class="slider__arrows__next">
-                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="30" cy="30" r="29" stroke="#fff" stroke-width="2"/>
-                                <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#fff"
-                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="swiper-wrapper">
-				        <?php foreach ( $video_slider as $slide ): ?>
-                            <div class="swiper-slide">
-                                <video width="220px" height="380px" src="<?=$slide['video_slide']['url'] ?>" muted></video>
+                <section class="video_slider" >
+                    <div class="wrapper__slider" id="video_slider">
+                        <div class="slider__arrows">
+                            <button class="slider__arrows__prev">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2"
+                                            stroke-width="2"></circle>
+                                    <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
+                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                            <button class="slider__arrows__next">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
+                                    <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
+                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="swiper-wrapper">
+                                <?php foreach ( $video_slider as $slide ): ?>
+                                    <div class="swiper-slide">
+                                        <video src="<?=$slide['video_slide']['url'] ?>" muted></video>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
-				        <?php endforeach; ?>
                     </div>
+
                 </section>
 	        <?php } ?>
         </div>
