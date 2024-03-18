@@ -19,9 +19,10 @@ $contact_form_section      = get_field( 'contact_form' );
 $customer_opinions_section = get_field( 'customer_testimonials' );
 $quiz_section              = get_field( 'quiz' );
 $video_slider              = get_field( 'video_slider');
+$our_cases             = get_field( 'our_cases');
 //echo( '<pre>' );
 //
-//print_r( $video_slider );
+//print_r( $our_cases );
 //echo( '</pre>' );
 
 ?>
@@ -204,12 +205,15 @@ $video_slider              = get_field( 'video_slider');
                 </section>
 			<?php } ?>
             <section class="projects">
-                <div class="headline"><?= __( 'Our cases' ) ?></div>
+                <div class="headline"><?= $our_cases['title'] ?></div>
                 <div class="projects__items">
 					<?php while ( $projects_home_posts->have_posts() ) : $projects_home_posts->the_post();
 						get_template_part( 'template-parts/post-item', get_post_type() );
 					endwhile; ?>
                 </div>
+                <?php if ( ! empty( $projects_home_posts->have_posts() ) ) { ?>
+                    <a class="btn _violetOutline" href="<?= $our_cases['link_to_projects_page']['url'] ?>"><?= $our_cases['link_to_projects_page']['title'] ?> </a>
+                <?php } ?>
             </section>
 			<?php if ( ! empty( $prices_section ) ) { ?>
                 <section class="prices_section">

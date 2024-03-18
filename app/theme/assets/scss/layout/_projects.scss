@@ -105,5 +105,14 @@
 
     }
   }
+  .btn{
+    margin: 20px auto auto;
+    @include tablet{
+      margin: 40px auto auto;
+    }
+    @include laptop{
+      margin: 60px auto auto;
+    }
+  }
 }
 
