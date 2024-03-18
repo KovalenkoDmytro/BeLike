@@ -29,6 +29,9 @@ global $redux_demo
                     )
                 );
 	        ?>
+            <div class="newsletter">
+                <?= do_shortcode('[newsletter_form form="1"]')?>
+            </div>
         </div>
         <div class="footer__section __last">
             <div class="keepInTouch"><?=__('Keep in touch')?></div>

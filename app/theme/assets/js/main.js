@@ -59,7 +59,8 @@ toInvoke(() => {
 // text slider on Main page
 toInvoke(() => {
     new Swiper('.home__page #text_slider', {
-        slidesPerView: 1,
+        slidesPerView: 1.2,
+        spaceBetween: 30,
         navigation: {
             nextEl: '.home__page #text_slider .slider__arrows__next',
             prevEl: '.home__page #text_slider .slider__arrows__prev',
@@ -72,7 +73,7 @@ toInvoke(() => {
     new Swiper('.home__page #opinions__slider', {
         loop: true,
         slidesPerView: 2,
-        spaceBetween: 30,
+        spaceBetween: 40,
         navigation: {
             nextEl: '.home__page #opinions__slider .slider__arrows__next',
             prevEl: '.home__page #opinions__slider .slider__arrows__prev',

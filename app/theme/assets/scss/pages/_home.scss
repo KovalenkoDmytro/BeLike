@@ -151,7 +151,7 @@
         }
 
         .prices__item {
-          background-color: violet;
+          background-color: #222;
           padding: 20px;
           border: 1px solid rgba(0, 0, 0, 1);
           max-width: 310px;
@@ -219,7 +219,7 @@
 
     &.contact_form_section {
       overflow: initial;
-      background-color: #ec81ec;
+      background-color: #222;
       box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
       border-radius: 20px;
       padding: 10px 20px;
@@ -328,7 +328,7 @@
         justify-content: space-between;
         align-content: center;
         align-items: center;
-        background: #ec81ec;
+        background: #222;
         box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
         border-radius: 20px;
         position: absolute;
@@ -343,6 +343,7 @@
           padding: 160px 0 140px;
           height: 740px;
         }
+
         &.__hide{
           display: none;
         }
@@ -419,7 +420,7 @@
             box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
             border-radius: 20px;
             padding: 50px;
-            background: #644f64;
+            background: #222;
             @include tablet{
               padding: 60px 55px;
               height: 520px;
@@ -561,7 +562,7 @@
       .thanks__information {
         box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
         border-radius: 20px;
-        background: #644f64;
+        background: #222;
         padding: 50px;
         position: absolute;
         top: 0;

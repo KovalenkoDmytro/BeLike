@@ -1,0 +1,31 @@
+.newsletter{
+  @include tablet{
+    margin-top: 48px;
+  }
+  .newsletter_form{
+    label{
+      display: block;
+      margin-bottom: 18px;
+    }
+    .newsletter_form__item{
+      display: flex;
+      align-content: center;
+      align-items: center;
+      column-gap: 12px;
+      input{
+        width: 300px;
+        resize: none;
+        padding: 10px;
+        border: 1px solid rgba(255, 255, 255, 1);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        outline: none;
+        height: 100%;
+        color: rgba(188, 188, 188, 1);
+        &::placeholder{
+          color: rgba(188, 188, 188, 1);
+        }
+      }
+    }
+  }
+}

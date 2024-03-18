@@ -1,6 +1,6 @@
 .footer{
-  @include laptop{
-    padding: 60px 65px;
+  @include tablet{
+    padding: 60px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -36,7 +36,7 @@
       }
     }
     &.__last{
-      @include laptop{
+      @include tablet{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
