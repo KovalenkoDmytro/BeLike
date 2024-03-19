@@ -1,6 +1,7 @@
 .newsletter{
   @include tablet{
     margin-top: 48px;
+    margin-left: 10px;
   }
   .newsletter_form{
     label{

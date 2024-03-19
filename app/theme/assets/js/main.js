@@ -1,6 +1,6 @@
 //here is a general function to check selector exists and to invoke on choose viewport(mobile: - mobile and tablet devices/ laptop - PC / all - to invoke on all devices)
 const toInvoke = function (callback, view = 'all', selector) {
-    if (document.querySelector(selector) !== null || document.querySelector(selector) !== undefined) {
+    if (document.querySelector(selector) !== null) {
         if (view === 'mobile' && window.innerWidth <= 1280) {
                 callback()
         }
@@ -155,21 +155,31 @@ toInvoke(() => {
 
 
 
-
-
-
-
-
 // slider on PROJECT post pages
-// toInvoke(() => {
-//     new Swiper('#swiper', {
-//         loop: true,
-//         slidesPerView: 5,
-//         spaceBetween: 30,
-//         centeredSlides: true,
-//         navigation: {
-//             nextEl: '.slider__arrows__next',
-//             prevEl: '.slider__arrows__prev',
-//         },
-//     });
-// }, 'all', '#swiper')
+toInvoke(() => {
+    new Swiper('.projectSinglePost__page #swiper', {
+        loop: true,
+        slidesPerView: 5,
+        centeredSlides: true,
+        navigation: {
+            nextEl: '.projectSinglePost__page .slider__arrows__next',
+            prevEl: '.projectSinglePost__page .slider__arrows__prev',
+        },
+    });
+}, 'all', '.projectSinglePost__page #swiper')
+
+//scrolling header on Project post pages
+
+toInvoke(() => {
+    const header = document.querySelector('#header__post');
+    console.log(header)
+    window.addEventListener('scroll', ()=>{
+        if(window.scrollY > 160){
+            header.classList.add('__scrolling')
+        }else {
+            header.classList.remove('__scrolling')
+        }
+    })
+
+
+}, 'all', '.single  #header__post')
