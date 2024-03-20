@@ -10,16 +10,12 @@ $args                = array(
 );
 $our_cases_posts = new WP_Query( $args );
 
-//echo( '<pre>' );
-//
-//print_r( $our_cases );
-//echo( '</pre>' );
 
 ?>
     <main class="our_cases_posts__page">
         <div class="content_wrapper">
             <section class="projects">
-<!--                <div class="headline">--><?php //= $our_cases_posts['title'] ?><!--</div>-->
+	            <?= the_title( '<h1 class="headline pageTitle">', '</h1>' ); ?>
                 <div class="projects__items">
 					<?php while ( $our_cases_posts->have_posts() ) : $our_cases_posts->the_post();
 						get_template_part( 'template-parts/post-item', get_post_type() );
