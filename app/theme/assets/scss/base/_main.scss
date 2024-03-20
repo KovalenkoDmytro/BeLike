@@ -45,16 +45,26 @@ section{
     font-size: 34px;
     line-height: 41px;
   }
+  &.pageTitle{
+    text-align: center;
+    margin: 40px 0;
+    @include tablet{
+      margin: 60px 0 40px;
+    }
+    @include laptop{
+      margin: 80px 0 60px;
+    }
+  }
 }
 
 .content_wrapper{
   margin: auto;
   display: flex;
   flex-direction: column;
-
+  padding: 0 15px;
   @include tablet {
     max-width: 760px;
-    padding: 0 15px;
+
   }
   @include laptop {
     max-width: 1200px;

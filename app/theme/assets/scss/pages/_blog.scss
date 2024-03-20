@@ -1,0 +1,47 @@
+.blog__page{
+  .blog__items{
+    display: grid;
+    row-gap: 40px;
+    @include tablet{
+      grid-template-columns: repeat(3,1fr);
+      column-gap: 40px;
+      row-gap: 60px;
+    }
+    .blog__item{
+      a{
+        display: block;
+
+        .mainLine{
+          font-weight: 400;
+          font-family: $headlines_font;
+          color: $title_lime_color;
+          text-align: left;
+          margin-bottom: 8px;
+          @include tablet{
+            font-size: 22px;
+            line-height: 30.8px;
+          }
+
+        }
+        .image{
+          height: 220px;
+          width: 100%;
+          object-fit: cover;
+          margin-bottom: 20px;
+          @include tablet{
+            margin-bottom: 40px;
+          }
+        }
+        .description{
+          font-weight: 300;
+          text-align: left;
+          color: $white_color;
+          @include tablet{
+            font-size: 17px;
+            line-height: 23.8px;
+          }
+        }
+      }
+    }
+  }
+}
