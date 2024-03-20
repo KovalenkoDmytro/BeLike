@@ -13,7 +13,11 @@
     right: 0;
     z-index: 2;
   }
-
+  &.__contact {
+    .navigation .menu .menu-item a{
+      color: #000000;
+    }
+  }
 
   &.__posts{
     @include tablet{

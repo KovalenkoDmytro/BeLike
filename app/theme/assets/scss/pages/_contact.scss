@@ -1,0 +1,135 @@
+body.page-id-31{
+  background-color: $white_color;
+}
+
+.contact__page{
+  .contact__page_wrapper{
+    section{
+      margin: 0;
+    }
+    @include tablet{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 50px;
+    }
+    @include laptop{
+      column-gap: 135px;
+    }
+    .image{
+      margin-bottom: 20px;
+      position: relative;
+      @include tablet{
+        margin-bottom: 0;
+      }
+      img{
+        max-height: 300px;
+        width: 100%;
+        object-fit: cover;
+        @include tablet{
+          max-height: 500px;
+        }
+        @include laptop{
+          max-height: initial;
+        }
+      }
+      .pageTitle{
+        color: #000000;
+        @include tablet{
+          color: $white_color;
+          margin: 0;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+        }
+        @include laptop{
+          top: 80px;
+        }
+      }
+    }
+    .text{
+      @include tablet{
+        max-width: 410px;
+      }
+      .contact__info{
+        @include laptop{
+          margin-top: 85px;
+        }
+        .title{
+          text-align: center;
+          font-family: $headlines_font;
+          color: $title_violet_color;
+          font-weight: 400;
+          margin-bottom: 23px;
+          font-size: 18px;
+
+          @include tablet{
+            text-align: left;
+            font-size: 22px;
+            line-height: 30.8px;
+            margin-bottom: 25px;
+          }
+          @include laptop{
+            margin-bottom: 43px;
+          }
+
+        }
+        .contacts{
+          margin-bottom: 25px;
+          @include tablet{
+            margin-bottom: 35px;
+          }
+          @include laptop{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            margin-bottom: 75px;
+          }
+          .social__media{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            column-gap: 18px;
+            margin-bottom: 15px;
+            .social__media__item{
+              svg{
+                path{
+                  fill: rgba(24, 24, 24, 1);
+                }
+              }
+            }
+          }
+          .email{
+            a{
+              display: flex;
+              align-content: center;
+              align-items: center;
+              column-gap: 15px;
+              color: rgba(24, 24, 24, 1);
+              @include laptop{
+                font-size: 24px;
+              }
+              svg{
+                path{
+                  fill: rgba(24, 24, 24, 1);
+                }
+              }
+            }
+
+          }
+        }
+      }
+      .contact__form{
+          .wpcf7-form{
+            .form__item{
+              border: 1px solid $button_violet_color;
+              input,textarea{
+                color: rgba(173, 173, 173, 1);
+
+              }
+            }
+          }
+      }
+    }
+  }
+}

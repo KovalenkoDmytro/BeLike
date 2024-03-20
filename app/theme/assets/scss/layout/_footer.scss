@@ -1,4 +1,16 @@
 .footer{
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    z-index: -2;
+    background: #000000;
+  }
   @include tablet{
     padding: 60px 0;
     display: flex;
