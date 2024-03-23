@@ -7,34 +7,67 @@
  * @package dk
  */
 
-get_header();
+get_header( 'posts' );
+$components = get_field( 'post_components' );
 ?>
+    <main class="single-post__page">
+        <div class="content_wrapper">
+            <section class="section __main">
+                <div class="content_wrapper">
+                    <div class="section__context">
+						<?php if ( ! empty( $components['main_section']['main_title'] ) ) { ?>
+                            <h1 class="context__title"><?= $components['main_section']['main_title'] ?></h1>
+						<?php } ?>
 
-	<main id="primary" class="site-main">
+						<?php if ( ! empty( $components['main_section']['subtitle'] ) ) { ?>
+                            <p class="context__subTitle"><?= $components['main_section']['subtitle'] ?></p>
+						<?php } ?>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+						<?php if ( ! empty( $components['main_section']['description'] ) ) { ?>
+                            <div class="context__description"><?= $components['main_section']['description'] ?></div>
+						<?php } ?>
+                    </div>
+                </div>
+            </section>
+			<?php if ( ! empty( $components['image_first'] ) ) { ?>
+                <section class="section __image">
+                    <img class="section__image" src="<?= $components['image_first']['url'] ?>"
+                         alt="<?= $components['image_first']['title'] ?>"/>
+                </section>
+			<?php } ?>
+			<?php if ( ! empty( $components['text_sections_first'] ) ) { ?>
+				<?php foreach ( $components['text_sections_first'] as $text_section ): ?>
+                    <section class="section __text">
+                        <p class="section__title"><?= $text_section['text_section']['title'] ?></p>
+						<?php if ( ! empty( $text_section['text_section']['text'] ) ) { ?>
+                            <div class="context__description">
+								<?= $text_section['text_section']['text'] ?>
+                            </div>
+						<?php } ?>
+                    </section>
 
-			get_template_part( 'template-parts/content', get_post_type() );
+				<?php endforeach; ?>
+			<?php } ?>
+			<?php if ( ! empty( $components['image_second'] ) ) { ?>
+                <section class="section __image">
+                    <img class="section__image" src="<?= $components['image_second']['url'] ?>"
+                         alt="<?= $components['image_second']['title'] ?>"/>
+                </section>
+			<?php } ?>
+			<?php if ( ! empty( $components['text_sections_second'] ) ) { ?>
+				<?php foreach ( $components['text_sections_second'] as $text_section ): ?>
+                    <section class="section __text">
+                        <p class="section__title"><?= $text_section['text_section']['title'] ?></p>
+						<?php if ( ! empty( $text_section['text_section']['text'] ) ) { ?>
+                            <div class="context__description">
+								<?= $text_section['text_section']['text'] ?>
+                            </div>
+						<?php } ?>
+                    </section>
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'dk' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'dk' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
-
+				<?php endforeach; ?>
+			<?php } ?>
+        </div>
+    </main>
 <?php
-get_sidebar();
 get_footer();
