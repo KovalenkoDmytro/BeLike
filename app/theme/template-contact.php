@@ -6,9 +6,6 @@
  */
 get_header('contact');
 $contact__components = get_field( 'contact_components' );
-//echo( '<pre>' );
-//print_r( $contact__components );
-//echo( '</pre>' );
 ?>
     <main class="contact__page">
         <div class="content_wrapper">

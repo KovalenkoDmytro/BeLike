@@ -19,12 +19,22 @@
       }
       &::placeholder{
         color:  rgba(173, 173, 173, 1);
-      ;
       }
     }
+
   }
   .btn{
     width: 100%;
   }
 }
 
+.wpcf7{
+  input[type="file"]{
+    max-height: 30px;
+    min-height: initial;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $title_violet_color;
+  }
+}

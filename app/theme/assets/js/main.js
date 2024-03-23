@@ -183,3 +183,32 @@ toInvoke(() => {
 
 
 }, 'all', '.single  #header__post')
+
+
+
+toInvoke(() => {
+    const thumbnails = document.querySelectorAll('#thumbnails')
+
+    thumbnails.forEach(element =>{
+        new Swiper(element, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.slider__arrows .slider__arrows__next',
+                prevEl: '.slider__arrows .slider__arrows__prev',
+            },
+            breakpoints: {
+                1250: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+                450: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+            }
+        });
+    })
+
+
+}, 'all', '.service__page  #thumbnails')

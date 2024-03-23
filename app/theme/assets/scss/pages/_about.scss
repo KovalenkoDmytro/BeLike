@@ -1,0 +1,201 @@
+.about__page{
+  section{
+    &.main{
+      display: flex;
+      align-items: center;
+      max-width: 710px;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      .mainLine {
+        box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+        font-family: $headlines_font;
+        color: $title_lime_color;
+        font-weight: 700;
+        letter-spacing: 0;
+        text-align: left;
+        margin-bottom: 25px;
+        @include tablet {
+          font-size: 32px;
+          margin-bottom: 40px;
+        }
+        @include laptop {
+          margin-bottom: 50px;
+          font-size: 54px;
+          line-height: 65px;
+        }
+      }
+      .description {
+        font-size: 17px;
+        font-weight: 300;
+        line-height: 24px;
+        letter-spacing: 0;
+        text-align: left;
+
+        @include laptop {
+          font-size: 24px;
+          line-height: initial;
+
+        }
+      }
+    }
+    &.__text{
+
+      display: grid;
+
+      @include tablet{
+        grid-template-columns: 1fr 2.6fr;
+        column-gap: 75px;
+      }
+      .section__item{
+        .description{
+          font-weight: 400;
+          letter-spacing: 0;
+          text-align: left;
+          @include tablet{
+            margin-bottom: 60px;
+          }
+          @include laptop {
+            line-height: 33px;
+            font-size: 24px;
+            margin-bottom: 80px;
+          }
+        }
+        .text{
+          font-weight: 300;
+          text-align: left;
+
+          @include laptop{
+            font-size: 17px;
+            line-height: 23.8px;
+          }
+
+        }
+      }
+
+    }
+    .headline {
+      color: $button_violet_color;
+    }
+    .description__items{
+      padding: 20px;
+      box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      @include tablet{
+        padding: 30px 20px;
+      }
+      @include laptop{
+        padding: 60px 40px;
+      }
+      .title{
+        color: $title_lime_color;
+        font-family: $headlines_font;
+        font-weight: 400;
+        text-align: left;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        @include tablet{
+          font-size: 22px;
+          margin-bottom: 15px;
+        }
+        @include laptop{
+          line-height: 39.2px;
+          font-size: 28px;
+          margin-bottom: 20px;
+        }
+      }
+      ul{
+        list-style: initial;
+        padding-left: 20px;
+        li{
+          margin: 2px 0 ;
+        }
+      }
+    }
+
+    &.text_second_section{
+      .text_thumbnails{
+        display: grid;
+        @include tablet{
+          grid-template-columns: 1fr 1fr;
+          row-gap: 30px;
+          column-gap: 50px;
+        }
+        @include laptop{
+          row-gap: 65px;
+          column-gap: 90px;
+        }
+        .text_thumbnail{
+          .title{
+            font-family: $headlines_font;
+            font-size: 18px;
+            font-weight: 400;
+            text-align: left;
+            color: $title_lime_color;
+            margin-bottom: 12px;
+            @include tablet{
+              font-size: 22px;
+              line-height: 30.8px;
+            }
+          }
+
+        }
+      }
+    }
+    &.text_fourth_section {
+      .description__items{
+        background: initial;
+        border-radius: initial;
+        padding: initial;
+        .title{
+          text-transform: initial;
+          @include tablet{
+            font-size: 18px;
+          }
+          @include laptop{
+            font-size: 22px;
+          }
+        }
+
+      }
+    }
+    &.contact_form_section{
+      overflow: initial;
+      background-color: #000000;
+      box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+      border-radius: 20px;
+      padding: 10px 20px;
+      @include tablet{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 35px;
+        padding: 30px;
+      }
+      @include laptop {
+        column-gap: 80px;
+        padding: 80px 60px;
+      }
+
+      .form__section {
+        &.__image {
+          img {
+            @include tablet {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 35%;
+            }
+            @include laptop{
+              width: initial;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
