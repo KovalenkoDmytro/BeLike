@@ -73,7 +73,7 @@ toInvoke(() => {
     new Swiper('.home__page #opinions__slider', {
         loop: true,
         slidesPerView: 2,
-        spaceBetween: 40,
+        // spaceBetween: 40,
         navigation: {
             nextEl: '.home__page #opinions__slider .slider__arrows__next',
             prevEl: '.home__page #opinions__slider .slider__arrows__prev',
@@ -81,7 +81,7 @@ toInvoke(() => {
         breakpoints: {
             1250: {
                 slidesPerView: 3,
-                spaceBetween: 40,
+                // spaceBetween: 40,
             },
         }
     });

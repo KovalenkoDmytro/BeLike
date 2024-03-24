@@ -110,6 +110,43 @@ $our_cases             = get_field( 'our_cases');
                     </div>
                 </section>
 			<?php } ?>
+	        <?php if ( ! empty( $text_slider ) ) { ?>
+                <section class="text__slider">
+                    <div class="slider__content"  id="text_slider">
+                        <div class="headline">
+                            <p><?= $text_slider['title'] ?></p>
+                            <div class="slider__arrows">
+                                <button class="slider__arrows__prev">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2"
+                                                stroke-width="2"/>
+                                        <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
+                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <button class="slider__arrows__next">
+                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
+                                        <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
+                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="swiper-wrapper">
+					        <?php foreach ( $text_slider['slider'] as $slide ): ?>
+                                <div class="swiper-slide">
+                                    <p class="slide__title"><?= $slide['slide']['title'] ?></p>
+                                    <div class="slide__text"><?= $slide['slide']['text'] ?></div>
+                                </div>
+					        <?php endforeach; ?>
+                        </div>
+                    </div>
+
+                </section>
+	        <?php } ?>
 			<?php if ( ! empty( $services_slider ) ) { ?>
                 <section class="services_slider" id="services_slider">
                     <div class="swiper-wrapper mainSlider">
@@ -167,43 +204,7 @@ $our_cases             = get_field( 'our_cases');
                     </div>
                 </section>
 			<?php } ?>
-			<?php if ( ! empty( $text_slider ) ) { ?>
-                <section class="text__slider">
-                    <div class="slider__content"  id="text_slider">
-                        <div class="headline">
-                            <p><?= $text_slider['title'] ?></p>
-                            <div class="slider__arrows">
-                                <button class="slider__arrows__prev">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2"
-                                                stroke-width="2"/>
-                                        <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
-                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="slider__arrows__next">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
-                                        <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
-                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="swiper-wrapper">
-		                    <?php foreach ( $text_slider['slider'] as $slide ): ?>
-                                <div class="swiper-slide">
-                                    <p class="slide__title"><?= $slide['slide']['title'] ?></p>
-                                    <div class="slide__text"><?= $slide['slide']['text'] ?></div>
-                                </div>
-		                    <?php endforeach; ?>
-                        </div>
-                    </div>
 
-                </section>
-			<?php } ?>
             <section class="projects">
                 <div class="headline"><?= $our_cases['title'] ?></div>
                 <div class="projects__items">
@@ -217,19 +218,22 @@ $our_cases             = get_field( 'our_cases');
             </section>
 			<?php if ( ! empty( $prices_section ) ) { ?>
                 <section class="prices_section">
-                    <div class="section__item">
-                        <div class="headline"><?= $prices_section['title'] ?></div>
+                    <div class="prices_section__wrapper">
+                        <div class="section__item">
+                            <div class="headline"><?= $prices_section['title'] ?></div>
+                        </div>
+                        <div class="prices__items">
+		                    <?php if ( ! empty( $prices_section['text_items'] ) ) { ?>
+			                    <?php foreach ( $prices_section['text_items'] as $slide ): ?>
+                                    <div class="prices__item">
+                                        <h5 class="title"><?= $slide['text_item']['title'] ?></h5>
+                                        <div class="description"><?= $slide['text_item']['description'] ?></div>
+                                    </div>
+			                    <?php endforeach; ?>
+		                    <?php } ?>
+                        </div>
                     </div>
-                    <div class="prices__items">
-						<?php if ( ! empty( $prices_section['text_items'] ) ) { ?>
-							<?php foreach ( $prices_section['text_items'] as $slide ): ?>
-                                <div class="prices__item">
-                                    <h5 class="title"><?= $slide['text_item']['title'] ?></h5>
-                                    <div class="description"><?= $slide['text_item']['description'] ?></div>
-                                </div>
-							<?php endforeach; ?>
-						<?php } ?>
-                    </div>
+
                 </section>
 			<?php } ?>
 			<?php if ( ! empty( $contact_form_section ) ) { ?>
@@ -286,6 +290,11 @@ $our_cases             = get_field( 'our_cases');
                                 <div class="swiper-slide">
                                     <p class="opinion__author"><?= $slide['opinion_item']['author'] ?></p>
                                     <div class="opinion__text"><?= $slide['opinion_item']['text'] ?></div>
+                                    <div class="icon">
+
+
+                                    </div>
+
                                 </div>
 							<?php endforeach; ?>
                         </div>
