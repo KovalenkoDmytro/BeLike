@@ -16,12 +16,30 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    column-gap: 30px;
+  }
+  &.content_wrapper{
+    @media (min-width: 900px) {
+      max-width: 900px;
+    }
+    @include laptop {
+      max-width: 1200px;
+    }
+    @include desktop {
+      max-width: 1310px;
+    }
   }
   .footer__section{
+    .navigation{
+      .menu{
+        flex-wrap: wrap;
+      }
+
+    }
     .contacts{
-      margin-top: 20px;
-      @include laptop{
-        margin-top: 48px;
+      margin-top: 64px;
+      @include tablet{
+
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -32,6 +50,9 @@
         align-content: center;
         align-items: center;
         column-gap: 18px;
+        @include tablet{
+          margin-bottom: 20px;
+        }
         @include laptop{
           margin-bottom: 30px;
         }

@@ -1,4 +1,35 @@
 .blog__page{
+  &:before {
+    content: url("../images/shapes/Vector1.svg");
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    @include tablet {
+      right: -25%;
+      top: -27%;
+    }
+    @include laptop {
+      right: -25%;
+      top: -27%;
+    }
+  }
+  &:after {
+    content: url("../images/shapes/Vector1.svg");
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    @include tablet {
+      bottom: 0;
+      left: -63%;
+    }
+    @include laptop {
+      bottom: 0;
+      left: -33%;
+    }
+  }
+
   .blog__items{
     display: grid;
     row-gap: 40px;

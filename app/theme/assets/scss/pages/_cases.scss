@@ -1,0 +1,19 @@
+.our_cases_posts__page{
+  position: relative;
+  &:before {
+    content: url("../images/shapes/Vector1.svg");
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    @include tablet {
+      right: -65%;
+      top: -53%;
+    }
+    @include laptop {
+      right: -25%;
+      top: -27%;
+    }
+  }
+}
+

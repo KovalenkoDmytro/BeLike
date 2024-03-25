@@ -26,6 +26,13 @@
 
       .section__image {
         width: 100%;
+        @include tablet{
+          min-height: 550px;
+          object-fit: cover;
+        }
+        @include laptop{
+          min-height: initial;
+        }
       }
     }
 
@@ -164,6 +171,28 @@
       @include laptop {
         font-size: 17px;
         line-height: 24px;
+      }
+    }
+  }
+  .section.__slider{
+    position: relative;
+    &:before{
+      bottom: -105%;
+      right: -85%;
+    }
+    &:after {
+      content: url("../images/shapes/Vector1.svg");
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      @include tablet {
+        left: -73%;
+        top: -71%;
+      }
+      @include laptop {
+        left: -22%;
+        top: -86%;
       }
     }
   }
