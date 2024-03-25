@@ -12,6 +12,7 @@
   display: flex;
   justify-content: flex-end;
   column-gap: 10px;
+  z-index: 99;
   @include laptop{
     column-gap: 20px;
   }
