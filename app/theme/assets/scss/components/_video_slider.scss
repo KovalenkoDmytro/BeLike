@@ -1,6 +1,20 @@
 .video_slider,
 .projectSinglePost__page .section.__slider{
-  overflow: hidden;
+  &:before{
+    content: url("../images/shapes/Vector_video_slider.svg");
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    @include tablet{
+      bottom: -57%;
+      right: -52%;
+    }
+    @include laptop{
+      bottom: -57%;
+      right: -52%;
+    }
+  }
   @include tablet{
     width: 100vw;
     left: 50%;

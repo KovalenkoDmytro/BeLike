@@ -17,7 +17,6 @@ body{
 
 section{
   position: relative;
-  overflow: hidden;
   @include tablet{
     margin: 40px 0;
   }
@@ -64,7 +63,6 @@ section{
   padding: 0 15px;
   @include tablet {
     max-width: 760px;
-
   }
   @include laptop {
     max-width: 1200px;

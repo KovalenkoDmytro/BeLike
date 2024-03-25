@@ -27,6 +27,9 @@
     letter-spacing: 0;
     text-align: center;
     box-shadow: 4px 5px 32px 0 rgba(222, 173, 251, 0.8);
+    @include tablet{
+      padding: 12px 28px;
+    }
     @include laptop{
       padding: 18px 28px;
     }

@@ -95,13 +95,11 @@ $our_cases             = get_field( 'our_cases');
             </section>
 			<?php if ( ! empty( $second_section ) ) { ?>
                 <section class="secondSection">
-                    <div class="section__item">
-                        <div class="headline"><?= $second_section['title'] ?></div>
-						<?php if ( ! empty( $second_section['video_link'] ) ) { ?>
+                    <div class="headline"><?= $second_section['title'] ?></div>
+                    <div class="content__item">
+	                    <?php if ( ! empty( $second_section['video_link'] ) ) { ?>
                             <video  muted autoplay loop class="video" src="<?= $second_section['video_link'] ?>"></video>
-						<?php } ?>
-                    </div>
-                    <div class="section__item">
+	                    <?php } ?>
 						<?php if ( ! empty( $second_section['description'] ) ) { ?>
                             <div class="item__description">
 								<?= $second_section['description'] ?>
@@ -148,60 +146,77 @@ $our_cases             = get_field( 'our_cases');
                 </section>
 	        <?php } ?>
 			<?php if ( ! empty( $services_slider ) ) { ?>
-                <section class="services_slider" id="services_slider">
-                    <div class="swiper-wrapper mainSlider">
-						<?php foreach ( $services_slider['slider'] as $slide ): ?>
-                            <div class="swiper-slide">
-                                <img class="image" src="<?= $slide['slide']['main_image']['url'] ?>" alt="picture">
-                                <div class="slide__content">
-                                    <div class="content__text">
-                                        <p class="slide__title"><?= $slide['slide']['main_title'] ?></p>
-                                        <div class="slide__description"><?= $slide['slide']['description'] ?></div>
+                <section class="services_slider" >
+                    <div id="services_slider" class="slider__container">
+                        <div class="swiper-wrapper mainSlider">
+		                    <?php foreach ( $services_slider['slider'] as $slide ): ?>
+			                    <?php if (empty($slide['slide']['main_image'])) : ?>
+                                    <div class="swiper-slide __empty">
+                                        <div class="content">
+                                            <div class="headline"><?= $slide['slide']['main_title'] ?></div>
+                                            <div class="description"><?= $slide['slide']['description'] ?></div>
+                                        </div>
                                     </div>
-									<?php if ( ! empty( $services_slider['slides_button'] ) ) { ?>
-                                        <a class="btn _whiteOutline" target="_blank"
-                                           href="<?= $services_slider['slides_button']['url'] ?>"><?= $services_slider['slides_button']['title'] ?? '' ?> </a>
-									<?php } ?>
+
+			                    <?php else : ?>
+                                    <div class="swiper-slide">
+                                        <img class="image" src="<?= $slide['slide']['main_image']['url'] ?>" alt="picture">
+                                        <div class="slide__content">
+                                            <div class="content__text">
+                                                <p class="slide__title"><?= $slide['slide']['main_title'] ?></p>
+                                                <div class="slide__description"><?= $slide['slide']['description'] ?></div>
+                                            </div>
+						                    <?php if ( ! empty( $services_slider['slides_button'] ) ) { ?>
+                                                <a class="btn _whiteOutline" target="_blank"
+                                                   href="<?= $services_slider['slides_button']['url'] ?>"><?= $services_slider['slides_button']['title'] ?? '' ?> </a>
+						                    <?php } ?>
+                                        </div>
+                                    </div>
+			                    <?php endif;  ?>
+		                    <?php endforeach; ?>
+                        </div>
+                        <div class="slider__navigation">
+                            <div id="slider-thumbnail" class="thumbnails">
+                                <div class="swiper-wrapper">
+				                    <?php foreach ( $services_slider['slider'] as $slide ): ?>
+					                    <?php if (empty($slide['slide']['image_thumbnail'])) : ?>
+                                            <div class="swiper-slide __empty"></div>
+					                    <?php else : ?>
+                                            <div class="swiper-slide">
+                                                <img class="image" src="<?= $slide['slide']['image_thumbnail']['url'] ?>"
+                                                     alt="picture">
+                                                <p class="slide__title"><?= $slide['slide']['text_thumbnail_'] ?></p>
+                                            </div>
+					                    <?php endif; ?>
+				                    <?php endforeach; ?>
                                 </div>
                             </div>
-						<?php endforeach; ?>
-                    </div>
-                    <div class="slider__navigation">
-                        <div id="slider-thumbnail" class="thumbnails">
-                            <div class="swiper-wrapper">
-								<?php foreach ( $services_slider['slider'] as $slide ): ?>
-                                    <div class="swiper-slide">
-                                        <img class="image" src="<?= $slide['slide']['image_thumbnail']['url'] ?>"
-                                             alt="picture">
-                                        <p class="slide__title"><?= $slide['slide']['text_thumbnail_'] ?></p>
-                                    </div>
-								<?php endforeach; ?>
+                            <div class="navigation__wrapper">
+                                <div class="slider__arrows">
+                                    <button class="slider__arrows__prev">
+                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff"
+                                                    stroke-width="2"></circle>
+                                            <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff"
+                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
+                                    <button class="slider__arrows__next">
+                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="30" cy="30" r="29" stroke="#fff" stroke-width="2"/>
+                                            <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#fff"
+                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div id="swiper-pagination" class="swiper-pagination"></div>
+                                <div id="numberSlides" class="slider__index">0</div>
                             </div>
                         </div>
-                        <div class="navigation__wrapper">
-                            <div class="slider__arrows">
-                                <button class="slider__arrows__prev">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff"
-                                                stroke-width="2"></circle>
-                                        <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff"
-                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </button>
-                                <button class="slider__arrows__next">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="30" cy="30" r="29" stroke="#fff" stroke-width="2"/>
-                                        <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#fff"
-                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div id="swiper-pagination" class="swiper-pagination"></div>
-                            <div id="numberSlides" class="slider__index">0</div>
-                        </div>
                     </div>
+
                 </section>
 			<?php } ?>
 
@@ -291,6 +306,25 @@ $our_cases             = get_field( 'our_cases');
                                     <p class="opinion__author"><?= $slide['opinion_item']['author'] ?></p>
                                     <div class="opinion__text"><?= $slide['opinion_item']['text'] ?></div>
                                     <div class="icon">
+                                        <svg width="230" height="215" viewBox="0 0 230 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g filter="url(#filter0_bd_592_5899)">
+                                                <path d="M103.26 100.14C104.287 98.6733 105.313 96.9867 106.34 95.08C107.367 93.1733 108.173 91.34 108.76 89.58C109.493 87.6733 110.08 85.9133 110.52 84.3C110.96 82.6867 111.18 81.3667 111.18 80.34C111.18 79.6067 111.033 78.9467 110.74 78.36C110.447 77.6267 109.713 77.26 108.54 77.26C105.313 77.26 102.893 75.94 101.28 73.3C99.8133 70.66 99.08 67.6533 99.08 64.28C99.08 60.32 100.253 57.0933 102.6 54.6C105.093 52.1067 108.613 50.86 113.16 50.86C124.013 50.86 129.44 56.0667 129.44 66.48C129.44 69.4133 128.927 72.5667 127.9 75.94C127.02 79.3133 125.773 82.76 124.16 86.28C122.693 89.6533 121.007 92.88 119.1 95.96C117.193 99.04 115.36 101.753 113.6 104.1L103.26 100.14ZM64.54 100.14C65.5667 98.6733 66.5933 96.9867 67.62 95.08C68.6467 93.1733 69.4533 91.34 70.04 89.58C70.7733 87.6733 71.36 85.9133 71.8 84.3C72.24 82.6867 72.46 81.3667 72.46 80.34C72.46 79.6067 72.3133 78.9467 72.02 78.36C71.7267 77.6267 70.9933 77.26 69.82 77.26C66.5933 77.26 64.1733 75.94 62.56 73.3C61.0933 70.66 60.36 67.6533 60.36 64.28C60.36 60.32 61.5333 57.0933 63.88 54.6C66.3733 52.1067 69.8933 50.86 74.44 50.86C85.2933 50.86 90.72 56.0667 90.72 66.48C90.72 69.4133 90.2067 72.5667 89.18 75.94C88.3 79.3133 87.0533 82.76 85.44 86.28C83.9733 89.6533 82.2867 92.88 80.38 95.96C78.4733 99.04 76.64 101.753 74.88 104.1L64.54 100.14Z" fill="#9359F2"/>
+                                            </g>
+                                            <defs>
+                                                <filter id="filter0_bd_592_5899" x="0.360352" y="0.860352" width="229.08" height="213.239" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="5"/>
+                                                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_592_5899"/>
+                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                    <feOffset dx="20" dy="30"/>
+                                                    <feGaussianBlur stdDeviation="40"/>
+                                                    <feComposite in2="hardAlpha" operator="out"/>
+                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+                                                    <feBlend mode="normal" in2="effect1_backgroundBlur_592_5899" result="effect2_dropShadow_592_5899"/>
+                                                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_592_5899" result="shape"/>
+                                                </filter>
+                                            </defs>
+                                        </svg>
 
 
                                     </div>

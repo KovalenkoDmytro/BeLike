@@ -1,16 +1,25 @@
 .home{
-  position: relative;
-  &:before{
-    content: url("../images/shapes/Vector1.svg");
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
   .home__page {
     section {
 
       &.main {
         overflow: initial;
+        position: relative;
+        &:before{
+          content: url("../images/shapes/Vector1.svg");
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: -1;
+          @include tablet{
+            right: -100%;
+            top: -150%;
+          }
+          @include laptop{
+            right: -25%;
+            top: -100%;
+          }
+        }
         @include tablet {
           display: flex;
           justify-content: space-between;
@@ -113,20 +122,27 @@
       }
 
       &.secondSection {
-        @include tablet {
-          display: grid;
-          grid-template-columns: 1fr 1.6fr;
-          column-gap: 75px;
-        }
+        .content__item{
+            display: grid;
 
-        .section__item {
+          @include tablet{
+            grid-template-columns: 1fr 1fr;
+            column-gap: 45px;
+          }
+          @include laptop{
+            grid-template-columns: 1fr 1.6fr;
+            column-gap: 75px;
+          }
           .video {
-            max-height: 450px;
+
             @include tablet{
               width: 100%;
               object-fit: cover;
               object-position: top;
-              min-height: 548px;
+
+            }
+            @include laptop{
+              height: 548px;
             }
           }
 
@@ -143,24 +159,47 @@
         }
 
 
+
+
+
+
       }
 
       &.prices_section {
-        width: 100vw;
-        left: 50%;
-        margin-left: -50vw;
         position: relative;
-        overflow: initial;
-
+        &:before{
+          content: url("../images/shapes/Vector_prices_section.svg");
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          @include tablet{
+            left: -45%;
+            top: -5%;
+          }
+          @include laptop{
+            left: -38%;
+            top: -89%;
+          }
+        }
+        &:after{
+          content: url("../images/shapes/vecteezy_abstract-colored-glass-.svg");
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          @include tablet{
+            left: -15%;
+            top: 30%;
+          }
+          @include laptop{
+            left: -15%;
+            top: 30%;
+          }
+        }
         .prices_section__wrapper{
           margin: auto;
           position: relative;
-          &:before{
-            content: url("../images/shapes/Vector2.svg");
-            position: absolute;
-            top: 0;
-            left: 0;
-          }
           @include tablet {
             display: grid;
             grid-template-columns: 20% 80%;
@@ -325,13 +364,28 @@
           font-weight: 700;
           line-height: 23.8px;
           text-align: center;
+          box-shadow: initial;
 
         }
       }
 
       &.customer_opinions_section {
+        &:before{
+          content: url("../images/shapes/Vector_customer_testimonials.svg");
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          @include tablet{
+            left: -95%;
+            top: -39%;
+          }
+          @include laptop{
+            left: -52%;
+            top: -14%;
+          }
+        }
         .opinions {
-
           .swiper-slide {
             position: relative;
             display: flex;
@@ -353,7 +407,13 @@
               transform: scale(1.2);
               margin: 0 50px;
             }
-
+            .icon{
+              position: absolute;
+              bottom: -14px;
+              width: 90px;
+              height: 90px;
+              right: 56px;
+            }
             .opinion__author {
               font-family: $headlines_font;
               font-size: 17px;
@@ -379,6 +439,24 @@
       }
 
       &.quiz_section {
+        position: relative;
+        box-shadow: 20px 30px 80px 0 #000;
+        border-radius: 20px;
+        &:before{
+          content: url("../images/shapes/Vector_quiz.svg");
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: -1;
+          @include tablet{
+            right: -95%;
+            top: -39%;
+          }
+          @include laptop{
+            right: -52%;
+            top: 19%;
+          }
+        }
         .main_slide {
           display: flex;
           flex-direction: column;
@@ -386,12 +464,15 @@
           align-content: center;
           align-items: center;
           background: #222;
-          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+          //box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
           border-radius: 20px;
           position: absolute;
           z-index: 3;
           left: 0;
           right: 0;
+          background: url("../images/QuizBackground.webp");
+          background-position: center;
+          background-size: cover;
           @include tablet{
             padding: 80px 0 70px;
             height: 520px;
@@ -399,6 +480,21 @@
           @include laptop {
             padding: 160px 0 140px;
             height: 740px;
+          }
+          &:before{
+            content: url("../images/shapes/Vector_quiz.svg");
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            @include tablet{
+              right: -66%;
+              top: -60%;
+            }
+            @include laptop{
+              right: -66%;
+              top: -60%;
+            }
           }
 
           &.__hide{
@@ -463,6 +559,8 @@
               line-height: 30.8px;
               text-align: center;
               padding: 24px 48px;
+              z-index: 9;
+              position: relative;
             }
           }
 
@@ -486,10 +584,10 @@
           }
           .quiz__slider {
             .swiper-slide {
-              box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
               border-radius: 20px;
               padding: 50px;
-              background: #222;
+              background: url("../images/QuizBackground.webp") center;
+              background-size: cover;
               @include tablet{
                 padding: 60px 55px;
                 height: 520px;
@@ -621,15 +719,22 @@
                   }
                 }
 
-
+                .btn{
+                  font-family: $headlines_font;
+                  font-size: 17px;
+                  font-weight: 700;
+                  line-height: 23.8px;
+                  text-align: center;
+                  text-shadow: 1px 1px 10px #9359f2;
+                }
               }
             }
           }
         }
         .thanks__information {
-          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+          background: url("../images/QuizBackground.webp") center;
+          background-size: cover;
           border-radius: 20px;
-          background: #222;
           padding: 50px;
           position: absolute;
           top: 0;

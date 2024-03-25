@@ -1,197 +1,301 @@
-.services_slider{
+.services_slider {
   position: relative;
+  width: 100vw;
+  left: 50%;
+  margin-left: -50vw;
+  @media (min-width: 1960px) {
+    width: initial;
+    left: initial;
+    margin-left: initial;
+  }
 
-  .mainSlider{
-    .swiper-slide{
-      position: relative;
-      .image{
-        @include tablet{
-          height: 530px;
-          width: 100%;
-          object-fit: cover;
-        }
-        @include laptop{
-          height: 850px;
-
-        }
-      }
-      .slide__content{
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        @include tablet{
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          width: 30%;
-          left: 30px;
-          bottom: 0;
-          height: 258px;
-          overflow: hidden;
-          margin-bottom: 35px;
-        }
-
-        @include laptop{
-          max-width: 410px;
-          width: 30%;
-          left: 65px;
-          height: 340px;
-
-          margin-bottom: 155px;
-        }
-
-        .slide__title{
-          font-family: $headlines_font;
-          letter-spacing: -0.02em;
-          text-align: left;
-          color: $title_lime_color;
-          margin-bottom: 10px;
-          font-size: 17px;
-          font-weight: 600;
-          @include tablet{
-            font-size: 20px;
-            margin-bottom: 15px;
-          }
-          @include laptop{
-            font-weight: 700;
-            font-size: 34px;
-            line-height: 41px;
-            margin-bottom: 20px;
-          }
-        }
-        .slide__description{
-          color: $white_color;
-          font-weight: 300;
-          letter-spacing: 0;
-          text-align: left;
-          @include laptop{
-            font-size: 17px;
-            font-weight: 300;
-            line-height: 24px;
-          }
-        }
-        .btn{
-          width: 100%;
-          font-weight: 500;
-          font-size: 15px;
-          line-height: 1.3;
-          @include laptop{
-            width: max-content;
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: 0;
-            padding: 10px 25px;
-            line-height: initial;
-          }
-        }
-      }
-
+  &:before {
+    content: url("../images/shapes/Vector_services_slider.svg");
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    @include tablet {
+      left: -55%;
+      top: -49%;
+    }
+    @include laptop {
+      left: -35%;
+      top: -49%;
+    }
+    @media (min-width: 1960px) {
+      left: -55%;
+      top: -49%;
     }
   }
 
-  .slider__navigation{
-    @include tablet{
-      width: 55%;
-      position: absolute;
-      right: 30px;
-      bottom: 30px;
-    }
+  .slider__container {
+    overflow: hidden;
 
-    @include laptop{
-      bottom: 55px;
-      right: 65px;
-    }
-    .thumbnails{
-      overflow: hidden;
-      margin-bottom: 35px;
-      .swiper-wrapper{
-        .swiper-slide{
-          position: relative;
-          border-radius: 10px;
-          cursor: pointer;
-          .image{
-            border-radius: 10px;
-            @include tablet{
-              height: 180px;
-              width: 100%;
-              object-fit: cover;
+    .mainSlider {
+      align-content: initial;
+      align-items: initial;
+
+      .swiper-slide {
+        position: relative;
+        height: 100%;
+
+        &.__empty {
+          .content {
+            display: grid;
+            grid-template-columns: 1fr minmax(50%, 790px);
+            margin: auto;
+            @include tablet {
+              padding: 0 30px;
+              grid-template-columns: minmax(auto, 30%) minmax(50%, 790px);
+              column-gap: 10px;
             }
-            @include laptop{
-              height: 340px;
+            @include laptop {
+              grid-template-columns: 1fr minmax(50%, 790px);
+              padding: initial;
+              max-width: 1200px;
+            }
+            @media (min-width: 1960px) {
+              grid-template-columns: 1fr minmax(50%, 732px);
+            }
+
+            .description {
+              @include tablet {
+                font-size: 19px;
+              }
+              @include laptop {
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 33.6px;
+                text-align: left;
+              }
             }
           }
-          .slide__title{
-            position: absolute;
+
+
+        }
+
+        .image {
+          font-size: 0;
+          @include tablet {
+            height: 730px;
+            width: 100%;
+            object-fit: cover;
+          }
+          @include laptop {
+            height: 950px;
+          }
+          @media (min-width: 1960px) {
+            height: 850px;
+          }
+        }
+
+        .slide__content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 26%;
+            left: 30px;
             bottom: 0;
-            left: 0;
+            height: 280px;
+            overflow: hidden;
+            margin-bottom: 112px;
+          }
+
+          @include laptop {
+            max-width: 410px;
+            width: 30%;
+            left: 65px;
+            height: 340px;
+            margin-bottom: 155px;
+          }
+
+          @media (min-width: 1960px) {
+            max-width: 410px;
+            width: 30%;
+            left: 65px;
+            height: 340px;
+            margin-bottom: 155px;
+          }
+
+          .slide__title {
             font-family: $headlines_font;
+            letter-spacing: -0.02em;
+            text-align: left;
+            color: $title_lime_color;
+            margin-bottom: 10px;
+            font-size: 17px;
             font-weight: 600;
+            text-transform: uppercase;
+            @include tablet {
+              font-size: 20px;
+              margin-bottom: 15px;
+            }
+            @include laptop {
+              font-weight: 700;
+              font-size: 34px;
+              line-height: 41px;
+              margin-bottom: 20px;
+            }
+          }
+
+          .slide__description {
+            color: $white_color;
+            font-weight: 300;
             letter-spacing: 0;
             text-align: left;
-            padding: 20px 15px;
-            font-size: 12px;
-            @include tablet{
-              line-height: 1.3;
-            }
-            @include laptop{
+            @include laptop {
               font-size: 17px;
+              font-weight: 300;
               line-height: 24px;
-              width: 75%;
-              font-weight: 700;
             }
+          }
 
+          .btn {
+            width: 100%;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 10px $white_color;
+            @include laptop {
+              width: max-content;
+              font-size: 17px;
+              font-weight: 700;
+              letter-spacing: 0;
+              padding: 10px 25px;
+              line-height: initial;
+            }
           }
         }
+
       }
 
 
     }
-  }
+
+    .slider__navigation {
+      @include tablet {
+        width: 65%;
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
+      }
+
+      @include laptop {
+        width: 60%;
+        bottom: 55px;
+        right: 65px;
+      }
+      @media (min-width: 1960px) {
+        width: 55%;
+      }
+
+      .thumbnails {
+        overflow: hidden;
+        margin-bottom: 35px;
+
+        .swiper-wrapper {
+          .swiper-slide {
+            position: relative;
+            border-radius: 10px;
+            cursor: pointer;
+
+            &.__empty {
+              display: none;
+            }
+
+            .image {
+              border-radius: 10px;
+              @include tablet {
+                height: 280px;
+                width: 100%;
+                object-fit: cover;
+              }
+              @include laptop {
+                height: 340px;
+              }
+            }
+
+            .slide__title {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              font-family: $headlines_font;
+              font-weight: 600;
+              letter-spacing: 0;
+              text-align: left;
+              padding: 20px 15px;
+              font-size: 12px;
+              @include tablet {
+                font-size: 17px;
+                line-height: 24px;
+              }
+              @include laptop {
+                width: 75%;
+                font-weight: 700;
+              }
+
+            }
+          }
+        }
 
 
-  .navigation__wrapper{
-    position: relative;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    flex-direction: row;
-    column-gap: 20px;
-    @include laptop{
-      column-gap: 40px;
+      }
     }
-    .swiper-pagination{
+
+    .navigation__wrapper {
       position: relative;
-      background-color: $white_color;
-      border-radius: 5px;
-      .swiper-pagination-progressbar-fill{
-        background-color: $button_lime_color;
-        border-radius: 5px;
+      display: flex;
+      align-content: center;
+      align-items: center;
+      flex-direction: row;
+      column-gap: 20px;
+      @include laptop {
+        column-gap: 40px;
       }
-    }
-    .slider__arrows{
-      z-index: 2;
-      button{
-        @include laptop{
-          width: 60px;
+
+      .swiper-pagination {
+        position: relative;
+        background-color: $white_color;
+        border-radius: 5px;
+
+        .swiper-pagination-progressbar-fill {
+          background-color: $button_lime_color;
+          border-radius: 5px;
+        }
+      }
+
+      .slider__arrows {
+        z-index: 2;
+
+        button {
+          @include laptop {
+            width: 60px;
+          }
+
+        }
+      }
+
+      .slider__index {
+        z-index: 2;
+        font-family: $headlines_font;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 700;
+        letter-spacing: 0;
+        text-align: right;
+        @include tablet {
+          font-size: 34px;
+        }
+        @include laptop {
+          font-size: 54px;
+          line-height: 65px;
         }
 
       }
-    }
-    .slider__index{
-      z-index: 2;
-      font-family: $headlines_font;
-      color: rgba(255, 255, 255, 0.5);
-      font-weight: 700;
-      letter-spacing: 0;
-      text-align: right;
-      @include tablet{
-        font-size: 34px;
-      }
-      @include laptop{
-        font-size: 54px;
-        line-height: 65px;
-      }
-
     }
   }
 }

@@ -45,10 +45,10 @@ toInvoke(() => {
         on: {
             slideChange: function (slider) {
                 if((slider.realIndex + 1) < 10){
-                    slideCountNumber.innerHTML = `0${(slider.realIndex + 1)}`;
+                    slideCountNumber.innerHTML = `0${(slider.realIndex)}`;
                 }
                 else {
-                    slideCountNumber.innerHTML = (slider.realIndex + 1);
+                    slideCountNumber.innerHTML = (slider.realIndex);
                 }
             },
         },
@@ -73,7 +73,6 @@ toInvoke(() => {
     new Swiper('.home__page #opinions__slider', {
         loop: true,
         slidesPerView: 2,
-        // spaceBetween: 40,
         navigation: {
             nextEl: '.home__page #opinions__slider .slider__arrows__next',
             prevEl: '.home__page #opinions__slider .slider__arrows__prev',
@@ -81,7 +80,6 @@ toInvoke(() => {
         breakpoints: {
             1250: {
                 slidesPerView: 3,
-                // spaceBetween: 40,
             },
         }
     });
@@ -209,6 +207,4 @@ toInvoke(() => {
             }
         });
     })
-
-
 }, 'all', '.service__page  #thumbnails')
