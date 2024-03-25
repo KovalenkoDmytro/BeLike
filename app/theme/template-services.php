@@ -11,9 +11,6 @@ $args                = array(
     'posts_per_page' => 3,
 );
 $our_cases_posts = new WP_Query( $args );
-//echo( '<pre>' );
-//print_r( $our_cases_posts );
-//echo( '</pre>' );
 ?>
     <main class="service__page">
         <div class="content_wrapper">
@@ -28,12 +25,13 @@ $our_cases_posts = new WP_Query( $args );
                 </section>
 			<?php } ?>
 			<?php if ( ! empty( $components['thimbnail_sections'] ) ) { ?>
-				<?php foreach ( $components['thimbnail_sections'] as $thumbnailSection ): ?>
-                    <section id="thumbnails" class="thumbnail_sections">
-                        <div class="navigation__wrapper">
-	                        <?php if ( ! empty( $thumbnailSection['title'] ) ) { ?>
-                                <p class="title"><?= $thumbnailSection['title'] ?></p>
-	                        <?php } ?>
+                <section class="thumbnail_sections__wrapper">
+	                <?php foreach ( $components['thimbnail_sections'] as $thumbnailSection ): ?>
+                        <section id="thumbnails" class="thumbnail_sections">
+                            <div class="navigation__wrapper">
+				                <?php if ( ! empty( $thumbnailSection['title'] ) ) { ?>
+                                    <p class="title"><?= $thumbnailSection['title'] ?></p>
+				                <?php } ?>
 
                                 <div class="slider__arrows">
                                     <button class="slider__arrows__prev" tabindex="0" aria-label="Previous slide"
@@ -56,38 +54,40 @@ $our_cases_posts = new WP_Query( $args );
                                         </svg>
                                     </button>
                                 </div>
-                        </div>
+                            </div>
 
 
 
-						<?php if ( ! empty( $thumbnailSection['thimbnails'] ) ) { ?>
-                            <div class="thumbnail__items swiper-wrapper">
-								<?php foreach ( $thumbnailSection['thimbnails'] as $thumbnail ): ?>
-                                    <div class="thumbnail__item swiper-slide">
-                                        <div class="text__content">
-	                                        <?php if ( ! empty( $thumbnail['title'] ) ) { ?>
-                                                <p class="title"><?= $thumbnail['title'] ?></p>
-	                                        <?php } ?>
-	                                        <?php if ( ! empty( $thumbnail['short_description'] ) ) { ?>
-                                                <div class="description"><?= $thumbnail['short_description'] ?></div>
-	                                        <?php } ?>
-                                        </div>
+			                <?php if ( ! empty( $thumbnailSection['thimbnails'] ) ) { ?>
+                                <div class="thumbnail__items swiper-wrapper">
+					                <?php foreach ( $thumbnailSection['thimbnails'] as $thumbnail ): ?>
+                                        <div class="thumbnail__item swiper-slide">
+                                            <div class="text__content">
+								                <?php if ( ! empty( $thumbnail['title'] ) ) { ?>
+                                                    <p class="title"><?= $thumbnail['title'] ?></p>
+								                <?php } ?>
+								                <?php if ( ! empty( $thumbnail['short_description'] ) ) { ?>
+                                                    <div class="description"><?= $thumbnail['short_description'] ?></div>
+								                <?php } ?>
+                                            </div>
 
 
-										<?php if ( ! empty( $thumbnail['image'] ) ) { ?>
+							                <?php if ( ! empty( $thumbnail['image'] ) ) { ?>
                                                 <div class="image__wrapper">
                                                     <img src="<?= $thumbnail['image']['url'] ?>"
                                                          alt="<?= $thumbnail['image']['title'] ?>">
                                                 </div>
 
-										<?php } ?>
-                                    </div>
+							                <?php } ?>
+                                        </div>
 
-								<?php endforeach; ?>
-                            </div>
-						<?php } ?>
-                    </section>
-				<?php endforeach; ?>
+					                <?php endforeach; ?>
+                                </div>
+			                <?php } ?>
+                        </section>
+	                <?php endforeach; ?>
+                </section>
+
 			<?php } ?>
             <section class="projects">
 		        <?= the_title( '<h1 class="headline pageTitle">', '</h1>' ); ?>

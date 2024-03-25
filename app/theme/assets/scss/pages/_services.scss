@@ -23,90 +23,130 @@
         }
       }
     }
-    &.thumbnail_sections{
-      .navigation__wrapper{
-        display: flex;
-        align-content:center ;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 20px;
-        @include tablet{
-          margin-bottom: 40px;
-        }
-        @include laptop{
-          margin-bottom: 60px;
-        }
-        .title{
-          color: $title_violet_color;
-          font-family: $headlines_font;
-          font-weight: 400;
-          text-align: left;
-          font-size: 18px;
+    &.thumbnail_sections__wrapper{
+      .thumbnail_sections{
 
-          text-transform: uppercase;
+        position: relative;
+
+        &:nth-child(4n+2){
+          &:before {
+            content: url("../images/shapes/Vector_ourServices1.svg");
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            @include tablet {
+              left: -113%;
+              top: -5%;
+            }
+            @include laptop {
+              left: -50%;
+              top: -165%;
+            }
+          }
+        }
+        &:nth-child(4n+4){
+          &:before {
+            content: url("../images/shapes/Vector_ourServices1.svg");
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            @include tablet {
+              right: -124%;
+              top: -57%;
+            }
+            @include laptop {
+              right: -50%;
+              top: -165%;
+            }
+          }
+        }
+        .navigation__wrapper{
+          display: flex;
+          align-content:center ;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 20px;
           @include tablet{
-            font-size: 22px;
-
+            margin-bottom: 40px;
           }
           @include laptop{
-            line-height: 39.2px;
-            font-size: 28px;
+            margin-bottom: 60px;
+          }
+          .title{
+            color: $title_violet_color;
+            font-family: $headlines_font;
+            font-weight: 400;
+            text-align: left;
+            font-size: 18px;
 
+            text-transform: uppercase;
+            @include tablet{
+              font-size: 22px;
+
+            }
+            @include laptop{
+              line-height: 39.2px;
+              font-size: 28px;
+
+            }
           }
         }
-      }
-      .thumbnail__items{
-        .thumbnail__item{
-          background: rgba(24, 24, 24, 1);
-          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
-          border-radius: 20px;
-          display: flex;
-          flex-direction: column;
-          align-content: center;
-          justify-content: space-between;
-          overflow: hidden;
-          min-height: 290px;
-          @include tablet{
-            height: 360px;
-
-          }
-          .image__wrapper{
+        .thumbnail__items{
+          .thumbnail__item{
+            background: rgba(24, 24, 24, 1);
+            box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+            border-radius: 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: auto;
-            img{
-              height: 200px;
+            flex-direction: column;
+            align-content: center;
+            justify-content: space-between;
+            overflow: hidden;
+            min-height: 290px;
+            @include tablet{
+              height: 360px;
 
             }
-          }
+            .image__wrapper{
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-bottom: auto;
+              img{
+                height: 200px;
 
-          .text__content{
-            padding: 20px;
-            .title{
-              font-family: $headlines_font;
-              font-size: 18px;
-              font-weight: 400;
-              text-align: left;
-              margin-bottom: 8px;
-              @include tablet{
-                font-size: 22px;
-                line-height: 30.8px;
               }
             }
-            .description{
-              font-weight: 300;
-              text-align: left;
-              @include tablet{
-                font-size: 17px;
-                line-height: 23.8px;
-              }
 
+            .text__content{
+              padding: 20px;
+              .title{
+                font-family: $headlines_font;
+                font-size: 18px;
+                font-weight: 400;
+                text-align: left;
+                margin-bottom: 8px;
+                @include tablet{
+                  font-size: 22px;
+                  line-height: 30.8px;
+                }
+              }
+              .description{
+                font-weight: 300;
+                text-align: left;
+                @include tablet{
+                  font-size: 17px;
+                  line-height: 23.8px;
+                }
+
+              }
             }
           }
         }
       }
     }
+
     &.projects{
       margin-top: initial;
       @include laptop{

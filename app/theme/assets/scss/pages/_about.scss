@@ -9,8 +9,22 @@
       justify-content: center;
       margin-left: auto;
       margin-right: auto;
+      &:before {
+        content: url("../images/shapes/Vector1.svg");
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        @include tablet {
+          right: -100%;
+          top: -150%;
+        }
+        @include laptop {
+          right: -133%;
+          top: -155%;;
+        }
+      }
       .mainLine {
-        box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
         font-family: $headlines_font;
         color: $title_lime_color;
         font-weight: 700;
@@ -54,6 +68,7 @@
           font-weight: 400;
           letter-spacing: 0;
           text-align: left;
+          line-height: initial;
           @include tablet{
             margin-bottom: 60px;
           }
@@ -81,8 +96,7 @@
     }
     .description__items{
       padding: 20px;
-      box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
-      background: rgba(255, 255, 255, 0.1);
+      background: hsla(0, 0%, 46.7%, 0.49);
       border-radius: 20px;
       @include tablet{
         padding: 30px 20px;
@@ -116,8 +130,110 @@
         }
       }
     }
+    &.text_first_section{
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+      position: relative;
+      background: url("../images/BackgroundAbout.webp") no-repeat bottom ;
+      background-size: cover;
+      &:before{
+        content: '';
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 450px;
+        background: rgb(0,0,0);
+        background: linear-gradient(180deg, #181818 , rgba(255,255,255,0) 78%);
+      }
 
+      .text_first_section__wrapper{
+        display: grid;
+        margin: auto;
+        z-index: 3;
+        position: relative;
+        @include tablet {
+          max-width: 760px;
+          grid-template-columns: 1fr 2.6fr;
+          column-gap: 75px;
+          padding-top: 40px;
+        }
+        @include laptop {
+          max-width: 1200px;
+          padding-top: initial;
+        }
+        @include desktop {
+          max-width: 1310px;
+        }
+        .section__item{
+          .description{
+            font-weight: 400;
+            letter-spacing: 0;
+            text-align: left;
+            line-height: initial;
+            @include tablet{
+              margin-bottom: 60px;
+            }
+            @include laptop {
+              line-height: 33px;
+              font-size: 24px;
+              margin-bottom: 80px;
+            }
+          }
+          .text{
+            font-weight: 300;
+            text-align: left;
+
+            @include laptop{
+              font-size: 17px;
+              line-height: 23.8px;
+            }
+
+          }
+          &:last-child{
+            @include tablet{
+              margin-bottom: 250px;
+            }
+            @include laptop{
+              margin-bottom: 350px;
+            }
+          }
+        }
+
+      }
+
+    }
     &.text_second_section{
+      &:before {
+        content: url("../images/shapes/Vector_our_value.svg");
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        @include tablet {
+          left: -95%;
+          top: -39%;
+        }
+        @include laptop {
+          left: -43%;
+          top: -103%;
+        }
+      }
+      &:after {
+        content: url("../images/shapes/vecteezy_abstract-colored-glass-1.png");
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        @include tablet {
+          left: -51%;
+          top: 2%;
+        }
+        @include laptop {
+          left: -21%;
+          top: 2%;
+        }
+      }
       .text_thumbnails{
         display: grid;
         @include tablet{
@@ -147,6 +263,37 @@
       }
     }
     &.text_fourth_section {
+      position: relative;
+      &:before {
+        content: url("../images/shapes/Vector_vacancies_section.svg");
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        @include tablet {
+          right: -97%;
+          top: -165%;
+        }
+        @include laptop {
+          right: -47%;
+          top: -144%;
+        }
+      }
+      &:after {
+        content: url("../images/shapes/vecteezy_abstract-colored-glass-2.png");
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: -1;
+        @include tablet {
+          right: -62%;
+          top: -93%;
+        }
+        @include laptop {
+          right: -23%;
+          top: -84%;
+        }
+      }
       .description__items{
         background: initial;
         border-radius: initial;

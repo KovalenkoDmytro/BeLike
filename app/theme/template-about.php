@@ -6,7 +6,7 @@
  */
 get_header(  );
 $components = get_field( 'about_us_components' );
-
+$video_slider              = get_field( 'video_slider');
 ?>
     <main class="about__page">
         <div class="content_wrapper">
@@ -22,30 +22,65 @@ $components = get_field( 'about_us_components' );
 					<?php } ?>
                 </section>
 			<?php } ?>
-			<?php if ( ! empty( $components['text_first_section'] ) ) { ?>
-                <section class="text_first_section __text">
-                    <div class="section__item">
-						<?php if ( ! empty( $components['text_first_section']['title'] ) ) { ?>
-                            <p class="headline"><?= $components['text_first_section']['title'] ?></p>
-						<?php } ?>
-                    </div>
-                    <div class="section__item">
-						<?php if ( ! empty( $components['text_first_section']['short_description'] ) ) { ?>
-                            <div class="description"><?= $components['text_first_section']['short_description'] ?></div>
-						<?php } ?>
-                        <div class="description__items">
-							<?php foreach ( $components['text_first_section']['description'] as $description ): ?>
-                                <div class="description__item">
-									<?php if ( ! empty( $description['title'] ) ) { ?>
-                                        <p class="title"><?= $description['title'] ?></p>
-									<?php } ?>
-									<?php if ( ! empty( $description['description'] ) ) { ?>
-                                        <div class="text"><?= $description['description'] ?></div>
-									<?php } ?>
-                                </div>
-							<?php endforeach; ?>
+	        <?php if ( ! empty( $video_slider ) ) { ?>
+                <section class="video_slider" >
+                    <div class="wrapper__slider" id="video_slider">
+                        <div class="slider__arrows">
+                            <button class="slider__arrows__prev">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2"
+                                            stroke-width="2"></circle>
+                                    <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
+                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                            <button class="slider__arrows__next">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
+                                    <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
+                                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                         </div>
+                        <div class="swiper-wrapper">
+					        <?php foreach ( $video_slider as $slide ): ?>
+                                <div class="swiper-slide">
+                                    <video src="<?=$slide['video_slide']['url'] ?>" muted></video>
+                                </div>
+					        <?php endforeach; ?>
+                        </div>
+                    </div>
 
+                </section>
+	        <?php } ?>
+			<?php if ( ! empty( $components['text_first_section'] ) ) { ?>
+                <section class="text_first_section ">
+                    <div class="text_first_section__wrapper">
+                        <div class="section__item">
+		                    <?php if ( ! empty( $components['text_first_section']['title'] ) ) { ?>
+                                <p class="headline"><?= $components['text_first_section']['title'] ?></p>
+		                    <?php } ?>
+                        </div>
+                        <div class="section__item">
+		                    <?php if ( ! empty( $components['text_first_section']['short_description'] ) ) { ?>
+                                <div class="description"><?= $components['text_first_section']['short_description'] ?></div>
+		                    <?php } ?>
+                            <div class="description__items">
+			                    <?php foreach ( $components['text_first_section']['description'] as $description ): ?>
+                                    <div class="description__item">
+					                    <?php if ( ! empty( $description['title'] ) ) { ?>
+                                            <p class="title"><?= $description['title'] ?></p>
+					                    <?php } ?>
+					                    <?php if ( ! empty( $description['description'] ) ) { ?>
+                                            <div class="text"><?= $description['description'] ?></div>
+					                    <?php } ?>
+                                    </div>
+			                    <?php endforeach; ?>
+                            </div>
+
+                        </div>
                     </div>
                 </section>
 			<?php } ?>

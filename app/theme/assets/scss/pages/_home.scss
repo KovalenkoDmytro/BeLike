@@ -1,25 +1,27 @@
-.home{
+.home {
   .home__page {
     section {
 
       &.main {
         overflow: initial;
         position: relative;
-        &:before{
+
+        &:before {
           content: url("../images/shapes/Vector1.svg");
           position: absolute;
           top: 0;
           right: 0;
           z-index: -1;
-          @include tablet{
+          @include tablet {
             right: -100%;
             top: -150%;
           }
-          @include laptop{
+          @include laptop {
             right: -25%;
             top: -100%;
           }
         }
+
         @include tablet {
           display: flex;
           justify-content: space-between;
@@ -111,7 +113,7 @@
             flex-direction: column;
             row-gap: 16px;
             margin-left: 30px;
-            @include laptop{
+            @include laptop {
               margin-left: 50px;
             }
             @include desktop {
@@ -122,26 +124,27 @@
       }
 
       &.secondSection {
-        .content__item{
-            display: grid;
+        .content__item {
+          display: grid;
 
-          @include tablet{
+          @include tablet {
             grid-template-columns: 1fr 1fr;
             column-gap: 45px;
           }
-          @include laptop{
+          @include laptop {
             grid-template-columns: 1fr 1.6fr;
             column-gap: 75px;
           }
+
           .video {
 
-            @include tablet{
+            @include tablet {
               width: 100%;
               object-fit: cover;
               object-position: top;
 
             }
-            @include laptop{
+            @include laptop {
               height: 548px;
             }
           }
@@ -159,45 +162,44 @@
         }
 
 
-
-
-
-
       }
 
       &.prices_section {
         position: relative;
-        &:before{
+
+        &:before {
           content: url("../images/shapes/Vector_prices_section.svg");
           position: absolute;
           top: 0;
           left: 0;
           z-index: -1;
-          @include tablet{
+          @include tablet {
             left: -45%;
             top: -5%;
           }
-          @include laptop{
+          @include laptop {
             left: -38%;
             top: -89%;
           }
         }
-        &:after{
-          content: url("../images/shapes/vecteezy_abstract-colored-glass-.svg");
+
+        &:after {
+          content: url("../images/shapes/vecteezy_abstract-colored-glass-1.png");
           position: absolute;
           top: 0;
           left: 0;
           z-index: -1;
-          @include tablet{
+          @include tablet {
             left: -15%;
             top: 30%;
           }
-          @include laptop{
+          @include laptop {
             left: -15%;
             top: 30%;
           }
         }
-        .prices_section__wrapper{
+
+        .prices_section__wrapper {
           margin: auto;
           position: relative;
           @include tablet {
@@ -221,7 +223,7 @@
               column-gap: 20px;
               row-gap: 20px;
             }
-            @include laptop{
+            @include laptop {
               column-gap: 40px;
               row-gap: 40px;
             }
@@ -235,19 +237,20 @@
                 max-width: 470px;
                 padding: 20px 20px 30px 20px;
               }
-              @include desktop{
+              @include desktop {
                 max-width: 560px;
                 padding: 30px 30px 40px 30px;
               }
               box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+
               &:nth-child(2n+2) {
                 max-width: 250px;
 
-                @include laptop{
+                @include laptop {
                   max-width: 380px;
                 }
 
-                @include desktop{
+                @include desktop {
                   max-width: 410px;
                 }
               }
@@ -266,7 +269,7 @@
                 font-weight: 400;
                 letter-spacing: 0;
                 text-align: left;
-                @include tablet{
+                @include tablet {
                   font-size: 17px;
                 }
                 @include laptop {
@@ -274,7 +277,7 @@
                   font-size: 22px;
                   margin-bottom: 15px;
                 }
-                @include desktop{
+                @include desktop {
                   margin-bottom: 20px;
                 }
               }
@@ -300,7 +303,7 @@
         box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
         border-radius: 20px;
         padding: 10px 20px;
-        @include tablet{
+        @include tablet {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           column-gap: 35px;
@@ -320,7 +323,7 @@
                 right: 0;
                 width: 35%;
               }
-              @include laptop{
+              @include laptop {
                 width: initial;
               }
             }
@@ -357,7 +360,8 @@
             }
           }
         }
-        .btn{
+
+        .btn {
           text-shadow: 1px 1px 10px #9359f2;
           font-family: $headlines_font;
           font-size: 17px;
@@ -370,21 +374,22 @@
       }
 
       &.customer_opinions_section {
-        &:before{
+        &:before {
           content: url("../images/shapes/Vector_customer_testimonials.svg");
           position: absolute;
           top: 0;
           left: 0;
           z-index: -1;
-          @include tablet{
+          @include tablet {
             left: -95%;
             top: -39%;
           }
-          @include laptop{
+          @include laptop {
             left: -52%;
             top: -14%;
           }
         }
+
         .opinions {
           .swiper-slide {
             position: relative;
@@ -400,20 +405,23 @@
             transition: all .3s ease-in-out;
             transform: scale(0.9);
 
-            @include tablet{
+            @include tablet {
               min-height: 280px;
             }
-            &.swiper-slide-active{
+
+            &.swiper-slide-active {
               transform: scale(1.2);
               margin: 0 50px;
             }
-            .icon{
+
+            .icon {
               position: absolute;
               bottom: -14px;
               width: 90px;
               height: 90px;
               right: 56px;
             }
+
             .opinion__author {
               font-family: $headlines_font;
               font-size: 17px;
@@ -442,21 +450,23 @@
         position: relative;
         box-shadow: 20px 30px 80px 0 #000;
         border-radius: 20px;
-        &:before{
+
+        &:before {
           content: url("../images/shapes/Vector_quiz.svg");
           position: absolute;
           top: 0;
           right: 0;
           z-index: -1;
-          @include tablet{
+          @include tablet {
             right: -95%;
             top: -39%;
           }
-          @include laptop{
+          @include laptop {
             right: -52%;
             top: 19%;
           }
         }
+
         .main_slide {
           display: flex;
           flex-direction: column;
@@ -473,7 +483,7 @@
           background: url("../images/QuizBackground.webp");
           background-position: center;
           background-size: cover;
-          @include tablet{
+          @include tablet {
             padding: 80px 0 70px;
             height: 520px;
           }
@@ -481,33 +491,36 @@
             padding: 160px 0 140px;
             height: 740px;
           }
-          &:before{
+
+          &:before {
             content: url("../images/shapes/Vector_quiz.svg");
             position: absolute;
             top: 0;
             right: 0;
             z-index: -1;
-            @include tablet{
+            @include tablet {
               right: -66%;
               top: -60%;
             }
-            @include laptop{
+            @include laptop {
               right: -66%;
               top: -60%;
             }
           }
 
-          &.__hide{
+          &.__hide {
             display: none;
           }
-          .title{
+
+          .title {
             text-transform: uppercase;
           }
+
           .text__container {
-            @include tablet{
+            @include tablet {
               max-width: 540px;
             }
-            @include laptop{
+            @include laptop {
               max-width: 840px;
             }
 
@@ -519,7 +532,7 @@
               text-align: left;
               color: $title_lime_color;
               margin-bottom: 20px;
-              @include tablet{
+              @include tablet {
                 font-size: 34px;
                 line-height: 45px;
                 margin-bottom: 30px;
@@ -538,7 +551,7 @@
               text-align: left;
               margin-bottom: 100px;
 
-              @include tablet{
+              @include tablet {
                 font-size: 18px;
                 line-height: 26px;
               }
@@ -551,8 +564,8 @@
             }
           }
 
-          .btn{
-            @include tablet{
+          .btn {
+            @include tablet {
               font-family: $headlines_font;
               font-size: 22px;
               font-weight: 400;
@@ -565,10 +578,12 @@
           }
 
         }
-        .slider__wrapper{
+
+        .slider__wrapper {
           position: relative;
           overflow: hidden;
-          .slider__arrows__prev, .slider__arrows__next{
+
+          .slider__arrows__prev, .slider__arrows__next {
             background-color: transparent;
             border: none;
             outline: none;
@@ -579,16 +594,18 @@
             transform: translateY(-50%);
 
           }
-          .slider__arrows__next{
+
+          .slider__arrows__next {
             right: 0;
           }
+
           .quiz__slider {
             .swiper-slide {
               border-radius: 20px;
               padding: 50px;
               background: url("../images/QuizBackground.webp") center;
               background-size: cover;
-              @include tablet{
+              @include tablet {
                 padding: 60px 55px;
                 height: 520px;
               }
@@ -608,7 +625,7 @@
                   color: $title_violet_color;
                   margin-bottom: 10px;
                   text-transform: uppercase;
-                  @include tablet{
+                  @include tablet {
                     font-size: 20px;
                     line-height: 30px;
                     margin-bottom: 15px;
@@ -640,9 +657,10 @@
                     white-space: nowrap;
                     counter-increment: listStyle;
                     position: relative;
-                    @include laptop{
+                    @include laptop {
                       padding: 10px 20px;
                     }
+
                     &::before {
                       content: counter(listStyle, upper-alpha) '.';
                       margin-right: 7px;
@@ -660,7 +678,7 @@
 
               &.__lastStep {
                 display: grid;
-                @include tablet{
+                @include tablet {
                   grid-template-columns: auto auto;
                   column-gap: 25px;
                 }
@@ -677,7 +695,7 @@
                     letter-spacing: 0;
                     text-align: left;
                     margin-bottom: 10px;
-                    @include tablet{
+                    @include tablet {
                       font-size: 34px;
                       line-height: 45px;
                       margin-bottom: 30px;
@@ -719,7 +737,7 @@
                   }
                 }
 
-                .btn{
+                .btn {
                   font-family: $headlines_font;
                   font-size: 17px;
                   font-weight: 700;
@@ -731,6 +749,7 @@
             }
           }
         }
+
         .thanks__information {
           background: url("../images/QuizBackground.webp") center;
           background-size: cover;
@@ -741,10 +760,12 @@
           z-index: -1;
           left: 0;
           right: 0;
-          &.__show{
+
+          &.__show {
             z-index: 9;
           }
-          @include tablet{
+
+          @include tablet {
             padding: 60px 0 55px;
             height: 520px;
             display: flex;
@@ -759,12 +780,13 @@
 
           .context {
             max-width: 535px;
-            @include tablet{
+            @include tablet {
               max-width: 540px;
             }
-            @include laptop{
+            @include laptop {
               max-width: 840px;
             }
+
             .title {
               font-family: $headlines_font;
               color: $title_lime_color;
@@ -772,7 +794,7 @@
               letter-spacing: 0;
               text-align: left;
               margin-bottom: 10px;
-              @include tablet{
+              @include tablet {
                 font-size: 34px;
                 line-height: 45px;
                 margin-bottom: 30px;
@@ -790,7 +812,7 @@
               letter-spacing: 0;
               text-align: left;
               margin-bottom: 50px;
-              @include tablet{
+              @include tablet {
                 font-size: 18px;
                 line-height: 26px;
               }
