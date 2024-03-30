@@ -17,6 +17,7 @@ const toInvoke = function (callback, view = 'all', selector) {
 toInvoke(() => {
     const sliderThumbnail = new Swiper('.home__page #slider-thumbnail', {
         slidesPerView: 3,
+        initialSlide:1,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
@@ -44,12 +45,7 @@ toInvoke(() => {
         },
         on: {
             slideChange: function (slider) {
-                if((slider.realIndex + 1) < 10){
-                    slideCountNumber.innerHTML = `0${(slider.realIndex)}`;
-                }
-                else {
-                    slideCountNumber.innerHTML = (slider.realIndex);
-                }
+                slideCountNumber.innerHTML = `${slider.realIndex + 1}/${slider.slides.length} `;
             },
         },
     });

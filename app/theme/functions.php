@@ -215,13 +215,6 @@ function aletheme_metaboxes($meta_boxes) {
 		'show_on'    => array( 'key' => 'page-template', 'value' => array('template-home.php'), ), // Specific post templates to display this metabox
 		'fields' => array(
 			array(
-				'name' => __('Background for video','dk-starter'),
-				'desc' => __('Background for video','dk-starter'),
-				'id'   => 'homePage_background',
-				'std'  => '',
-				'type' => 'file',
-			),
-			array(
 				'name' => __('Video link','dk-starter'),
 				'desc' => __('Video link','dk-starter'),
 				'id'   => 'homePage_video',

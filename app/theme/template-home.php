@@ -10,16 +10,17 @@ $args                = array(
 	'posts_per_page' => 6,
 );
 $projects_home_posts = new WP_Query( $args );
-
 $second_section            = get_field( 'second_section' );
-$text_slider               = get_field( 'text_slider' );
-$services_slider           = get_field( 'services_slider' );
+$text_contents             = get_field( 'text_contents' );
+$services_sections         = get_field( 'services_sections' );
+
+$case_slider           = get_field( 'Case_slider' );
 $prices_section            = get_field( 'prices_section' );
 $contact_form_section      = get_field( 'contact_form' );
 $customer_opinions_section = get_field( 'customer_testimonials' );
 $quiz_section              = get_field( 'quiz' );
-$video_slider              = get_field( 'video_slider');
-$our_cases             = get_field( 'our_cases');
+$video_slider              = get_field( 'video_slider' );
+$our_cases                 = get_field( 'our_cases' );
 //echo( '<pre>' );
 //
 //print_r( $our_cases );
@@ -47,10 +48,6 @@ $our_cases             = get_field( 'our_cases');
                 <div class="section__image">
 
                     <div class="video__wrapper">
-						<?php if ( ! empty( get_post_meta( get_the_ID(), 'homePage_background', true ) ) ) { ?>
-                            <img class="phone" src="<?= get_post_meta( get_the_ID(), 'homePage_background', true ) ?>"
-                                 alt="phone background"/>
-						<?php } ?>
 						<?php if ( ! empty( get_post_meta( get_the_ID(), 'homePage_video', true ) ) ) { ?>
                             <video autoplay muted loop class="video"
                                    src="<?= get_post_meta( get_the_ID(), 'homePage_video', true ) ?>"></video>
@@ -96,99 +93,136 @@ $our_cases             = get_field( 'our_cases');
 			<?php if ( ! empty( $second_section ) ) { ?>
                 <section class="secondSection">
                     <div class="headline"><?= $second_section['title'] ?></div>
-                    <div class="content__item">
-	                    <?php if ( ! empty( $second_section['video_link'] ) ) { ?>
-                            <video  muted autoplay loop class="video" src="<?= $second_section['video_link'] ?>"></video>
-	                    <?php } ?>
-						<?php if ( ! empty( $second_section['description'] ) ) { ?>
-                            <div class="item__description">
-								<?= $second_section['description'] ?>
-                            </div>
-						<?php } ?>
-                    </div>
+					<?php if ( ! empty( $second_section['steps'] ) ) { ?>
+                        <div class="steps">
+							<?php foreach ( $second_section['steps'] as $index => $step ): ?>
+                                <div class="step">
+                                    <p class="count">step<?= $index + 1 ?></p>
+                                    <p class="title"><?= $step['title'] ?></p>
+                                    <div class="description"><?= $step['description'] ?></div>
+                                </div>
+							<?php endforeach; ?>
+                        </div>
+					<?php } ?>
+					<?php if ( ! empty( $second_section['text_thumbnails'] ) ) { ?>
+                        <div class="achievements">
+							<?php foreach ( $second_section['text_thumbnails'] as $text_thumbnail ): ?>
+                                <div class="achievement">
+                                    <p class="mainText">
+										<?= $text_thumbnail['text_thumbnail']['bold_text'] ?>
+                                    </p>
+
+                                    <p class="textBlock">
+                                        <span><?= $text_thumbnail['text_thumbnail']['upper_text'] ?></span>
+                                        <span> <?= $text_thumbnail['text_thumbnail']['down_text'] ?></span>
+                                    </p>
+
+                                </div>
+							<?php endforeach; ?>
+                        </div>
+					<?php } ?>
+					<?php if ( ! empty( $second_section['booking_link'] ) ) { ?>
+                        <a class="btn _main"
+                           target="_blank"
+                           href="<?= $second_section['booking_link']['url'] ?>"><?= $second_section['booking_link']['title'] ?? '' ?> </a>
+					<?php } ?>
+
+
                 </section>
 			<?php } ?>
-	        <?php if ( ! empty( $text_slider ) ) { ?>
-                <section class="text__slider">
-                    <div class="slider__content"  id="text_slider">
-                        <div class="headline">
-                            <p><?= $text_slider['title'] ?></p>
-                            <div class="slider__arrows">
-                                <button class="slider__arrows__prev">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2"
-                                                stroke-width="2"/>
-                                        <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
-                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                                <button class="slider__arrows__next">
-                                    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
-                                        <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
-                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="swiper-wrapper">
-					        <?php foreach ( $text_slider['slider'] as $slide ): ?>
-                                <div class="swiper-slide">
-                                    <p class="slide__title"><?= $slide['slide']['title'] ?></p>
-                                    <div class="slide__text"><?= $slide['slide']['text'] ?></div>
+			<?php if ( ! empty( $text_contents ) ) { ?>
+                <section class="text_contents">
+                    <div class="headline"><?= $text_contents['title'] ?></div>
+					<?php if ( ! empty( $text_contents['text_sections'] ) ) { ?>
+                        <div class="section__items">
+							<?php foreach ( $text_contents['text_sections'] as $text_section ): ?>
+                                <div class="section__item">
+                                    <?php if ( ! empty( $text_section['text_section']['title'] ) ) { ?>
+                                        <div class="title"><?=$text_section['text_section']['title']?></div>
+                                    <?php } ?>
+	                                <?php if ( ! empty( $text_section['text_section']['description'] ) ) { ?>
+                                        <div class="description"><?=$text_section['text_section']['description']?></div>
+                                    <?php } ?>
                                 </div>
-					        <?php endforeach; ?>
+							<?php endforeach; ?>
                         </div>
-                    </div>
-
+					<?php } ?>
                 </section>
-	        <?php } ?>
-			<?php if ( ! empty( $services_slider ) ) { ?>
-                <section class="services_slider" >
-                    <div id="services_slider" class="slider__container">
-                        <div class="swiper-wrapper mainSlider">
-		                    <?php foreach ( $services_slider['slider'] as $slide ): ?>
-			                    <?php if (empty($slide['slide']['main_image'])) : ?>
-                                    <div class="swiper-slide __empty">
-                                        <div class="content">
-                                            <div class="headline"><?= $slide['slide']['main_title'] ?></div>
-                                            <div class="description"><?= $slide['slide']['description'] ?></div>
-                                        </div>
-                                    </div>
+			<?php } ?>
+            <?php if ( ! empty( $services_sections ) ) { ?>
+                <section class="services_sections">
+                    <div class="section__top">
+                        <?php if ( ! empty( $services_sections['title'] ) ) { ?>
+                            <div class="headline"><?= $services_sections['title'] ?></div>
+                        <?php } ?>
+	                    <?php if ( ! empty( $services_sections['link'] ) ) { ?>
+                            <a class="btn _violetOutline"
+                               href="<?= $services_sections['link']['url'] ?>"><?= $services_sections['link']['title'] ?> </a>
+	                    <?php } ?>
+                    </div>
+                    <?php if ( ! empty( $services_sections['services'] ) ) { ?>
+                        <div class="services">
+                            <?php foreach ( $services_sections['services'] as $service ): ?>
+                                <div class="service">
+                                    <?php if ( ! empty( $service['service']['image'] ) ) { ?>
+                                            <img class="image" src="<?= $service['service']['image']['url']?>"
+                                                 alt="picture">
+                                    <?php } ?>
+	                                <?php if ( ! empty( $service['service']['title'] ) ) { ?>
+                                        <span class="title"><?= $service['service']['title']?></span>
+	                                <?php } ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php } ?>
+                </section>
+            <?php } ?>
 
-			                    <?php else : ?>
+
+			<?php if ( ! empty( $case_slider ) ) { ?>
+                <section class="case_slider">
+                    <div id="services_slider" class="slider__container">
+                        <div class="headline"><?= $case_slider['title'] ?></div>
+                        <div class="swiper-wrapper mainSlider">
+							<?php foreach ( $case_slider['slider'] as $slide ): ?>
                                     <div class="swiper-slide">
-                                        <img class="image" src="<?= $slide['slide']['main_image']['url'] ?>" alt="picture">
+                                        <img class="image" src="<?= $slide['slide']['main_image']['url'] ?>"
+                                             alt="picture">
                                         <div class="slide__content">
                                             <div class="content__text">
-                                                <p class="slide__title"><?= $slide['slide']['main_title'] ?></p>
-                                                <div class="slide__description"><?= $slide['slide']['description'] ?></div>
+                                                <p class="slide__title"><?= $slide['slide']['title'] ?></p>
+                                                <?php if ( ! empty(  $slide['slide']['meta_tags'] ) ) { ?>
+                                                    <div class="metaTags">
+                                                        <?php foreach ( $slide['slide']['meta_tags'] as $meta_tag ): ?>
+                                                            <p class="metaTag"><?= $meta_tag['title']?></p>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
-						                    <?php if ( ! empty( $services_slider['slides_button'] ) ) { ?>
-                                                <a class="btn _whiteOutline" target="_blank"
-                                                   href="<?= $services_slider['slides_button']['url'] ?>"><?= $services_slider['slides_button']['title'] ?? '' ?> </a>
-						                    <?php } ?>
+											<?php if ( ! empty( $case_slider['link'] ) ) { ?>
+                                                <a class="btn _main" target="_blank"
+                                                   href="<?= $case_slider['link']['url'] ?>"><?= $case_slider['link']['title'] ?? '' ?> </a>
+											<?php } ?>
                                         </div>
                                     </div>
-			                    <?php endif;  ?>
-		                    <?php endforeach; ?>
+
+							<?php endforeach; ?>
                         </div>
                         <div class="slider__navigation">
                             <div id="slider-thumbnail" class="thumbnails">
                                 <div class="swiper-wrapper">
-				                    <?php foreach ( $services_slider['slider'] as $slide ): ?>
-					                    <?php if (empty($slide['slide']['image_thumbnail'])) : ?>
+									<?php foreach ( $case_slider['slider'] as $slide ): ?>
+										<?php if ( empty( $slide['slide']['image_thumbnail'] ) ) : ?>
                                             <div class="swiper-slide __empty"></div>
-					                    <?php else : ?>
+										<?php else : ?>
                                             <div class="swiper-slide">
-                                                <img class="image" src="<?= $slide['slide']['image_thumbnail']['url'] ?>"
+                                                <img class="image"
+                                                     src="<?= $slide['slide']['image_thumbnail']['url'] ?>"
                                                      alt="picture">
-                                                <p class="slide__title"><?= $slide['slide']['text_thumbnail_'] ?></p>
+                                                <p class="slide__title"><?= $slide['slide']['title'] ?></p>
                                             </div>
-					                    <?php endif; ?>
-				                    <?php endforeach; ?>
+										<?php endif; ?>
+									<?php endforeach; ?>
                                 </div>
                             </div>
                             <div class="navigation__wrapper">
@@ -196,41 +230,41 @@ $our_cases             = get_field( 'our_cases');
                                     <button class="slider__arrows__prev">
                                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#fff"
+                                            <circle cx="30" cy="30" r="29" transform="rotate(-180 30 30)" stroke="#9359F2"
                                                     stroke-width="2"></circle>
-                                            <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#fff"
-                                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M30.4102 34.5195L26.3006 29.588L30.4102 24.6565" stroke="#9359F2"
+                                                  stroke-width="2" stroke-linecap="round"
+                                                  stroke-linejoin="round"></path>
                                         </svg>
                                     </button>
                                     <button class="slider__arrows__next">
                                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
-                                            <circle cx="30" cy="30" r="29" stroke="#fff" stroke-width="2"/>
-                                            <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#fff"
+                                            <circle cx="30" cy="30" r="29" stroke="#9359F2" stroke-width="2"/>
+                                            <path d="M29.5898 25.4805L33.6994 30.412L29.5898 35.3435" stroke="#9359F2"
                                                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
                                 </div>
                                 <div id="swiper-pagination" class="swiper-pagination"></div>
-                                <div id="numberSlides" class="slider__index">0</div>
+                                <div id="numberSlides" class="slider__index"></div>
                             </div>
                         </div>
                     </div>
-
                 </section>
 			<?php } ?>
-
-            <section class="projects">
-                <div class="headline"><?= $our_cases['title'] ?></div>
-                <div class="projects__items">
-					<?php while ( $projects_home_posts->have_posts() ) : $projects_home_posts->the_post();
-						get_template_part( 'template-parts/post-item', get_post_type() );
-					endwhile; ?>
-                </div>
-                <?php if ( ! empty( $projects_home_posts->have_posts() ) ) { ?>
-                    <a class="btn _violetOutline" href="<?= $our_cases['link_to_projects_page']['url'] ?>"><?= $our_cases['link_to_projects_page']['title'] ?> </a>
-                <?php } ?>
-            </section>
+<!--            <section class="projects">-->
+<!--                <div class="headline">--><?php //= $our_cases['title'] ?><!--</div>-->
+<!--                <div class="projects__items">-->
+<!--					--><?php //while ( $projects_home_posts->have_posts() ) : $projects_home_posts->the_post();
+//						get_template_part( 'template-parts/post-item', get_post_type() );
+//					endwhile; ?>
+<!--                </div>-->
+<!--				--><?php //if ( ! empty( $projects_home_posts->have_posts() ) ) { ?>
+<!--                    <a class="btn _violetOutline"-->
+<!--                       href="--><?php //= $our_cases['link_to_projects_page']['url'] ?><!--">--><?php //= $our_cases['link_to_projects_page']['title'] ?><!-- </a>-->
+<!--				--><?php //} ?>
+<!--            </section>-->
 			<?php if ( ! empty( $prices_section ) ) { ?>
                 <section class="prices_section">
                     <div class="prices_section__wrapper">
@@ -238,14 +272,14 @@ $our_cases             = get_field( 'our_cases');
                             <div class="headline"><?= $prices_section['title'] ?></div>
                         </div>
                         <div class="prices__items">
-		                    <?php if ( ! empty( $prices_section['text_items'] ) ) { ?>
-			                    <?php foreach ( $prices_section['text_items'] as $slide ): ?>
+							<?php if ( ! empty( $prices_section['text_items'] ) ) { ?>
+								<?php foreach ( $prices_section['text_items'] as $slide ): ?>
                                     <div class="prices__item">
                                         <h5 class="title"><?= $slide['text_item']['title'] ?></h5>
                                         <div class="description"><?= $slide['text_item']['description'] ?></div>
                                     </div>
-			                    <?php endforeach; ?>
-		                    <?php } ?>
+								<?php endforeach; ?>
+							<?php } ?>
                         </div>
                     </div>
 
@@ -306,22 +340,32 @@ $our_cases             = get_field( 'our_cases');
                                     <p class="opinion__author"><?= $slide['opinion_item']['author'] ?></p>
                                     <div class="opinion__text"><?= $slide['opinion_item']['text'] ?></div>
                                     <div class="icon">
-                                        <svg width="230" height="215" viewBox="0 0 230 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="230" height="215" viewBox="0 0 230 215" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <g filter="url(#filter0_bd_592_5899)">
-                                                <path d="M103.26 100.14C104.287 98.6733 105.313 96.9867 106.34 95.08C107.367 93.1733 108.173 91.34 108.76 89.58C109.493 87.6733 110.08 85.9133 110.52 84.3C110.96 82.6867 111.18 81.3667 111.18 80.34C111.18 79.6067 111.033 78.9467 110.74 78.36C110.447 77.6267 109.713 77.26 108.54 77.26C105.313 77.26 102.893 75.94 101.28 73.3C99.8133 70.66 99.08 67.6533 99.08 64.28C99.08 60.32 100.253 57.0933 102.6 54.6C105.093 52.1067 108.613 50.86 113.16 50.86C124.013 50.86 129.44 56.0667 129.44 66.48C129.44 69.4133 128.927 72.5667 127.9 75.94C127.02 79.3133 125.773 82.76 124.16 86.28C122.693 89.6533 121.007 92.88 119.1 95.96C117.193 99.04 115.36 101.753 113.6 104.1L103.26 100.14ZM64.54 100.14C65.5667 98.6733 66.5933 96.9867 67.62 95.08C68.6467 93.1733 69.4533 91.34 70.04 89.58C70.7733 87.6733 71.36 85.9133 71.8 84.3C72.24 82.6867 72.46 81.3667 72.46 80.34C72.46 79.6067 72.3133 78.9467 72.02 78.36C71.7267 77.6267 70.9933 77.26 69.82 77.26C66.5933 77.26 64.1733 75.94 62.56 73.3C61.0933 70.66 60.36 67.6533 60.36 64.28C60.36 60.32 61.5333 57.0933 63.88 54.6C66.3733 52.1067 69.8933 50.86 74.44 50.86C85.2933 50.86 90.72 56.0667 90.72 66.48C90.72 69.4133 90.2067 72.5667 89.18 75.94C88.3 79.3133 87.0533 82.76 85.44 86.28C83.9733 89.6533 82.2867 92.88 80.38 95.96C78.4733 99.04 76.64 101.753 74.88 104.1L64.54 100.14Z" fill="#9359F2"/>
+                                                <path d="M103.26 100.14C104.287 98.6733 105.313 96.9867 106.34 95.08C107.367 93.1733 108.173 91.34 108.76 89.58C109.493 87.6733 110.08 85.9133 110.52 84.3C110.96 82.6867 111.18 81.3667 111.18 80.34C111.18 79.6067 111.033 78.9467 110.74 78.36C110.447 77.6267 109.713 77.26 108.54 77.26C105.313 77.26 102.893 75.94 101.28 73.3C99.8133 70.66 99.08 67.6533 99.08 64.28C99.08 60.32 100.253 57.0933 102.6 54.6C105.093 52.1067 108.613 50.86 113.16 50.86C124.013 50.86 129.44 56.0667 129.44 66.48C129.44 69.4133 128.927 72.5667 127.9 75.94C127.02 79.3133 125.773 82.76 124.16 86.28C122.693 89.6533 121.007 92.88 119.1 95.96C117.193 99.04 115.36 101.753 113.6 104.1L103.26 100.14ZM64.54 100.14C65.5667 98.6733 66.5933 96.9867 67.62 95.08C68.6467 93.1733 69.4533 91.34 70.04 89.58C70.7733 87.6733 71.36 85.9133 71.8 84.3C72.24 82.6867 72.46 81.3667 72.46 80.34C72.46 79.6067 72.3133 78.9467 72.02 78.36C71.7267 77.6267 70.9933 77.26 69.82 77.26C66.5933 77.26 64.1733 75.94 62.56 73.3C61.0933 70.66 60.36 67.6533 60.36 64.28C60.36 60.32 61.5333 57.0933 63.88 54.6C66.3733 52.1067 69.8933 50.86 74.44 50.86C85.2933 50.86 90.72 56.0667 90.72 66.48C90.72 69.4133 90.2067 72.5667 89.18 75.94C88.3 79.3133 87.0533 82.76 85.44 86.28C83.9733 89.6533 82.2867 92.88 80.38 95.96C78.4733 99.04 76.64 101.753 74.88 104.1L64.54 100.14Z"
+                                                      fill="#9359F2"/>
                                             </g>
                                             <defs>
-                                                <filter id="filter0_bd_592_5899" x="0.360352" y="0.860352" width="229.08" height="213.239" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                                <filter id="filter0_bd_592_5899" x="0.360352" y="0.860352"
+                                                        width="229.08" height="213.239" filterUnits="userSpaceOnUse"
+                                                        color-interpolation-filters="sRGB">
                                                     <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                                                     <feGaussianBlur in="BackgroundImageFix" stdDeviation="5"/>
-                                                    <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_592_5899"/>
-                                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                                    <feComposite in2="SourceAlpha" operator="in"
+                                                                 result="effect1_backgroundBlur_592_5899"/>
+                                                    <feColorMatrix in="SourceAlpha" type="matrix"
+                                                                   values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                                                                   result="hardAlpha"/>
                                                     <feOffset dx="20" dy="30"/>
                                                     <feGaussianBlur stdDeviation="40"/>
                                                     <feComposite in2="hardAlpha" operator="out"/>
-                                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
-                                                    <feBlend mode="normal" in2="effect1_backgroundBlur_592_5899" result="effect2_dropShadow_592_5899"/>
-                                                    <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_592_5899" result="shape"/>
+                                                    <feColorMatrix type="matrix"
+                                                                   values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+                                                    <feBlend mode="normal" in2="effect1_backgroundBlur_592_5899"
+                                                             result="effect2_dropShadow_592_5899"/>
+                                                    <feBlend mode="normal" in="SourceGraphic"
+                                                             in2="effect2_dropShadow_592_5899" result="shape"/>
                                                 </filter>
                                             </defs>
                                         </svg>
@@ -336,13 +380,14 @@ $our_cases             = get_field( 'our_cases');
                 </section>
 			<?php } ?>
 			<?php if ( ! empty( $quiz_section ) ) { ?>
-                <section class="quiz_section" id="quiz__section" >
+                <section class="quiz_section" id="quiz__section">
 					<?php if ( ! empty( $quiz_section['main_page'] ) ) { ?>
                         <div class="main_slide" id="main_slide">
                             <div class="text__container">
                                 <p class="title"><?= $quiz_section['main_page']['title'] ?></p>
                                 <div class="description"><?= $quiz_section['main_page']['description'] ?></div>
-                                <button id="startQuiz" class="btn _violetOutline"><?= $quiz_section['main_page']['text_for_start_button'] ?></button>
+                                <button id="startQuiz"
+                                        class="btn _violetOutline"><?= $quiz_section['main_page']['text_for_start_button'] ?></button>
                             </div>
 
                         </div>
@@ -363,23 +408,23 @@ $our_cases             = get_field( 'our_cases');
                             </svg>
                         </button>
                         <div class="swiper-wrapper quiz__slider">
-		                    <?php foreach ( array_chunk( $quiz_section['questions'], 2, true ) as $index => $pair ): ?>
+							<?php foreach ( array_chunk( $quiz_section['questions'], 2, true ) as $index => $pair ): ?>
                                 <div class="swiper-slide">
-				                    <?php foreach ( $pair as $number => $item ): ?>
+									<?php foreach ( $pair as $number => $item ): ?>
                                         <div class="question__wrapper">
                                             <p class="question">
                                                 <span class="count"><?= $number + 1 ?>/<?= count( $quiz_section['questions'] ) ?>:</span><span><?= $item['question']['title'] ?></span>
                                             </p>
                                             <ul class="answers">
-							                    <?php foreach ( $item['question']['answers'] as $answer ): ?>
+												<?php foreach ( $item['question']['answers'] as $answer ): ?>
                                                     <li class="answer"><?= $answer['title'] ?></li>
-							                    <?php endforeach; ?>
+												<?php endforeach; ?>
                                             </ul>
                                         </div>
-				                    <?php endforeach; ?>
+									<?php endforeach; ?>
                                 </div>
-		                    <?php endforeach; ?>
-		                    <?php if ( ! empty( $quiz_section['step_with_contact_form'] ) ) { ?>
+							<?php endforeach; ?>
+							<?php if ( ! empty( $quiz_section['step_with_contact_form'] ) ) { ?>
                                 <div class="swiper-slide __lastStep">
                                     <div class="slide__text">
                                         <p class="title"><?= $quiz_section['step_with_contact_form']['title'] ?></p>
@@ -387,25 +432,25 @@ $our_cases             = get_field( 'our_cases');
                                         <div class="longDescription"><?= $quiz_section['step_with_contact_form']['long_description'] ?></div>
                                     </div>
                                     <div class="slide__form">
-					                    <?= do_shortcode($quiz_section['step_with_contact_form']['shortcode_to_contact_form']) ?>
+										<?= do_shortcode( $quiz_section['step_with_contact_form']['shortcode_to_contact_form'] ) ?>
                                     </div>
                                 </div>
-		                    <?php } ?>
+							<?php } ?>
                         </div>
                     </div>
-                    <?php if ( ! empty( $quiz_section['last_step_with_information'] ) ) { ?>
+					<?php if ( ! empty( $quiz_section['last_step_with_information'] ) ) { ?>
                         <div id="thanks__information" class="thanks__information">
                             <div class="context">
-                                <p class="title"><?=$quiz_section['last_step_with_information']['title']?></p>
-                                <div class="description"><?=$quiz_section['last_step_with_information']['description']?></div>
+                                <p class="title"><?= $quiz_section['last_step_with_information']['title'] ?></p>
+                                <div class="description"><?= $quiz_section['last_step_with_information']['description'] ?></div>
                             </div>
 
                         </div>
-	                <?php } ?>
+					<?php } ?>
                 </section>
 			<?php } ?>
-	        <?php if ( ! empty( $video_slider ) ) { ?>
-                <section class="video_slider" >
+			<?php if ( ! empty( $video_slider ) ) { ?>
+                <section class="video_slider">
                     <div class="wrapper__slider" id="video_slider">
                         <div class="slider__arrows">
                             <button class="slider__arrows__prev">
@@ -427,16 +472,16 @@ $our_cases             = get_field( 'our_cases');
                             </button>
                         </div>
                         <div class="swiper-wrapper">
-                                <?php foreach ( $video_slider as $slide ): ?>
-                                    <div class="swiper-slide">
-                                        <video src="<?=$slide['video_slide']['url'] ?>" muted></video>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
+							<?php foreach ( $video_slider as $slide ): ?>
+                                <div class="swiper-slide">
+                                    <video src="<?= $slide['video_slide']['url'] ?>" muted></video>
+                                </div>
+							<?php endforeach; ?>
+                        </div>
                     </div>
 
                 </section>
-	        <?php } ?>
+			<?php } ?>
         </div>
     </main>
 <?php get_footer(); ?>

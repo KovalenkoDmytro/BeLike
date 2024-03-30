@@ -26,7 +26,7 @@
     line-height: 24px;
     letter-spacing: 0;
     text-align: center;
-    box-shadow: 4px 5px 32px 0 rgba(222, 173, 251, 0.8);
+    box-shadow: 0 0 5px 0 rgba(222,173,251,.8);
     @include tablet{
       padding: 12px 28px;
     }
@@ -74,7 +74,7 @@
     background-color: transparent;
     border: 1px solid $button_violet_color;
     color: $button_violet_color;
-    box-shadow: 4px 5px 32px 0 rgba(222, 173, 251, 0.8);
+    box-shadow: 0 0 5px 0 rgba(222, 173, 251, 0.8);
     &:hover{
       border-color: $button_violet_text_color;
       color : $button_violet_text_color;
