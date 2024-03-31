@@ -15,5 +15,58 @@
       top: -27%;
     }
   }
+  section{
+    &.contact_form_section{
+      overflow: initial;
+      background-color: #000000;
+      box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+      border-radius: 20px;
+      padding: 30px 20px 10px;
+      @include tablet{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 35px;
+        padding: 30px;
+      }
+      @include laptop {
+        column-gap: 80px;
+        padding: 75px 60px 0 75px;
+      }
+
+      .form__section {
+        &.__image {
+          position: relative;
+          display: none;
+          @include tablet{
+            display: block;
+          }
+          img {
+            @include tablet {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 35%;
+            }
+            @include laptop{
+              width: 96%;
+            }
+          }
+
+        }
+
+        .btn{
+          box-shadow: none;
+          font-family: $headlines_font;
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 23.8px;
+          text-align: center;
+          text-shadow: 1px 1px 10px #9359f2;
+        }
+      }
+    }
+  }
+
+
 }
 

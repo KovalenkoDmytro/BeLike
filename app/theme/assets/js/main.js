@@ -12,7 +12,6 @@ const toInvoke = function (callback, view = 'all', selector) {
         }
     }
 }
-
 // services slider on Main page
 toInvoke(() => {
     const sliderThumbnail = new Swiper('.home__page #slider-thumbnail', {
@@ -51,24 +50,27 @@ toInvoke(() => {
     });
 }, 'all', '.home__page #services_slider')
 
-
 // text slider on Main page
 toInvoke(() => {
-    new Swiper('.home__page #text_slider', {
-        slidesPerView: 1.2,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '.home__page #text_slider .slider__arrows__next',
-            prevEl: '.home__page #text_slider .slider__arrows__prev',
-        },
-    });
-}, 'all', '.home__page #text_slider')
+    if(window.innerWidth < 768){
+        new Swiper('.home__page #steps', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.home__page #steps .slider__arrows__next',
+                prevEl: '.home__page #steps .slider__arrows__prev',
+            },
+        });
+    }
+
+}, 'mobile', '.home__page #steps')
 
 // opinions slider on Main page
 toInvoke(() => {
     new Swiper('.home__page #opinions__slider', {
         loop: true,
-        slidesPerView: 2,
+        slidesPerView: 1,
+        spaceBetween: 20,
         navigation: {
             nextEl: '.home__page #opinions__slider .slider__arrows__next',
             prevEl: '.home__page #opinions__slider .slider__arrows__prev',
@@ -77,11 +79,13 @@ toInvoke(() => {
             1250: {
                 slidesPerView: 3,
             },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 0,
+            },
         }
     });
 }, 'all', '.home__page #opinions__slider')
-
-
 //Quiz slide on home page
 toInvoke(() => {
 
@@ -92,6 +96,7 @@ toInvoke(() => {
                 nextEl: '.home__page #quiz__slider .slider__arrows__next',
                 prevEl: '.home__page #quiz__slider .slider__arrows__prev',
             },
+
         });
     }
     toInitSlider()
@@ -113,14 +118,11 @@ toInvoke(() => {
 
 
 }, 'all', '.home__page #quiz__slider')
-
-
-
 // video slider component
 toInvoke(() => {
     new Swiper('#video_slider', {
         loop: true,
-        slidesPerView: 5,
+        slidesPerView: 3,
         centeredSlides: true,
         navigation: {
             nextEl: '#video_slider .slider__arrows__next',
@@ -142,23 +144,28 @@ toInvoke(() => {
 
             },
         },
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
+            },
+        }
     });
 }, 'all', '#video_slider')
-
-
-
-
-
 // slider on PROJECT post pages
 toInvoke(() => {
     new Swiper('.projectSinglePost__page #swiper', {
         loop: true,
-        slidesPerView: 5,
+        slidesPerView: 3,
         centeredSlides: true,
         navigation: {
             nextEl: '.projectSinglePost__page .slider__arrows__next',
             prevEl: '.projectSinglePost__page .slider__arrows__prev',
         },
+        breakpoints: {
+            768: {
+                slidesPerView: 5,
+            },
+        }
     });
 }, 'all', '.projectSinglePost__page #swiper')
 

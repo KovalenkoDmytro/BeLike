@@ -1,5 +1,6 @@
 .footer{
   position: relative;
+  padding: 15px;
   &:before{
     content: '';
     position: absolute;
@@ -31,15 +32,26 @@
   }
   .footer__section{
     .navigation{
+      margin-left: -10px;
+      @include tablet{
+        margin-left: initial;
+      }
       .menu{
         flex-wrap: wrap;
       }
 
     }
-    .contacts{
-      margin-top: 64px;
+    .newsletter{
+      margin: 10px 0;
       @include tablet{
-
+        margin-left: 10px;
+        margin-top: 48px;
+      }
+    }
+    .contacts{
+      margin: 15px 0;
+      @include tablet{
+        margin-top: 64px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
@@ -50,6 +62,7 @@
         align-content: center;
         align-items: center;
         column-gap: 18px;
+        margin-bottom: 10px;
         @include tablet{
           margin-bottom: 20px;
         }
