@@ -7,6 +7,16 @@
     @include laptop{
       margin: 60px 0;
     }
+    &.main_video{
+      margin-top: initial;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+      position: relative;
+      video{
+        width: 100%;
+      }
+    }
     &.main{
       display: grid;
       @include tablet{
@@ -62,102 +72,162 @@
             }
           }
         }
-        .navigation__wrapper{
-          display: flex;
-          align-content:center ;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 20px;
-          @include tablet{
-            margin-bottom: 40px;
-          }
-          @include laptop{
-            margin-bottom: 60px;
-          }
-          .title{
-            color: $title_violet_color;
-            font-family: $headlines_font;
-            font-weight: 400;
-            text-align: left;
-            font-size: 18px;
-
-            text-transform: uppercase;
+        .slider__wrapper{
+          overflow: hidden;
+          .navigation__wrapper{
+            display: flex;
+            align-content:center ;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
             @include tablet{
-              font-size: 22px;
-
+              margin-bottom: 40px;
             }
             @include laptop{
-              line-height: 39.2px;
-              font-size: 28px;
+              margin-bottom: 60px;
+            }
+            .title{
+              color: $title_violet_color;
+              font-family: $headlines_font;
+              font-weight: 400;
+              text-align: left;
+              font-size: 18px;
 
+              text-transform: uppercase;
+              @include tablet{
+                font-size: 22px;
+
+              }
+              @include laptop{
+                line-height: 39.2px;
+                font-size: 28px;
+
+              }
             }
           }
-        }
-        .thumbnail__items{
-          .thumbnail__item{
-            background: rgba(24, 24, 24, 1);
-            box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-content: center;
-            justify-content: space-between;
-            overflow: hidden;
-            min-height: 290px;
-            @include tablet{
-              height: 360px;
-
-            }
-            .image__wrapper{
+          .thumbnail__items{
+            .thumbnail__item{
+              background: rgba(24, 24, 24, 1);
+              box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
+              //box-shadow: rgba(0, 0, 0, 1) 0 7px 29px 0;
+              border-radius: 20px;
               display: flex;
-              justify-content: center;
-              align-items: center;
-              margin-bottom: auto;
-              img{
-                height: 200px;
+              flex-direction: column;
+              align-content: center;
+              justify-content: space-between;
+              overflow: hidden;
 
-              }
-            }
+              .image__wrapper{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: auto;
+                img{
+                  height: 200px;
 
-            .text__content{
-              padding: 20px;
-              .title{
-                font-family: $headlines_font;
-                font-size: 18px;
-                font-weight: 400;
-                text-align: left;
-                margin-bottom: 8px;
-                @include tablet{
-                  font-size: 22px;
-                  line-height: 30.8px;
                 }
               }
-              .description{
-                font-weight: 300;
-                text-align: left;
-                @include tablet{
-                  font-size: 17px;
-                  line-height: 23.8px;
-                }
 
+              .text__content{
+                padding: 20px;
+                .title{
+                  font-family: $headlines_font;
+                  font-size: 18px;
+                  font-weight: 400;
+                  text-align: left;
+                  margin-bottom: 8px;
+                  @include tablet{
+                    font-size: 22px;
+                    line-height: 30.8px;
+                  }
+                }
+                .description{
+                  font-weight: 300;
+                  text-align: left;
+                  @include tablet{
+                    font-size: 17px;
+                    line-height: 23.8px;
+                  }
+
+                }
               }
             }
           }
         }
+
       }
     }
 
     &.projects{
       margin-top: initial;
       @include laptop{
-        margin-bottom: 260px;
+        margin-bottom: 100px;
       }
-      .headline.pageTitle{
-        margin-top: 40px;
-        @include laptop{
-          margin-top: 60px;
+      .top{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: space-between;
+        .headline.pageTitle{
+          margin-top: 40px;
+          @include laptop{
+            margin-top: 60px;
+          }
+
+        }
+        .btn{
+          margin: 0;
+        }
+      }
+
+    }
+    &.contact_form_section{
+      overflow: initial;
+      background-color: #000000;
+      box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+      border-radius: 20px;
+      padding: 30px 20px 10px;
+      @include tablet{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 35px;
+        padding: 30px;
+      }
+      @include laptop {
+        column-gap: 80px;
+        padding: 75px 60px 0 75px;
+      }
+
+      .form__section {
+        &.__image {
+          position: relative;
+          display: none;
+          @include tablet{
+            display: block;
+          }
+          img {
+            @include tablet {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 35%;
+            }
+            @include laptop{
+              width: 96%;
+            }
+          }
+
         }
 
+        .btn{
+          box-shadow: none;
+          font-family: $headlines_font;
+          font-size: 17px;
+          font-weight: 700;
+          line-height: 23.8px;
+          text-align: center;
+          text-shadow: 1px 1px 10px #9359f2;
+        }
       }
     }
   }

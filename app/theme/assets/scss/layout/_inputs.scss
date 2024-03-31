@@ -4,7 +4,10 @@
     border: 1px solid rgba(255, 255, 255, 1);
     border-radius: 4px;
     textarea{
-      max-height: 165px;
+      max-height: 105px;
+      @include laptop{
+        max-height: 165px;
+      }
     }
     input, textarea{
       width: 100%;
@@ -14,6 +17,7 @@
       border-radius: 4px;
       outline: none;
       border: none;
+      color: $white_color;
       @include laptop{
         padding: 15px;
       }

@@ -4,7 +4,9 @@
       &.main {
         overflow: initial;
         position: relative;
-
+        display: flex;
+        flex-direction: column-reverse;
+        row-gap: 20px;
         &:before {
           content: url("../images/shapes/Vector1.svg");
           position: absolute;
@@ -22,7 +24,8 @@
         }
 
         @include tablet {
-          display: flex;
+          row-gap: initial;
+          flex-direction: row;
           justify-content: space-between;
           align-items: center;
           align-content: center;
@@ -45,6 +48,7 @@
             font-weight: 700;
             letter-spacing: 0;
             text-align: left;
+            font-size: 27px;
             @include tablet {
               font-size: 32px;
             }
@@ -87,18 +91,24 @@
         .section__image {
           display: flex;
           align-content: center;
-          justify-content: space-between;
-
+          justify-content: center;
+          @include tablet{
+            justify-content: space-between;
+          }
           .video__wrapper {
             position: relative;
             mask-image: url("../images/shapes/MainPaheShape.svg");
             mask-repeat: no-repeat;
             background: #BDDADC;
             mask-size: contain;
+            height: 300px;
+            width: 342px;
+
             @include laptop {
               height: 600px;
               width: 642px;
             }
+
             .video {
               position: absolute;
               top: 0;
@@ -114,14 +124,16 @@
             flex-direction: column;
             row-gap: 16px;
             position: relative;
-            @include laptop{
+            @include laptop {
               top: 105px;
             }
           }
         }
       }
+
       &.secondSection {
         position: relative;
+
         &:before {
           content: url("../images/shapes/Vector1.svg");
           position: absolute;
@@ -136,43 +148,53 @@
             left: -43%;
           }
         }
-        .steps{
-          display: grid;
-          @include tablet{
-            grid-template-columns: repeat(6,1fr);
+
+        .steps {
+
+          margin-bottom: 20px;
+          @include tablet {
+            display: grid;
+            margin-bottom: 40px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
           }
-          @include laptop{
-            grid-template-columns: repeat(6,minmax(188px, 1fr));
+          @include laptop {
+            grid-template-columns: repeat(6, minmax(188px, 1fr));
+            margin-bottom: 106px;
+            gap: initial;
           }
-          .step{
+
+          .step {
             border: 1px solid $title_violet_color;
-            padding: 33px 15px 60px 15px;
+            padding: 30px 45px;
             border-radius: 20px;
-            margin-bottom: 50px;
+            position: relative;
             @include tablet{
-              margin-bottom: 80px;
+              padding: 30px;
             }
             @include laptop{
-              margin-bottom: 106px;
+              padding: 33px 15px 60px 15px;
             }
-            .count{
+            .count {
               font-family: $headlines_font;
               font-weight: 200;
               text-align: left;
               margin-bottom: 10px;
               text-transform: uppercase;
               color: $title_violet_color;
-              @include laptop{
+              font-size: 26px;
+              @include laptop {
                 font-size: 36px;
                 line-height: 43.2px;
                 margin-bottom: 20px;
               }
             }
-            .title{
+
+            .title {
               font-family: $headlines_font;
               color: $title_lime_color;
               margin-bottom: 10px;
-              @include laptop{
+              @include laptop {
                 font-size: 17px;
                 font-weight: 700;
                 line-height: 23.8px;
@@ -180,107 +202,156 @@
                 margin-bottom: 20px;
               }
             }
-            .description{
-              ul{
+
+            .description {
+              ul {
                 list-style: initial;
                 padding-left: 10px;
-                li + li{
+
+                li + li {
                   margin-top: 5px;
                 }
               }
             }
+            .arrow{
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              left: 0;
+              background: #181818;;
+            }
           }
         }
-        .achievements{
+        .slider__container{
+          position: relative;
+          .slider__arrows__prev, .slider__arrows__next{
+            position: absolute;
+            top: 54%;
+            transform: translateY(-50%);
+            background: transparent;
+            outline: none;
+            border: none;
+            z-index: 3;
+            @include tablet{
+              display: none;
+            }
+          }
+          .slider__arrows__prev{
+            left: 5px;
+          }
+          .slider__arrows__next{
+            right: 5px;
+          }
+        }
+        .achievements {
           margin-bottom: 30px;
           display: grid;
-          @include tablet{
-            grid-template-columns: repeat(3,1fr);
-          }
-          @include tablet{
+          row-gap: 10px;
+          @include tablet {
+            grid-template-columns: repeat(3, 1fr);
             margin-bottom: 50px;
+            column-gap: 15px;
+            row-gap: initial;
           }
-          @include laptop{
+          @include laptop {
             margin-bottom: 86px;
+            column-gap: initial;
           }
-          .achievement{
+
+          .achievement {
             display: flex;
             align-content: center;
             align-items: center;
-            .mainText{
+
+            .mainText {
               margin-right: 20px;
               font-family: $headlines_font;
               font-weight: 700;
               text-align: left;
               color: $title_lime_color;
-              @include tablet{
-                font-size: 34px;
+              font-size: 23px;
+              @include tablet {
+                font-size: 30px;
               }
-              @include laptop{
+              @include laptop {
                 font-size: 54px;
                 line-height: 64.8px;
               }
 
             }
-            .textBlock{
+
+            .textBlock {
               display: flex;
-              flex-direction: column;
+              flex-wrap: wrap;
+              @include tablet{
+                flex-direction: column;
+              }
+
             }
           }
         }
-        .btn{
+
+        .btn {
           margin-left: auto;
         }
       }
-      &.text_contents{
-        .section__items{
+
+      &.text_contents {
+        .section__items {
           display: grid;
           row-gap: 40px;
-          @include laptop{
+          @include laptop {
             row-gap: 60px;
           }
-          .section__item{
+
+          .section__item {
             display: grid;
             align-items: center;
             align-content: center;
-            @include tablet{
-              column-gap: 40px;
-              grid-template-columns: minmax(auto, 280px) auto;
-            }
-            @include laptop{
+
+            @include laptop {
               column-gap: 70px;
               grid-template-columns: minmax(auto, 410px) auto;
             }
-            .title{
+
+            .title {
               font-family: $headlines_font;
               letter-spacing: -.02em;
               text-align: left;
               text-transform: uppercase;
               color: $title_violet_color;
               line-height: 1.4;
-              @include tablet{
-                font-size: 22px;
+              margin-bottom: 10px;
+              @include tablet {
+                font-size: 19px;
+
               }
-              @include laptop{
+              @include laptop {
+                margin-bottom: initial;
                 font-size: 28px;
                 line-height: 39.2px;
               }
             }
-            .description{
+
+            .description {
               font-weight: 400;
               text-align: left;
-              @include tablet{
-                font-size: 19px;
+              padding-left: 20px;
+              @include tablet {
+                font-size: 18px;
               }
-              @include laptop{
+              @include laptop {
                 font-size: 24px;
                 line-height: 33.6px;
+                padding-left: initial;
               }
-              ul{
+
+              ul {
                 list-style: initial;
+
                 li + li {
                   margin-top: 5px;
-                  @include laptop{
+                  @include laptop {
                     margin-top: initial;
                   }
                 }
@@ -289,40 +360,49 @@
           }
         }
       }
-      &.services_sections{
-        .section__top{
+
+      &.services_sections {
+        .section__top {
           display: flex;
           align-content: center;
           align-items: center;
           justify-content: space-between;
           margin-bottom: 20px;
-          @include tablet{
+          @include tablet {
             margin-bottom: 50px;
           }
-          @include laptop{
+          @include laptop {
             margin-bottom: 100px;
           }
-          .headline{
+
+          .headline {
             margin: 0;
           }
         }
-        .services{
+
+        .services {
           display: grid;
           row-gap: 20px;
           column-gap: 20px;
-          @include tablet{
+          @include tablet {
             grid-template-columns: repeat(3, 1fr);
             column-gap: 30px;
             row-gap: 30px;
           }
-          @include laptop{
+          @include laptop {
             column-gap: 60px;
             row-gap: 60px;
           }
-          .service{
+
+          .service {
             position: relative;
             border-radius: 10px;
-            &:before{
+            max-height: 65px;
+            @include tablet{
+              max-height: initial;
+            }
+
+            &:before {
               content: '';
               position: absolute;
               height: 100%;
@@ -331,14 +411,16 @@
               background-color: #00000050;
               border-radius: 10px;
             }
-            .image{
+
+            .image {
               width: 100%;
               height: 100%;
               object-fit: cover;
               filter: blur(0.5px);
               border-radius: 10px;
             }
-            .title{
+
+            .title {
               font-family: $headlines_font;
               width: 100%;
               padding: 0 5px;
@@ -350,10 +432,10 @@
               display: block;
               font-weight: 500;
               z-index: 3;
-              @include tablet{
-                font-size: 18px;
+              @include tablet {
+                font-size: 15px;
               }
-              @include laptop{
+              @include laptop {
                 font-weight: 700;
                 font-size: 22px;
                 line-height: 30.8px;
@@ -362,6 +444,7 @@
           }
         }
       }
+
       &.prices_section {
         position: relative;
 
@@ -381,21 +464,6 @@
           }
         }
 
-        &:after {
-          content: url("../images/shapes/vecteezy_abstract-colored-glass-1.png");
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: -1;
-          @include tablet {
-            left: -15%;
-            top: 30%;
-          }
-          @include laptop {
-            left: -15%;
-            top: 30%;
-          }
-        }
 
         .prices_section__wrapper {
           margin: auto;
@@ -417,7 +485,6 @@
             @include tablet {
               display: flex;
               flex-wrap: wrap;
-              justify-content: center;
               column-gap: 20px;
               row-gap: 20px;
             }
@@ -428,22 +495,26 @@
 
             .prices__item {
               padding: 20px;
-              max-width: 310px;
               border-radius: 20px;
-              background: rgba(255, 255, 255, 0.05);
+              background: linear-gradient(103.04deg, #F4F0FA -37.18%, #E9F6F6 36.89%, #FFFFFF 109.48%);
+              color: #000000;
+              @include tablet{
+                max-width: 50%;
+              }
+
               @include laptop {
-                max-width: 470px;
-                padding: 20px 20px 30px 20px;
+                max-width: 480px;
+                padding: 20px 20px 50px 20px;
               }
               @include desktop {
-                max-width: 560px;
-                padding: 30px 30px 40px 30px;
+                padding: 30px 30px 65px 30px;
               }
               box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
 
               &:nth-child(2n+2) {
-                max-width: 250px;
-
+                @include tablet{
+                  max-width: 45%;
+                }
                 @include laptop {
                   max-width: 380px;
                 }
@@ -467,9 +538,8 @@
                 font-weight: 400;
                 letter-spacing: 0;
                 text-align: left;
-                @include tablet {
-                  font-size: 17px;
-                }
+                color: $title_violet_color;
+                font-size: 17px;
                 @include laptop {
                   line-height: 31px;
                   font-size: 22px;
@@ -490,85 +560,144 @@
                 }
               }
             }
-          }
-        }
-
-      }
-      &.contact_form_section {
-        overflow: initial;
-        background-color: #000000;
-        box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
-        border-radius: 20px;
-        padding: 10px 20px;
-        @include tablet {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          column-gap: 35px;
-          padding: 30px;
-        }
-        @include laptop {
-          column-gap: 80px;
-          padding: 80px 60px;
-        }
-
-        .form__section {
-          &.__image {
-            img {
-              @include tablet {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                width: 35%;
-              }
-              @include laptop {
-                width: initial;
+            .prices__item + .prices__item{
+              margin-top: 20px;
+              @include laptop{
+                margin-top: initial;
               }
             }
-
-          }
-
-
-          .title {
-            font-family: $headlines_font;
-            color: $title_lime_color;
-            font-weight: 400;
-            letter-spacing: 0;
-            text-align: left;
-            margin-bottom: 10px;
-            @include tablet {
-              font-size: 22px;
-              line-height: 31px;
-              margin-bottom: 20px;
-
-            }
-          }
-
-          .description {
-            font-weight: 300;
-            letter-spacing: 0;
-            text-align: left;
-            @include tablet {
-              font-size: 15px;
-            }
-
-            @include laptop {
-              font-size: 17px;
-              line-height: 24px;
-            }
           }
         }
 
-        .btn {
-          text-shadow: 1px 1px 10px #9359f2;
+        .contact_form_title {
+          color: $title_violet_color;
           font-family: $headlines_font;
+          font-weight: 400;
+          text-align: left;
+          max-width: 515px;
+          margin: 20px 0;
           font-size: 17px;
-          font-weight: 700;
-          line-height: 23.8px;
-          text-align: center;
-          box-shadow: initial;
 
+
+          @include tablet {
+            background: url("../images/shapes/question.svg") no-repeat center;
+            background-size: contain;
+            position: absolute;
+            z-index: 2;
+            top: 140px;
+            left: 31%;
+            padding: 20px 120px 20px 80px;
+          }
+          @include laptop{
+            top: 190px;
+            font-size: 19px;
+            left: 36%;
+            padding: 30px 120px 30px 80px;
+          }
+          @include desktop{
+            font-size: 22px;
+            line-height: 30.8px;
+            padding: 46px 103px;
+          }
+        }
+
+        .contact_form_section {
+          position: relative;
+          overflow: initial;
+          background: linear-gradient(103.04deg, #F4F0FA -37.18%, #E9F6F6 36.89%, #FFFFFF 109.48%);
+          color: #000000;
+          box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
+          border-radius: 20px;
+          padding: 10px 20px;
+          @include tablet {
+            margin-top: 38px;
+            max-width: 765px;
+            padding: 30px;
+          }
+          @include laptop{
+            padding: 60px 30px 30px;
+          }
+
+          .form__section {
+            @include tablet {
+              max-width: 351px;
+            }
+            @include laptop{
+              max-width: 451px;
+            }
+
+            .form__item {
+              input {
+                background-color: $white_color;
+                border: 1px solid $title_violet_color;
+                color: #000000;
+                &::placeholder {
+                  color: #ADADAD;
+                }
+              }
+            }
+
+            .title {
+              font-family: $headlines_font;
+              color: $title_lime_color;
+              font-weight: 400;
+              letter-spacing: 0;
+              text-align: left;
+              margin-bottom: 10px;
+              @include tablet {
+                font-size: 22px;
+                line-height: 31px;
+                margin-bottom: 20px;
+
+              }
+            }
+
+            .description {
+              font-weight: 300;
+              letter-spacing: 0;
+              text-align: left;
+              @include tablet {
+                font-size: 15px;
+              }
+
+              @include laptop {
+                font-size: 17px;
+                line-height: 24px;
+              }
+            }
+          }
+
+          .image {
+            display: none;
+            @include tablet {
+              display: block;
+              position: absolute;
+              bottom: 0;
+              right: -15%;
+              width: 48%;
+            }
+            @include laptop{
+              width: 46%;
+            }
+            @include desktop{
+              right: -22%;
+
+            }
+          }
+
+          .btn {
+            text-shadow: 1px 1px 10px #9359f2;
+            font-family: $headlines_font;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 23.8px;
+            text-align: center;
+            box-shadow: initial;
+
+          }
         }
       }
+
       &.customer_opinions_section {
         &:before {
           content: url("../images/shapes/Vector_customer_testimonials.svg");
@@ -585,7 +714,11 @@
             top: -14%;
           }
         }
-
+        .headline{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
         .opinions {
           .swiper-slide {
             position: relative;
@@ -597,17 +730,21 @@
             justify-content: center;
             border: 2px solid rgba(147, 89, 242, 1);
             border-radius: 20px;
-            box-shadow: 5px 5px 32px 0 rgba(222, 173, 251, 0.8);
+            box-shadow: 0 0 5px 0 rgba(222, 173, 251, 0.8);
             transition: all .3s ease-in-out;
-            transform: scale(0.9);
+
 
             @include tablet {
               min-height: 280px;
+              transform: scale(0.9);
             }
 
             &.swiper-slide-active {
-              transform: scale(1.2);
-              margin: 0 50px;
+              @include tablet{
+                transform: scale(1.2);
+                margin: 0 50px!important;
+              }
+
             }
 
             .icon {
@@ -631,20 +768,25 @@
             }
 
             .opinion__text {
-              font-size: 14px;
+              font-size: 13px;
               font-weight: 400;
-              line-height: 20px;
+              line-height: 18px;
               letter-spacing: 0;
               text-align: left;
-
+              @include tablet{
+                font-size: 14px;
+                line-height: 20px;
+              }
             }
           }
         }
       }
+
       &.quiz_section {
         position: relative;
         box-shadow: 20px 30px 80px 0 #000;
-        border-radius: 20px;
+
+        color: #000000;
 
         &:before {
           content: url("../images/shapes/Vector_quiz.svg");
@@ -664,43 +806,20 @@
 
         .main_slide {
           display: flex;
-          flex-direction: column;
-          justify-content: space-between;
           align-content: center;
           align-items: center;
+          justify-content: center;
+          flex-direction: column;
           background: #222;
-          //box-shadow: 20px 30px 80px 0 rgba(0, 0, 0, 1);
-          border-radius: 20px;
           position: absolute;
           z-index: 3;
           left: 0;
           right: 0;
-          background: url("../images/QuizBackground.webp");
-          background-position: center;
-          background-size: cover;
-          @include tablet {
-            padding: 80px 0 70px;
-            height: 520px;
-          }
+          background: linear-gradient(103.04deg, #F4F0FA -37.18%, #E9F6F6 36.89%, #FFFFFF 109.48%);
+          height: 550px;
+          border-radius: 20px;
           @include laptop {
-            padding: 160px 0 140px;
-            height: 740px;
-          }
-
-          &:before {
-            content: url("../images/shapes/Vector_quiz.svg");
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: -1;
-            @include tablet {
-              right: -66%;
-              top: -60%;
-            }
-            @include laptop {
-              right: -66%;
-              top: -60%;
-            }
+            height: 662px;
           }
 
           &.__hide {
@@ -712,39 +831,32 @@
           }
 
           .text__container {
-            @include tablet {
-              max-width: 540px;
+            max-width: 80%;
+            @include laptop{
+              max-width: 1008px;
             }
-            @include laptop {
-              max-width: 840px;
-            }
-
-
             .title {
               font-family: $headlines_font;
               font-weight: 700;
               letter-spacing: 0;
               text-align: left;
-              color: $title_lime_color;
+              color: $title_violet_color;
               margin-bottom: 20px;
+              max-width: 838px;
+              font-size: 22px;
               @include tablet {
                 font-size: 34px;
                 line-height: 45px;
-                margin-bottom: 30px;
               }
               @include laptop {
                 font-size: 54px;
                 line-height: 65px;
-                margin-bottom: 40px;
               }
             }
 
             .description {
-              font-family: $headlines_font;
               font-weight: 400;
-              letter-spacing: 0;
               text-align: left;
-              margin-bottom: 100px;
 
               @include tablet {
                 font-size: 18px;
@@ -752,23 +864,28 @@
               }
 
               @include laptop {
-                margin-bottom: 140px;
-                font-size: 22px;
+                margin-bottom: 58px;
+                font-size: 24px;
                 line-height: 31px;
               }
             }
           }
 
           .btn {
+            font-family: $headlines_font;
+            padding: 10px 55px;
+            z-index: 9;
+            position: relative;
+            text-align: center;
+            width: 100%;
             @include tablet {
-              font-family: $headlines_font;
-              font-size: 22px;
-              font-weight: 400;
+              font-size: 17px;
+              font-weight: 700;
               line-height: 30.8px;
-              text-align: center;
-              padding: 24px 48px;
-              z-index: 9;
-              position: relative;
+              width: initial;
+            }
+            @include laptop{
+              padding: 18px 70px;
             }
           }
 
@@ -777,7 +894,7 @@
         .slider__wrapper {
           position: relative;
           overflow: hidden;
-
+          border-radius: 20px;
           .slider__arrows__prev, .slider__arrows__next {
             background-color: transparent;
             border: none;
@@ -789,80 +906,133 @@
             transform: translateY(-50%);
 
           }
-
+          .slider__arrows__prev{
+            left: -12px;
+            @include tablet{
+              left: 0;
+            }
+            @include laptop{
+              left: 30px;
+            }
+          }
           .slider__arrows__next {
-            right: 0;
+            right: -12px;
+            @include tablet{
+              right: 0;
+            }
+            @include laptop{
+              right: 30px;
+            }
           }
 
           .quiz__slider {
             .swiper-slide {
-              border-radius: 20px;
-              padding: 50px;
-              background: url("../images/QuizBackground.webp") center;
-              background-size: cover;
-              @include tablet {
-                padding: 60px 55px;
-                height: 520px;
+              padding: 30px;
+              background: linear-gradient(103.04deg, #F4F0FA -37.18%, #E9F6F6 36.89%, #FFFFFF 109.48%);
+              display: flex;
+              justify-content: center;
+              height: 550px;
+              @include tablet{
+                padding: 50px;
               }
               @include laptop {
-                padding: 120px 110px;
-                height: 740px;
+                height: 662px;
               }
 
-              .question__wrapper {
-                max-width: 1090px;
-
-                .question {
-                  font-family: $headlines_font;
-                  letter-spacing: 0;
-                  text-align: left;
-                  font-weight: 400;
-                  color: $title_violet_color;
-                  margin-bottom: 10px;
-                  text-transform: uppercase;
-                  @include tablet {
-                    font-size: 20px;
-                    line-height: 30px;
-                    margin-bottom: 15px;
-                  }
-                  @include laptop {
-                    margin-bottom: 35px;
-                    font-size: 28px;
-                    line-height: 39px;
-                  }
-
-                  .count {
-                    margin-right: 5px;
+              .slide__form {
+                .form__itemWrapper{
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  column-gap: 16px;
+                  @include tablet{
+                    display: block;
+                    grid-template-columns: initial;
+                    column-gap: initial;
                   }
                 }
+                .form__item {
+                  input, textarea {
+                    border: 1px solid $title_violet_color;
+                  }
+                  textarea{
+                    max-height: 70px;
+                    @include tablet{
+                      max-height: initial;
+                    }
+                  }
+                }
+              }
 
-                .answers {
-                  display: flex;
-                  column-gap: 15px;
-                  row-gap: 15px;
-                  flex-wrap: wrap;
-                  cursor: pointer;
-                  counter-reset: listStyle;
-
-                  .answer {
-
-                    padding: 5px 15px;
-                    border: 1px solid rgba(255, 255, 255, 1);
-                    border-radius: 40px;
-                    white-space: nowrap;
-                    counter-increment: listStyle;
-                    position: relative;
+              .content__wrapper{
+                width: 100%;
+                max-width: 1060px;
+                .question__wrapper {
+                  .question {
+                    font-family: $headlines_font;
+                    letter-spacing: 0;
+                    text-align: left;
+                    font-weight: 400;
+                    color: $title_violet_color;
+                    margin-bottom: 10px;
+                    text-transform: uppercase;
+                    @include tablet {
+                      font-size: 20px;
+                      line-height: 30px;
+                      margin-bottom: 15px;
+                    }
                     @include laptop {
-                      padding: 10px 20px;
+                      margin-bottom: 35px;
+                      font-size: 28px;
+                      line-height: 39px;
                     }
 
-                    &::before {
-                      content: counter(listStyle, upper-alpha) '.';
-                      margin-right: 7px;
+                    .count {
+                      margin-right: 5px;
+                    }
+                  }
+
+                  .answers {
+                    display: flex;
+                    column-gap: 12px;
+                    row-gap: 12px;
+                    flex-wrap: wrap;
+
+                    counter-reset: listStyle;
+                    @include tablet{
+                      row-gap: 15px;
+                      column-gap: 15px;
+                    }
+                    .answer {
+                      display: block;
+                      padding: 5px 15px;
+                      border: 1px solid #000000;
+                      border-radius: 40px;
+                      counter-increment: listStyle;
+                      position: relative;
+                      cursor: pointer;
+                      @include transition();
+                      @include tablet{
+                        white-space: nowrap;
+                      }
+                      @include laptop {
+                        padding: 10px 20px;
+                      }
+
+                      &:hover {
+                        border-color: $button_violet_color;
+                        background-color: $button_violet_color;
+                        color: $white_color;
+                      }
+
+                      &::before {
+                        content: counter(listStyle, upper-alpha) '.';
+                        margin-right: 7px;
+                      }
                     }
                   }
                 }
               }
+
 
               .question__wrapper + .question__wrapper {
                 margin-top: 40px;
@@ -872,65 +1042,78 @@
               }
 
               &.__lastStep {
-                display: grid;
-                @include tablet {
-                  grid-template-columns: auto auto;
-                  column-gap: 25px;
-                }
-                @include laptop {
-                  grid-template-columns: 60% 40%;
-                  column-gap: 50px;
-                }
-
-                .slide__text {
-                  .title {
-                    font-family: $headlines_font;
-                    color: $title_lime_color;
-                    font-weight: 700;
-                    letter-spacing: 0;
-                    text-align: left;
-                    margin-bottom: 10px;
-                    @include tablet {
-                      font-size: 34px;
-                      line-height: 45px;
-                      margin-bottom: 30px;
-
-                    }
-                    @include laptop {
-                      font-size: 40px;
-                      line-height: 48px;
-                      margin-bottom: 20px;
-                    }
-
+                .content__wrapper{
+                  display: grid;
+                  @include tablet {
+                    grid-template-columns: auto auto;
+                    column-gap: 25px;
                   }
-
-                  .shortDescription {
-                    font-weight: 300;
-                    letter-spacing: 0;
-                    text-align: left;
-                    margin-bottom: 50px;
-                    font-size: 16px;
-                    line-height: 1.4;
-                    @include laptop {
-                      margin-bottom: 90px;
-                      font-size: 17px;
-                      line-height: 24px;
-                    }
-
+                  @include laptop {
+                    grid-template-columns: 55% 40%;
+                    column-gap: 50px;
                   }
-
-                  .longDescription {
-                    font-size: 16px;
-
-                    @include laptop {
-                      font-size: 24px;
-                      line-height: 34px;
-                      font-weight: 400;
+                  .slide__text {
+                    .title {
+                      font-family: $headlines_font;
+                      color: $title_violet_color;
+                      font-weight: 700;
                       letter-spacing: 0;
                       text-align: left;
+                      margin-bottom: 10px;
+                      @include tablet {
+                        font-size: 34px;
+                        line-height: 45px;
+                        margin-bottom: 30px;
+
+                      }
+                      @include laptop {
+                        font-size: 40px;
+                        line-height: 48px;
+                        margin-bottom: 20px;
+                      }
+
+                    }
+
+                    .shortDescription {
+                      font-weight: 300;
+                      letter-spacing: 0;
+                      text-align: left;
+                      line-height: 1.4;
+                      margin-bottom: 10px;
+                      @include tablet{
+                        margin-bottom: 50px;
+                      }
+                      @include laptop {
+                        margin-bottom: 90px;
+                        font-size: 17px;
+                        line-height: 24px;
+                      }
+
+                    }
+
+                    .longDescription {
+
+                      @include tablet{
+                        font-size: 16px;
+                      }
+
+                      @include laptop {
+                        font-size: 24px;
+                        line-height: 34px;
+                        font-weight: 400;
+                        letter-spacing: 0;
+                        text-align: left;
+                      }
+                    }
+                  }
+                  .slide__form{
+                    padding-top: 10px;
+                    @include tablet{
+                      padding-top: 30px;
                     }
                   }
                 }
+
 
                 .btn {
                   font-family: $headlines_font;
@@ -940,66 +1123,62 @@
                   text-align: center;
                   text-shadow: 1px 1px 10px #9359f2;
                 }
+
+
               }
             }
           }
         }
 
         .thanks__information {
-          background: url("../images/QuizBackground.webp") center;
-          background-size: cover;
           border-radius: 20px;
+          display: flex;
+          align-content: center;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(103.04deg, #F4F0FA -37.18%, #E9F6F6 36.89%, #FFFFFF 109.48%);
           padding: 50px;
           position: absolute;
           top: 0;
           z-index: -1;
           left: 0;
           right: 0;
+          visibility: hidden;
+          opacity: 0;
 
           &.__show {
+            visibility: visible;
+            opacity: 1;
             z-index: 9;
           }
+          height: 550px;
 
-          @include tablet {
-            padding: 60px 0 55px;
-            height: 520px;
-            display: flex;
-            justify-content: center;
-
-          }
           @include laptop {
-            padding: 120px 110px;
-            height: 740px;
-            justify-content: flex-start;
+            height: 662px;
           }
 
           .context {
-            max-width: 535px;
-            @include tablet {
-              max-width: 540px;
-            }
-            @include laptop {
-              max-width: 840px;
-            }
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            max-width: 995px;
 
             .title {
               font-family: $headlines_font;
-              color: $title_lime_color;
+              color: $title_violet_color;
+              text-transform: uppercase;
               font-weight: 700;
               letter-spacing: 0;
               text-align: left;
-              margin-bottom: 10px;
               @include tablet {
                 font-size: 34px;
                 line-height: 45px;
-                margin-bottom: 30px;
               }
               @include laptop {
-                font-size: 48px;
-                line-height: 58px;
-                margin-bottom: 20px;
+                font-size: 54px;
+                line-height: 64.8px;
               }
-
             }
 
             .description {
