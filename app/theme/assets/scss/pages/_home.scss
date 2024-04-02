@@ -953,6 +953,7 @@
                 .form__item {
                   input, textarea {
                     border: 1px solid $title_violet_color;
+                    color: #000000;
                   }
                   textarea{
                     max-height: 70px;
@@ -1018,7 +1019,7 @@
                         padding: 10px 20px;
                       }
 
-                      &:hover {
+                      &:hover,&.--active {
                         border-color: $button_violet_color;
                         background-color: $button_violet_color;
                         color: $white_color;

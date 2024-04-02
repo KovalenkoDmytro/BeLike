@@ -194,8 +194,6 @@ toInvoke(() => {
         new Swiper(element, {
             slidesPerView: 1,
             spaceBetween: 20,
-            // slidesOffsetAfter: 20,
-            // slidesOffsetBefore: 20,
             navigation: {
                 nextEl: '.slider__arrows .slider__arrows__next',
                 prevEl: '.slider__arrows .slider__arrows__prev',
@@ -213,3 +211,33 @@ toInvoke(() => {
         });
     })
 }, 'all', '.service__page  #thumbnails')
+
+
+toInvoke(() => {
+    const inputs = document.querySelectorAll('.answers input')
+    const form = document.querySelector('#quiz__slider .wpcf7-form.init')
+
+    inputs.forEach((element) => {
+        form.appendChild(element)
+    });
+
+
+    // add and show active lable
+    const answers = document.querySelectorAll('.question__wrapper .answers li label')
+    const removeActive = (elements)=>{
+        console.log(elements)
+        elements.forEach(element=>{
+            if(element.classList.contains('--active')){
+                element.classList.remove('--active')
+            }
+        })
+    }
+
+    answers.forEach(answer => {
+        answer.addEventListener('click', function () {
+            const parentElements = this.closest('.answers')
+            removeActive(parentElements.querySelectorAll('li label'))
+            this.classList.add('--active')
+        })
+    })
+}, 'all', '.home__page  #quiz__slider')
