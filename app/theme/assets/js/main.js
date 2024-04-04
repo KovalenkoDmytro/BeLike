@@ -2,13 +2,13 @@
 const toInvoke = function (callback, view = 'all', selector) {
     if (document.querySelector(selector) !== null) {
         if (view === 'mobile' && window.innerWidth <= 1280) {
-                callback()
+            callback()
         }
         if (view === 'laptop' && (window.innerWidth > 1280)) {
-                callback()
+            callback()
         }
         if (view === 'all') {
-                callback()
+            callback()
         }
     }
 }
@@ -16,7 +16,7 @@ const toInvoke = function (callback, view = 'all', selector) {
 toInvoke(() => {
     const sliderThumbnail = new Swiper('.home__page #slider-thumbnail', {
         slidesPerView: 3,
-        initialSlide:1,
+        initialSlide: 1,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
@@ -31,7 +31,7 @@ toInvoke(() => {
     new Swiper('.home__page #services_slider', {
         loop: true,
         slidesPerView: 1,
-        speed:1000,
+        speed: 1000,
         navigation: {
             nextEl: '.home__page #services_slider .slider__arrows__next',
             prevEl: '.home__page #services_slider .slider__arrows__prev',
@@ -53,7 +53,7 @@ toInvoke(() => {
 
 // text slider on Main page
 toInvoke(() => {
-    if(window.innerWidth < 768){
+    if (window.innerWidth < 768) {
         new Swiper('.home__page #steps', {
             slidesPerView: 1,
             spaceBetween: 30,
@@ -72,7 +72,7 @@ toInvoke(() => {
         loop: true,
         slidesPerView: 1,
         spaceBetween: 20,
-        speed:1000,
+        speed: 1000,
         autoplay: {
             delay: 4000,
         },
@@ -95,14 +95,40 @@ toInvoke(() => {
 toInvoke(() => {
 
     const toInitSlider = function () {
-        new Swiper('.home__page #quiz__slider', {
+        const swipper  = new Swiper('.home__page #quiz__slider', {
             slidesPerView: 1,
-            navigation: {
-                nextEl: '.home__page #quiz__slider .slider__arrows__next',
-                prevEl: '.home__page #quiz__slider .slider__arrows__prev',
-            },
-
+            noSwiping:true,
+            allowTouchMove: false,
         });
+        let validate = false
+        const nextSliderBtn = document.querySelector('#quiz__slider #nextSlideBtn')
+        const prevSliderBtn = document.querySelector('#quiz__slider #prevSlideBtn')
+
+        nextSliderBtn.addEventListener('click', () => {
+
+            const activeSlideIndex = swipper.activeIndex
+            const slideQuestions = document.querySelectorAll(`#quiz__slider .swiper-slide[data-slide="${activeSlideIndex}"] .answers`)
+
+            const validateArray = []
+
+            //to check an active
+            slideQuestions.forEach(answers=>{
+                const answeredQuestion = Array.from(answers.querySelectorAll('.answer')).some(answer=>answer.classList.contains('--active'))
+                validateArray.push(answeredQuestion)
+            })
+            // set global validate
+
+            validate = validateArray.every(element => element === true)
+
+            if(validate){
+                swipper.slideNext()
+            }else {
+                alert('Answers for all questions are required')
+            }
+        })
+        prevSliderBtn.addEventListener('click',  ()=>{
+            swipper.slidePrev()
+        })
     }
     toInitSlider()
 
@@ -114,13 +140,13 @@ toInvoke(() => {
 
     const thanks__informationElement = document.querySelector('#thanks__information')
 
-    startQuizBtn.addEventListener('click',()=>{
+    startQuizBtn.addEventListener('click', () => {
         main_slideElement.classList.add('__hide')
     })
 
-    contactForm.addEventListener( 'wpcf7mailsent', function( event ) {
+    contactForm.addEventListener('wpcf7mailsent', function (event) {
         thanks__informationElement.classList.add('__show')
-    }, false );
+    }, false);
 }, 'all', '.home__page #quiz__slider')
 
 // video slider component
@@ -129,7 +155,7 @@ toInvoke(() => {
         loop: true,
         slidesPerView: 3,
         centeredSlides: true,
-        speed:1000,
+        speed: 1000,
         autoplay: {
             delay: 4000,
         },
@@ -138,16 +164,16 @@ toInvoke(() => {
             prevEl: '#video_slider .slider__arrows__prev',
         },
         on: {
-            transitionStart: function(){
+            transitionStart: function () {
                 const videos = document.querySelectorAll('#video_slider video');
 
-                Array.prototype.forEach.call(videos, function(video){
+                Array.prototype.forEach.call(videos, function (video) {
                     video.pause();
                 });
             },
 
-            transitionEnd: function(){
-                const activeSlide = this.slides.find(slide=> slide.classList.contains('swiper-slide-active'))
+            transitionEnd: function () {
+                const activeSlide = this.slides.find(slide => slide.classList.contains('swiper-slide-active'))
                 const video = activeSlide.querySelector('video')
                 video.play();
 
@@ -181,25 +207,23 @@ toInvoke(() => {
 //scrolling header on Project post pages
 
 toInvoke(() => {
-    const header = document.querySelector('#header__post');
-    console.log(header)
-    window.addEventListener('scroll', ()=>{
-        if(window.scrollY > 160){
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 160) {
             header.classList.add('__scrolling')
-        }else {
+        } else {
             header.classList.remove('__scrolling')
         }
     })
 
 
-}, 'all', '.single  #header__post')
-
+}, 'all', '.header')
 
 
 toInvoke(() => {
     const thumbnails = document.querySelectorAll('#thumbnails')
 
-    thumbnails.forEach(element =>{
+    thumbnails.forEach(element => {
         new Swiper(element, {
             slidesPerView: 1,
             spaceBetween: 20,
@@ -233,19 +257,10 @@ toInvoke(() => {
 
     // add and show active lable
     const answers = document.querySelectorAll('.question__wrapper .answers li label')
-    const removeActive = (elements)=>{
-        elements.forEach(element=>{
-            if(element.classList.contains('--active')){
-                element.classList.remove('--active')
-            }
-        })
-    }
 
     answers.forEach(answer => {
         answer.addEventListener('click', function () {
-            const parentElements = this.closest('.answers')
-            removeActive(parentElements.querySelectorAll('li label'))
-            this.classList.add('--active')
+            this.classList.toggle('--active')
         })
     })
 }, 'all', '.home__page  #quiz__slider')
@@ -254,7 +269,7 @@ toInvoke(() => {
 toInvoke(() => {
 
 
-    const toRunCounter = ()=>{
+    const toRunCounter = () => {
         const counters = document.querySelectorAll(".counter");
         counters.forEach((counter) => {
             counter.innerText = "0";
@@ -272,10 +287,23 @@ toInvoke(() => {
     }
 
 
-    const observer = new IntersectionObserver(toRunCounter, { threshold: 1 })
+    const observer = new IntersectionObserver(toRunCounter, {threshold: 1})
 
     observer.observe(document.querySelector(".home__page  .achievements"))
 
 
-
 }, 'all', '.home__page  .achievements .counter')
+
+//burger menu for mobile and tablet
+toInvoke(() => {
+    const burgerMenuBtn = document.querySelector('#burgerMenu')
+    const htmlElement = document.querySelector('html')
+
+    burgerMenuBtn.addEventListener('click', ()=>{
+        htmlElement.classList.toggle('openMobileNav')
+    })
+}, 'mobile', '#burgerMenu')
+
+// redirect to contact form
+
+

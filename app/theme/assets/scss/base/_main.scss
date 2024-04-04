@@ -2,8 +2,22 @@
 html{
   overflow-x: hidden;
   position: relative;
-  @include scrollbar;
+  scroll-behavior: smooth;
+  @include scrollbar();
   min-height: 100vh;
+  &.openMobileNav{
+    overflow: hidden;
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 4;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
 }
 
 body{
@@ -17,7 +31,12 @@ body{
 #page{
   overflow: hidden;
 }
-
+main{
+  margin-top: 78px;
+  @include laptop{
+    margin-top: 85px;
+  }
+}
 section{
   position: relative;
   margin: 20px 0;

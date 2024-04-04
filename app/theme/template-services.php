@@ -19,17 +19,23 @@ $our_cases_link  = get_field( 'services_components')['our_cases_link'];
         <div class="content_wrapper">
             <section class="main_video">
                 <video autoplay muted loop src="<?= $components['link_to_background_video'] ?>"></video>
+	            <?php if ( ! empty( $components['main_text_section'] ) ) { ?>
+                    <div class="main">
+                        <div class="content_wrapper">
+                            <div class="content">
+	                            <?php if ( ! empty( $components['main_text_section']['title'] ) ) { ?>
+                                    <h1 class="headline"><?= $components['main_text_section']['title'] ?></h1>
+	                            <?php } ?>
+	                            <?php if ( ! empty( $components['main_text_section']['description'] ) ) { ?>
+                                    <div class="description"><?= $components['main_text_section']['description'] ?></div>
+	                            <?php } ?>
+                            </div>
+
+                        </div>
+                    </div>
+	            <?php } ?>
             </section>
-			<?php if ( ! empty( $components['main_text_section'] ) ) { ?>
-                <section class="main">
-					<?php if ( ! empty( $components['main_text_section']['title'] ) ) { ?>
-                        <h1 class="headline"><?= $components['main_text_section']['title'] ?></h1>
-					<?php } ?>
-					<?php if ( ! empty( $components['main_text_section']['description'] ) ) { ?>
-                        <div class="description"><?= $components['main_text_section']['description'] ?></div>
-					<?php } ?>
-                </section>
-			<?php } ?>
+
 			<?php if ( ! empty( $components['thimbnail_sections'] ) ) { ?>
                 <section class="thumbnail_sections__wrapper">
 					<?php foreach ( $components['thimbnail_sections'] as $thumbnailSection ): ?>

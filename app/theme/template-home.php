@@ -41,7 +41,7 @@ $our_cases                 = get_field( 'our_cases' );
                         <div class="description"><?= get_post_meta( get_the_ID(), 'homePage_description', true ) ?></div>
 					<?php } ?>
 					<?php if ( ! empty( get_post_meta( get_the_ID(), 'homePage_consultation_button_link', true ) ) ) { ?>
-                        <a class="btn _main" target="_blank"
+                        <a class="btn _main"
                            href="<?= get_post_meta( get_the_ID(), 'homePage_consultation_button_link', true ) ?>"><?= get_post_meta( get_the_ID(), 'homePage_consultation_button_title', true ) ?? '' ?> </a>
 					<?php } ?>
                 </div>
@@ -136,7 +136,6 @@ $our_cases                 = get_field( 'our_cases' );
 							<?php endforeach; ?>
 	                        <?php if ( ! empty( $second_section['booking_link'] ) ) { ?>
                                 <a class="btn _main"
-                                   target="_blank"
                                    href="<?= $second_section['booking_link']['url'] ?>"><?= $second_section['booking_link']['title'] ?? '' ?> </a>
 	                        <?php } ?>
                         </div>
@@ -266,7 +265,7 @@ $our_cases                 = get_field( 'our_cases' );
                 </section>
 			<?php } ?>
 			<?php if ( ( ! empty( $prices_section ) ) || ( ! empty( $contact_form_section ) ) ) { ?>
-                <section class="prices_section">
+                <section class="prices_section" id="prices_section">
                     <div class="prices_section__wrapper">
                         <div class="section__item">
                             <div class="headline"><?= $prices_section['title'] ?></div>
@@ -396,19 +395,19 @@ $our_cases                 = get_field( 'our_cases' );
                         </div>
 					<?php } ?>
                     <div class="slider__wrapper" id="quiz__slider">
-                        <button class="slider__arrows__prev">
+                        <button class="slider__arrows__prev" id="prevSlideBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 1024 1024">
                                 <path fill="#9359F2" d="M685.248 104.704a64 64 0 0 1 0 90.496L368.448 512l316.8 316.8a64 64 0 0 1-90.496 90.496L232.704 557.248a64 64 0 0 1 0-90.496l362.048-362.048a64 64 0 0 1 90.496 0" />
                             </svg>
                         </button>
-                        <button class="slider__arrows__next">
+                        <button class="slider__arrows__next" id="nextSlideBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 1024 1024">
                                 <path fill="#9359F2" d="M338.752 104.704a64 64 0 0 0 0 90.496l316.8 316.8l-316.8 316.8a64 64 0 0 0 90.496 90.496l362.048-362.048a64 64 0 0 0 0-90.496L429.248 104.704a64 64 0 0 0-90.496 0" />
                             </svg>
                         </button>
                         <div class="swiper-wrapper quiz__slider">
 							<?php foreach ( array_chunk( $quiz_section['questions'], 2, true ) as $index => $pair ): ?>
-                                <div class="swiper-slide">
+                                <div class="swiper-slide" data-slide="<?=$index ?>">
                                     <div class="content__wrapper">
 										<?php foreach ( $pair as $number => $item ): ?>
 
@@ -424,7 +423,7 @@ $our_cases                 = get_field( 'our_cases' );
                                                         ?>
 
                                                         <li >
-                                                            <input hidden type="radio" id="<?=$id?>" name="<?=trim($item['question']['email_name_parameter'])?>" value="<?= $answer['title'] ?>">
+                                                            <input data-name="quiz" required="required" hidden type="checkbox" id="<?=$id?>" name="<?=trim($item['question']['email_name_parameter'])?>[]" value="<?= $answer['title'] ?>">
                                                             <label class="answer" for="<?=$id?>"><?= $answer['title'] ?></label>
                                                         </li>
 													<?php endforeach; ?>

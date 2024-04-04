@@ -53,6 +53,11 @@
         margin-top: 30px;
         margin-bottom: inherit;
       }
+      .newsletter_form{
+        .label{
+          color: $white_color;
+        }
+      }
     }
     .contacts{
       margin: 15px 0;

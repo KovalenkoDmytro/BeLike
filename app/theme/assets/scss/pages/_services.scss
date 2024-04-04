@@ -7,29 +7,50 @@
     @include laptop{
       margin: 60px 0;
     }
-    &.main_video{
+    &.main_video {
       margin-top: initial;
       width: 100vw;
       left: 50%;
       margin-left: -50vw;
       position: relative;
-      video{
+      &:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
         width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        max-height: 750px;
       }
-    }
-    &.main{
-      display: grid;
-      @include tablet{
-        column-gap: 70px;
-        grid-template-columns: 1fr 2.3fr;
+      video {
+        width: 100%;
+        max-height: 750px;
+        object-fit: cover;
       }
-      .description{
-        font-weight: 400;
-        letter-spacing: 0;
-        text-align: left;
-        @include laptop {
-          line-height: 33px;
-          font-size: 20px;
+
+      .main {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        .content_wrapper {
+          .content{
+            display: grid;
+            @include tablet {
+              column-gap: 70px;
+              grid-template-columns: 1fr 2.3fr;
+            }
+
+            .description {
+              font-weight: 400;
+              letter-spacing: 0;
+              text-align: left;
+              @include laptop {
+                line-height: 33px;
+                font-size: 20px;
+              }
+            }
+          }
         }
       }
     }

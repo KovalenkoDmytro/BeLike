@@ -46,5 +46,6 @@ global $redux_demo
             );
             ?>
         </nav>
-        <button class="btn _violet"><?= __('Get in touch')?></button>
+        <a href="/#prices_section" class="btn _violet"><?= __('Get in touch')?></a>
     </header>
+	<?php get_template_part( 'template-parts/header_mobile', 'header_mobile',['main'=> true] ) ?>

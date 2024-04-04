@@ -1002,6 +1002,9 @@
                 }
                 .form__item {
                   margin-bottom: 5px;
+                  @include tablet{
+                    margin-bottom: 16px;
+                  }
                   input, textarea {
                     border: 1px solid $title_violet_color;
                     color: #000000;
@@ -1169,6 +1172,9 @@
                         font-size: 13px;
                         line-height: 1.4;
                         font-weight: 300;
+                        @include tablet{
+                          font-size: initial;
+                        }
                       }
                       margin-bottom: 10px;
 
