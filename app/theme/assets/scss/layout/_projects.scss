@@ -63,18 +63,21 @@
       }
 
       .project__tags{
-        display: flex;
-        flex-wrap: wrap;
-        position: absolute;
-        z-index: 2;
-        padding: 20px;
-        gap: 10px;
-        opacity: 0;
-        @include transition();
+       display: none;
+        @include tablet{
+          display: flex;
+          flex-wrap: wrap;
+          position: absolute;
+          z-index: 2;
+          padding: 20px;
+          gap: 10px;
+          opacity: 0;
+          @include transition();
+        }
         li{
           padding: 4px 12px;
           border-radius: 20px;
-          background: #f4f4f4;
+          background: $button_lime_color;
           font-size: 12px;
           font-weight: 400;
           line-height: 17px;
