@@ -13,6 +13,10 @@
   font-size: 14px;
   line-height: 19.6px;
   @include transition();
+  &:hover{
+    background-color: $button_lime_color;
+    color: #000000;
+  }
 
   &._main{
     color: $button_violet_text_color;
@@ -44,6 +48,8 @@
     background-color: $button_lime_color;
     &:hover{
       box-shadow: 5px 10px 20px 0 rgba(32, 30, 34, 0.2);
+      color: $button_violet_text_color;
+      background-color: $button_violet_color;
     }
   }
 
@@ -51,6 +57,8 @@
     color: $button_violet_text_color;
     background-color: $button_violet_color;
     &:hover{
+      color: $button_lime_text_color;
+      background-color: $button_lime_color;
       box-shadow: 5px 10px 20px 0 rgba(32, 30, 34, 0.2);
     }
   }

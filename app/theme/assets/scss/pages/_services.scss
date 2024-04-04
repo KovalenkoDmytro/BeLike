@@ -29,7 +29,7 @@
         text-align: left;
         @include laptop {
           line-height: 33px;
-          font-size: 24px;
+          font-size: 20px;
         }
       }
     }
@@ -37,7 +37,7 @@
       .thumbnail_sections{
 
         position: relative;
-
+        padding: 10px;
         &:nth-child(4n+2){
           &:before {
             content: url("../images/shapes/Vector_ourServices1.svg");
@@ -74,6 +74,8 @@
         }
         .slider__wrapper{
           overflow: hidden;
+          margin: -15px;
+          padding: 15px;
           .navigation__wrapper{
             display: flex;
             align-content:center ;
@@ -108,15 +110,17 @@
           .thumbnail__items{
             .thumbnail__item{
               background: rgba(24, 24, 24, 1);
-              box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
-              //box-shadow: rgba(0, 0, 0, 1) 0 7px 29px 0;
+              box-shadow: 0 0 19px 0 rgba(0,0,0,.5);
               border-radius: 20px;
               display: flex;
               flex-direction: column;
               align-content: center;
               justify-content: space-between;
               overflow: hidden;
-
+              @include transition();
+              &:hover{
+                box-shadow: 0 0 10px 0 #9359f2;
+              }
               .image__wrapper{
                 display: flex;
                 justify-content: center;
@@ -162,6 +166,16 @@
       margin-top: initial;
       @include laptop{
         margin-bottom: 100px;
+        max-width: 85%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .projects__items{
+        .project{
+          .project__link{
+            max-height: 450px;
+          }
+        }
       }
       .top{
         display: flex;
@@ -209,11 +223,12 @@
             @include tablet {
               position: absolute;
               bottom: 0;
-              left: 0;
+              left: 50%;
+              transform: translateX(-50%);
               width: 35%;
             }
             @include laptop{
-              width: 96%;
+              width: 88%;
             }
           }
 
@@ -231,5 +246,4 @@
       }
     }
   }
-
 }

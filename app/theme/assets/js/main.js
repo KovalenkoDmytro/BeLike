@@ -31,6 +31,7 @@ toInvoke(() => {
     new Swiper('.home__page #services_slider', {
         loop: true,
         slidesPerView: 1,
+        speed:1000,
         navigation: {
             nextEl: '.home__page #services_slider .slider__arrows__next',
             prevEl: '.home__page #services_slider .slider__arrows__prev',
@@ -71,6 +72,10 @@ toInvoke(() => {
         loop: true,
         slidesPerView: 1,
         spaceBetween: 20,
+        speed:1000,
+        autoplay: {
+            delay: 4000,
+        },
         navigation: {
             nextEl: '.home__page #opinions__slider .slider__arrows__next',
             prevEl: '.home__page #opinions__slider .slider__arrows__prev',
@@ -105,25 +110,29 @@ toInvoke(() => {
     //slider
     const startQuizBtn = document.querySelector('#startQuiz')
     const main_slideElement = document.querySelector('#main_slide')
+    const contactForm = document.querySelector('#quiz__slider .swiper-slide.__lastStep .slide__form .wpcf7-form')
+
     const thanks__informationElement = document.querySelector('#thanks__information')
-    const sendQuizFormBtn = document.querySelector('#sendQuizForm')
 
     startQuizBtn.addEventListener('click',()=>{
         main_slideElement.classList.add('__hide')
     })
 
-    sendQuizFormBtn.addEventListener('click',()=>{
+    contactForm.addEventListener( 'wpcf7mailsent', function( event ) {
         thanks__informationElement.classList.add('__show')
-    })
-
-
+    }, false );
 }, 'all', '.home__page #quiz__slider')
+
 // video slider component
 toInvoke(() => {
     new Swiper('#video_slider', {
         loop: true,
         slidesPerView: 3,
         centeredSlides: true,
+        speed:1000,
+        autoplay: {
+            delay: 4000,
+        },
         navigation: {
             nextEl: '#video_slider .slider__arrows__next',
             prevEl: '#video_slider .slider__arrows__prev',
@@ -225,7 +234,6 @@ toInvoke(() => {
     // add and show active lable
     const answers = document.querySelectorAll('.question__wrapper .answers li label')
     const removeActive = (elements)=>{
-        console.log(elements)
         elements.forEach(element=>{
             if(element.classList.contains('--active')){
                 element.classList.remove('--active')
@@ -241,3 +249,33 @@ toInvoke(() => {
         })
     })
 }, 'all', '.home__page  #quiz__slider')
+
+// number counter for achievements
+toInvoke(() => {
+
+
+    const toRunCounter = ()=>{
+        const counters = document.querySelectorAll(".counter");
+        counters.forEach((counter) => {
+            counter.innerText = "0";
+            const updateCounter = () => {
+                const target = +counter.getAttribute("data-target");
+                const count = +counter.innerText;
+                const increment = target / 50;
+                if (count < target) {
+                    counter.innerText = `${Math.ceil(count + increment)}`;
+                    setTimeout(updateCounter, 100);
+                } else counter.innerText = target;
+            };
+            updateCounter();
+        })
+    }
+
+
+    const observer = new IntersectionObserver(toRunCounter, { threshold: 1 })
+
+    observer.observe(document.querySelector(".home__page  .achievements"))
+
+
+
+}, 'all', '.home__page  .achievements .counter')

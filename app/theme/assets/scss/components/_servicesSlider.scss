@@ -41,12 +41,13 @@
           font-size: 0;
           height: 530px;
           object-fit: cover;
+
           @include tablet {
-            height: 730px;
+            height: 650px;
             width: 100%;
           }
           @include laptop {
-            height: 850px;
+            height: 750px;
           }
         }
 
@@ -117,11 +118,15 @@
               text-align: left;
             }
           }
-          .btn._main{
-            color: $title_violet_color;
+          .btn{
             font-size: 14px;
+            @include transition();
             @include laptop{
               padding: 18px 68px;
+            }
+            &:hover{
+              background-color: $button_lime_color;
+              color: $button_lime_text_color;
             }
           }
         }

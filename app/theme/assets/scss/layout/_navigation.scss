@@ -10,6 +10,10 @@
       padding: 10px;
       a{
         color: $white_color;
+        @include transition();
+        &:hover{
+          color: $button_lime_color;
+        }
       }
       @include laptop{
         font-size: 17px;

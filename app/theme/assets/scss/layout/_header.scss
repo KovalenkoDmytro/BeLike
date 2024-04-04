@@ -43,6 +43,10 @@
     }
     .navigation .menu .menu-item a{
       color: #000000;
+      @include transition();
+      &:hover{
+        color: $title_violet_color;
+      }
     }
   }
 }
