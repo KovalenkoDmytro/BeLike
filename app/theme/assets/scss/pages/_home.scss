@@ -281,9 +281,12 @@
             margin-top: 70px;
           }
           @include laptop {
+            grid-template-columns: minmax(240px, auto) minmax(290px,auto) minmax(230px,auto) auto;
+            margin-top:initial;
+          }
+          @include desktop{
             grid-template-columns: minmax(270px, auto) minmax(310px,auto) minmax(303px,auto) auto;
             margin-bottom: 86px;
-            margin-top:initial;
           }
 
           .achievement {
@@ -303,6 +306,9 @@
                 font-size: 30px;
               }
               @include laptop {
+                font-size: 44px;
+              }
+              @include desktop{
                 font-size: 54px;
                 line-height: 64.8px;
               }
