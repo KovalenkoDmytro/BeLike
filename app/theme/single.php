@@ -9,6 +9,7 @@
 
 get_header( 'posts' );
 $components = get_field( 'post_components' );
+
 ?>
     <main class="single-post__page">
         <div class="content_wrapper">

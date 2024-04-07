@@ -240,4 +240,12 @@
       }
     }
   }
+  .showAllCases{
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    @include laptop{
+      margin: initial;
+    }
+  }
 }

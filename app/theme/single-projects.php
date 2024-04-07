@@ -6,6 +6,7 @@
  *
  */
 get_header('posts');
+$link_to_all_projects  = get_field( 'link_to_all_projects');
 
 ?>
     <main class="projectSinglePost__page">
@@ -117,6 +118,12 @@ get_header('posts');
                     </section>
                 <?php } ?>
             <?php endwhile; ?>
+	        <?php if (!empty($link_to_all_projects)) { ?>
+                <div class="showAllCases">
+                    <a class="btn _main"
+                       href="<?= $link_to_all_projects['url'] ?>"><?= $link_to_all_projects['title'] ?? '' ?> </a>
+                </div>
+	        <?php } ?>
         </div>
     </main>
 <?php

@@ -32,24 +32,28 @@
     }
   }
   &.__contact {
+    &:before{
+      background: $white_color;
+    }
     .navigation .menu .menu-item a{
       color: #000000;
-    }
-    &.__scrolling{
-      .navigation .menu .menu-item a{
-        color: #ffffff;
+      &:hover{
+        color: $title_violet_color;
       }
     }
   }
 
   &.__posts{
+    &:before{
+      background: $white_color;
+    }
     @include tablet{
       position: fixed;
     }
 
     &.__scrolling{
       &:before{
-        background: #f1f1f1;
+        background: $white_color;
       }
     }
     .navigation .menu .menu-item a{

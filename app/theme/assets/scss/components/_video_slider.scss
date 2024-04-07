@@ -55,7 +55,9 @@
         padding: 0 20px;
       }
       &.swiper-slide-active {
-        transform: scale(1.2);
+        @include tablet{
+          transform: scale(1.2);
+        }
       }
       video, img{
         width: 100%;

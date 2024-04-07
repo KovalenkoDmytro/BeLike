@@ -9,13 +9,15 @@ $contact__components = get_field( 'contact_components' );
 ?>
     <main class="contact__page">
         <div class="content_wrapper">
+	        <?php if ( ! empty( $contact__components['background'] ) ) { ?>
+                <div class="background">
+                    <img  src="<?= $contact__components['background']['url'] ?>"
+                          alt="<?= $contact__components['background']['title'] ?>">
+                </div>
+	        <?php } ?>
             <div class="contact__page_wrapper">
                 <section class="image">
 		            <?= the_title( '<h1 class="headline pageTitle">', '</h1>' ); ?>
-		            <?php if ( ! empty( $contact__components['background'] ) ) { ?>
-                        <img src="<?= $contact__components['background']['url'] ?>"
-                             alt="<?= $contact__components['background']['title'] ?>">
-		            <?php } ?>
                 </section>
                 <section class="text">
                     <div class="contact__info">

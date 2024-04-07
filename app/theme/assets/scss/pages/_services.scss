@@ -139,6 +139,7 @@
               justify-content: space-between;
               overflow: hidden;
               @include transition();
+              height: 307px;
               &:hover{
                 box-shadow: 0 0 10px 0 #9359f2;
               }

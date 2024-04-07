@@ -153,12 +153,10 @@ toInvoke(() => {
 toInvoke(() => {
     new Swiper('#video_slider', {
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 1,
         centeredSlides: true,
         speed: 1000,
-        autoplay: {
-            delay: 4000,
-        },
+        autoplay: false,
         navigation: {
             nextEl: '#video_slider .slider__arrows__next',
             prevEl: '#video_slider .slider__arrows__prev',
@@ -183,6 +181,12 @@ toInvoke(() => {
             768: {
                 slidesPerView: 5,
             },
+            450: {
+                autoplay: {
+                    delay: 8000,
+                },
+                slidesPerView: 3,
+            },
         }
     });
 }, 'all', '#video_slider')
@@ -190,7 +194,7 @@ toInvoke(() => {
 toInvoke(() => {
     new Swiper('.projectSinglePost__page #swiper', {
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 1,
         centeredSlides: true,
         navigation: {
             nextEl: '.projectSinglePost__page .slider__arrows__next',
@@ -199,6 +203,9 @@ toInvoke(() => {
         breakpoints: {
             768: {
                 slidesPerView: 5,
+            },
+            450: {
+                slidesPerView: 3,
             },
         }
     });

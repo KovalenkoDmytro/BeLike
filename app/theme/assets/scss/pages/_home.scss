@@ -616,15 +616,22 @@
             z-index: 2;
             top: 140px;
             left: 31%;
-            height: 90px;
             width: 400px;
+            padding-right: 53px;
+            justify-content: end;
+            height: 70px;
           }
           @include laptop{
+            height: 90px;
             top: 162px;
             font-size: 19px;
+            padding-right: 85px;
             left: 42%;
           }
           @include desktop{
+            top: 180px;
+            justify-content: center;
+            padding-right: initial;
             font-size: 22px;
             line-height: 30.8px;
           }
@@ -706,11 +713,11 @@
               width: 48%;
             }
             @include laptop{
-              width: 46%;
+              width: 40%;
             }
             @include desktop{
-              right: -22%;
-
+              right: -18%;
+              width: 42%;
             }
           }
 

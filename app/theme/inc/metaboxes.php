@@ -356,7 +356,7 @@ class Ale_Meta_Box {
 					echo '<p class="ale_metabox_description">', $field['desc'], '</p>';
 					echo '<div id="', $field['id'], '_status" class="ale_upload_status">';	
 						if ( $meta != '' ) { 
-							$check_image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $meta );
+							$check_image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico|webp*)/i', $meta );
 							if ( $check_image ) {
 								echo '<div class="img_status">';
 								echo '<img src="', $meta, '" alt="" />';
