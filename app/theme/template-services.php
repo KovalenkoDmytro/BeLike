@@ -18,7 +18,7 @@ $our_cases_link  = get_field( 'services_components')['our_cases_link'];
     <main class="service__page">
         <div class="content_wrapper">
             <section class="main_video">
-                <video autoplay muted loop src="<?= $components['link_to_background_video'] ?>"></video>
+                <video playsinline preload="auto" autoplay muted loop src="<?= $components['link_to_background_video'] ?>"></video>
 	            <?php if ( ! empty( $components['main_text_section'] ) ) { ?>
                     <div class="main">
                         <div class="content_wrapper">

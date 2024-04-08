@@ -95,9 +95,9 @@ toInvoke(() => {
 toInvoke(() => {
 
     const toInitSlider = function () {
-        const swipper  = new Swiper('.home__page #quiz__slider', {
+        const swipper = new Swiper('.home__page #quiz__slider', {
             slidesPerView: 1,
-            noSwiping:true,
+            noSwiping: true,
             allowTouchMove: false,
         });
         let validate = false
@@ -112,21 +112,21 @@ toInvoke(() => {
             const validateArray = []
 
             //to check an active
-            slideQuestions.forEach(answers=>{
-                const answeredQuestion = Array.from(answers.querySelectorAll('.answer')).some(answer=>answer.classList.contains('--active'))
+            slideQuestions.forEach(answers => {
+                const answeredQuestion = Array.from(answers.querySelectorAll('.answer')).some(answer => answer.classList.contains('--active'))
                 validateArray.push(answeredQuestion)
             })
             // set global validate
 
             validate = validateArray.every(element => element === true)
 
-            if(validate){
+            if (validate) {
                 swipper.slideNext()
-            }else {
+            } else {
                 alert('Answers for all questions are required')
             }
         })
-        prevSliderBtn.addEventListener('click',  ()=>{
+        prevSliderBtn.addEventListener('click', () => {
             swipper.slidePrev()
         })
     }
@@ -163,18 +163,21 @@ toInvoke(() => {
         },
         on: {
             transitionStart: function () {
-                const videos = document.querySelectorAll('#video_slider video');
 
-                Array.prototype.forEach.call(videos, function (video) {
-                    video.pause();
-                });
+                if (window.innerWidth > 768) {
+                    const videos = document.querySelectorAll('#video_slider video');
+                    Array.prototype.forEach.call(videos, function (video) {
+                        video.pause();
+                    });
+                }
             },
 
             transitionEnd: function () {
-                const activeSlide = this.slides.find(slide => slide.classList.contains('swiper-slide-active'))
-                const video = activeSlide.querySelector('video')
-                video.play();
-
+                if (window.innerWidth > 768) {
+                    const activeSlide = this.slides.find(slide => slide.classList.contains('swiper-slide-active'))
+                    const video = activeSlide.querySelector('video')
+                    video.play();
+                }
             },
         },
         breakpoints: {
@@ -306,11 +309,22 @@ toInvoke(() => {
     const burgerMenuBtn = document.querySelector('#burgerMenu')
     const htmlElement = document.querySelector('html')
 
-    burgerMenuBtn.addEventListener('click', ()=>{
+    burgerMenuBtn.addEventListener('click', () => {
         htmlElement.classList.toggle('openMobileNav')
     })
 }, 'mobile', '#burgerMenu')
 
-// redirect to contact form
+// add control for video in slider on mobile
+
+toInvoke(()=>{
+    const videoSlider = document.querySelector('#video_slider')
+
+    const videos = videoSlider.querySelectorAll('video');
+
+    videos.forEach(video=>{
+        video.setAttribute('controls', '')
+    })
+
+},'mobile', '#video_slider')
 
 
