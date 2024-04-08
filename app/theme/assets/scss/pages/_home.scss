@@ -629,10 +629,10 @@
           }
           @include laptop{
             height: 90px;
-            top: 162px;
+            top: 151px;
             font-size: 19px;
             padding-right: 85px;
-            left: 42%;
+            left: 38%;
           }
           @include desktop{
             top: 180px;
@@ -720,9 +720,10 @@
             }
             @include laptop{
               width: 40%;
+              right: -8%;
             }
             @include desktop{
-              right: -18%;
+              right: -12%;
               width: 42%;
             }
           }

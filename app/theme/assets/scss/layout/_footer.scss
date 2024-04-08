@@ -3,9 +3,7 @@
   padding: 15px;
   font-size: 15px;
   margin-top: 30px;
-  @include tablet{
-    margin-top: initial;
-  }
+
   &:before{
     content: '';
     position: absolute;

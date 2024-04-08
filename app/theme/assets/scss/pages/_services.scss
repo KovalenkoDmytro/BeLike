@@ -38,6 +38,10 @@
             display: grid;
             @include tablet {
               column-gap: 70px;
+              grid-template-columns: 1.4fr 2fr;
+            }
+            @include laptop {
+              column-gap: 70px;
               grid-template-columns: 1fr 2.3fr;
             }
 
@@ -170,6 +174,7 @@
                 .description{
                   font-weight: 300;
                   text-align: left;
+                  line-height: 1.5;
                   @include tablet{
                     font-size: 17px;
                     line-height: 23.8px;

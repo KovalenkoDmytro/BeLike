@@ -49,7 +49,7 @@ $our_cases                 = get_field( 'our_cases' );
 
                     <div class="video__wrapper">
 						<?php if ( ! empty( get_post_meta( get_the_ID(), 'homePage_video', true ) ) ) { ?>
-                            <video autoplay muted loop class="video"
+                            <video playsinline preload="auto" autoplay muted loop class="video"
                                    src="<?= get_post_meta( get_the_ID(), 'homePage_video', true ) ?>"></video>
 						<?php } ?>
                     </div>
