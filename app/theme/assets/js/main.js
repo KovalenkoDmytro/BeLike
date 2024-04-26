@@ -328,3 +328,12 @@ toInvoke(()=>{
 },'mobile', '#video_slider')
 
 
+//redirect to thank you page after sent form
+toInvoke(() => {
+    const forms = document.querySelectorAll( '.wpcf7' );
+    forms.forEach(form => {
+        form.addEventListener('wpcf7mailsent', (e) => {
+            window.location.href=`${window.location.origin}/?page_id=596`
+        })
+    })
+},'all', '.wpcf7')

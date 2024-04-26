@@ -28,15 +28,19 @@ body{
     font-size: 16px;
   }
 }
+
 #page{
   overflow: hidden;
+  min-height: 100dvh;
 }
+
 main{
   margin-top: 78px;
   @include laptop{
     margin-top: 85px;
   }
 }
+
 section{
   position: relative;
   margin: 20px 0;
@@ -47,7 +51,6 @@ section{
     margin: 80px 0;
   }
 }
-
 
 .headline{
   font-family: $headlines_font;
@@ -102,6 +105,7 @@ section{
   transform: scale(3);
   transition: all 500ms;
 }
+
 .b-loaded {
   opacity:1;
   transform: scale(1);
